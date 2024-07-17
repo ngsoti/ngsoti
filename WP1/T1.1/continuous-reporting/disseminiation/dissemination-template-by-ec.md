@@ -2,7 +2,7 @@ Dissemination activity template
 ==
 # Dissemination name
 # What?
-## Type of dissemination activity
+## Type of dissemination activity (only one option can be selected)
 - [ ] Clustering activities
 - [ ] Collaboration with EU-funded projects
 - [ ] Conferences
