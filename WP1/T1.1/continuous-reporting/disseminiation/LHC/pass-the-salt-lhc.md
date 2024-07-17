@@ -2,11 +2,11 @@ Dissemination activity template
 ==
 # Dissemination name: Pass the salt conference 2024
 # What?
-## Type of dissemination activity
+## Type of dissemination activity (only one item can be selected)
 - [ ] Clustering activities
 - [ ] Collaboration with EU-funded projects
 - [x] Conferences
-- [x] Education and training events
+- [ ] Education and training events
 - [ ] Meetings
 - [ ] Other
 - [ ] Other scientific collaboration
@@ -32,7 +32,7 @@ Pass the salt conference was identified as good dissemination event to promote t
 
 # Status
 - [ ] Canceled
-- [ ] Delivered
-- [x] Ongoing
+- [x] Delivered
+- [ ] Ongoing
 - [ ] Postponed
 
