@@ -39,7 +39,7 @@ The Next Generation Security Operator Training Infrastructure (NGSOTI) aims to p
 
 % Chapter 1: Introduction
 \chapter{Introduction}
-The NGSOTI project is a collaborative effort aimed at enhancing the training infrastructure for SOC operators. Coordinated by CIRCL, the initiative involves partnerships with Restena, Tenzir, and the University of Luxembourg. The project began on January 1, 2024, and is scheduled to conclude on December 31, 2026, with a total budget of €1,477,349.00. CIRCL leads the effort as the project coordinator, with additional funding provided by the European Union. 
+The NGSOTI project is a collaborative effort aimed at enhancing the training infrastructure for SOC operators. Coordinated by CIRCL, the initiative involves partnerships with Restena, Tenzir, and the University of Luxembourg. The project began on January 1, 2024, and is scheduled to conclude on December 31, 2026, with a total budget of €1,477,349.00. CIRCL leads the effort as the project coordinator, with additional funding provided by the European Union.
 
 NGSOTI's primary goal is to equip SOC operators with practical tools and methodologies to handle real-world incidents. By leveraging open-source technologies, the project seeks to create a training platform that emphasizes practical skills, ensuring operators are well-prepared for emerging cybersecurity challenges.
 
@@ -54,6 +54,9 @@ By employing technologies such as Suricata, Zeek, and Tenzir, the project seeks 
 The project uses a methodical approach to analyze misconfigured systems by routing unused network ranges to a specific IP address for full packet capture. This setup allows for the collection of data on network activities that may indicate misconfigurations or malicious behavior. The captured data is streamed unidirectionally to a D4 collector, enabling a detailed analysis of the traffic.
 
 The dataset analyzed during the project spans from January 1, 2024, to October 17, 2024, and includes over 10,226 unique destination IP addresses. In total, 4.31 TB of data was collected. This data provides invaluable insights into the nature of misconfigured devices and the patterns of malicious activities observed within the blackhole networks.
+
+% Chapter about malware dataset
+\include{D2-2-NGSOTI-chapter-malware-dataset}
 
 % Chapter 4: Observations
 \chapter{Observations}
