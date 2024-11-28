@@ -10,6 +10,8 @@
 \usepackage{titlesec} % For section formatting
 \usepackage{tcolorbox} % Attention-grabbing boxes
 \usepackage{titling}
+\usepackage{fancyhdr}
+
 % Hyperref setup
 \hypersetup{
     pdftitle={NGSOTI data key findings report \#1},
@@ -24,6 +26,12 @@
 
 
 \date{November 26, 2024}
+
+% Set up the header
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[L]{NGSOTI – Project: 101127921 — NGSOTI — DIGITAL-ECCC-2022-CYBER-03}
+\fancyfoot[C]{Deliverable D2.2 NGSOTI data key findings report \#1 - page \thepage/\pageref{LastPage}}
 
 \title{NGSOTI data key findings report \#1}
 \begin{document}
