@@ -9,11 +9,11 @@
 \usepackage{listings} % For code blocks
 \usepackage{titlesec} % For section formatting
 \usepackage{tcolorbox} % Attention-grabbing boxes
-
+\usepackage{titling}
 % Hyperref setup
 \hypersetup{
-    pdftitle={NGSOTI: A Playground to Detect and Learn About Misconfigured Systems},
-    pdfauthor={LHC},
+    pdftitle={NGSOTI data key findings report \#1},
+    pdfauthor={TEAM NGSOTI},
     pdfsubject={NGSOTI data key findings report 1},
     pdfkeywords={NGSOTI, misconfiguration, network monitoring},
     colorlinks=true,
@@ -21,15 +21,34 @@
     urlcolor=blue
 }
 
-\title{NGSOTI: NGSOTI data key findings report \#1}
-\author{LHC}
+
+
 \date{November 26, 2024}
 
+\title{NGSOTI data key findings report \#1}
 \begin{document}
 
-% Title page
-\maketitle
 
+\begin{titlepage}
+    \begin{center}
+        {\Huge \textbf{D2.2 - NGSOTI data key findings report \#1}} \\[1.5cm]
+        {\Large \textbf{Author: TEAM NGSOTI}} \\[0.5cm]
+        {\large Date: November 20, 2024} \\[3cm]
+        % Add logos below the title
+        %\includegraphics[width=0.3\textwidth]{img/ngsoti.eps}
+        \includegraphics[height=0.3\textwidth]{img/ngsoti.eps}
+        \hspace{2cm} % Adjust spacing between logos
+        %\includegraphics[width=0.3\textwidth]{img/eu_funded_en.eps}
+        \includegraphics[height=0.3\textwidth]{img/eu_funded_en.eps}
+    \end{center}
+\end{titlepage}
+
+
+
+
+
+% Title page
+%\maketitle
 % Abstract
 \chapter*{Abstract}
 The Next Generation Security Operator Training Infrastructure (NGSOTI) aims to provide an open-source environment for Security Operations Center (SOC) operators to train in handling network-related alerts. This document outlines the objectives, methodologies, and findings of the NGSOTI project, including a detailed analysis of misconfigured systems and blackhole traffic data.
