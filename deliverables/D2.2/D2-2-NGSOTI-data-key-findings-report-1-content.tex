@@ -23,6 +23,13 @@ The project uses a methodical approach to analyze misconfigured systems by routi
 
 The dataset analyzed during the project spans from January 1, 2024, to October 17, 2024, and includes over 10,226 unique destination IP addresses. In total, 4.31 TB of data was collected. This data provides invaluable insights into the nature of misconfigured devices and the patterns of malicious activities observed within the blackhole networks.
 
+An evolution of the volume of the dataset is shown in figured \ref{countedpacket}.
+
+\begin{figure}
+    \input{img/counted-packets.tex}
+    \caption{Collected IP packets over time}
+    \label{countedpacket}
+\end{figure}
 % Chapter 4: Observations
 \chapter{Observations}
 Misconfigured devices are a recurring theme in the analysis. These misconfigurations often result from typographical errors or improper default routing setups. For instance, devices that send SYSLOG messages to unintended networks represent a common type of misconfiguration. Similarly, MikroTik routers are often observed connecting to external services, such as \texttt{cloud.mikrotik.com}, due to default configurations.
