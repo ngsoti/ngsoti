@@ -71,6 +71,61 @@ Finally, several production-readiness features have been implemented, such as au
 
 \chapter{NGSOTI Core Infrastructure}
 
+NGSOTI Core Infrastrucutre encompassed the software stack that will be used for hosting the services and the datasets that trainees and trainers will have access to in the frame of the action. The core infrastructure has been deployed on the hardware procured for the action (see mgsoti-milestone3-report.pdf for more details):
+
+\begin{itemize}
+	\item {\bf{ngsoti1}} is a physical server that hosts LXC containers and that host the virtual training network,
+	\item {\bf{ngsoti2}} is a physical server that hosts the datasets used during training (e.g. collections from the blackhole, malware samples, etc.)
+	\item {\bf{ngsoti3}} is a physical server that host auxiliary GPU accelarated workloads (e.g. A.I webservices)
+\end{itemize}
+
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{./img/NGSOTI-architecture.png}
+	\caption{NGSOTI core infrastructure diagram}
+	\label{fig1}
+	\end{figure}
+
+The virtual training environment hosted on {\bf{ngsoti1}} is built around two main pieces of technology:
+
+\begin{itemize}
+
+	\item {\bf{LXC}} is a container runtime for
+	linux{\footnote{\url{https://linuxcontainers.org/}}}. It allows for the
+	creation of containers holding the differents services used during
+	trainings, as well as for the creation of a virtual network that users will
+	use to connect to the differents services. The LXC infrastructure offers
+	profiles that can be applied on newly created containers to easily create
+	SSH admin access, and mount datasets from {\bf{ngsoti2}}
+	
+	\item {\bf{tailscale}}{\footnote{\url{https://tailscale.com/}}} is a VPN
+	(Virtual Private Network) technology that allows us to give access to the
+	virtual network from anywhere where the tailscale client can run. In
+	addition to tailscale, we run
+	{\bf{headscale}}{\footnote{https://headscale.net/stable/}} that is an open
+	source project used to manage tailscale authentication.
+	
+\end{itemize}
+
+As depicted on~\ref{fig1}, {\bf{ngsoti1}} holds a headscale LXC container to
+manage the authentication of users, and Access Control Lists. Within the LXC
+virtual network, there is a special LXC container that is also part of the
+tailscale VPN (the tailnet) that acts as a router to the virtual training
+infrastructure. 
+
+Eventually trainers, trainees, and admin alike can access the virutal training infrastructure throught the tailnet.
+
+The documentation for each of these components is accessible in the project's internal notes:
+
+\begin{itemize}
+	\item overall architecture https://github.com/ngsoti/internal-notes/blob/main/WP2/README.md
+	\item how to create containers https://github.com/ngsoti/internal-notes/blob/main/WP2/containers.md
+	\item how to manage headscale https://github.com/ngsoti/internal-notes/blob/main/WP2/headscale.md
+	\item how to onboard new admin user https://github.com/ngsoti/internal-notes/blob/main/WP2/onboarding.md
+	\item how to manage the tailnet router https://github.com/ngsoti/internal-notes/blob/main/WP2/tailnet-router.md
+\end{itemize}
 
 \chapter{NGSOTI trainings}
 Some EU regulations, such as NIS2 and DORA, have created a significant boost in the demand for NGSOTI training sessions. These sessions are designed to ensure organizations are well-prepared to meet the requirements of these regulations, which are often enforced starting in 2025. A key focus of these regulations is the establishment of local SOC (Security Operations Center).
