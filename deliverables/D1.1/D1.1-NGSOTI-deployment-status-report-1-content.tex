@@ -27,15 +27,15 @@ On August 14, 2024, the release of \textbf{SkillAegis v1.0.0} was announced on m
 
 \subsubsection{Key Features of SkillAegis}
 \begin{itemize}
-    \item \textbf{Scenario Creation:} Trainers can design customized exercises with specific learning objectives, simulating various cyber incidents to develop practical skills in threat intelligence and information management.
-    \item \textbf{Exercise Execution \& Monitoring:} The platform allows trainers to deploy and oversee scenarios in real-time, using a live dashboard to track participant progress and provide immediate feedback.
+	\item \textbf{Scenario Creation:} Trainers can design customized exercises with specific learning objectives, simulating various cyber incidents to develop practical skills in threat intelligence and information management.
+	\item \textbf{Exercise Execution \& Monitoring:} The platform allows trainers to deploy and oversee scenarios in real-time, using a live dashboard to track participant progress and provide immediate feedback.
 \end{itemize}
 
 \subsubsection{Components of the SkillAegis Platform}
 \begin{itemize}
-    \item \textbf{SkillAegis Main Application:} Serves as the core component, managing scenario execution and integrating ready-to-use training modules.
-    \item \textbf{SkillAegis Editor:} Enables trainers to create new exercises, including metadata, injects (tasks), execution order, and evaluation criteria. It also features an Inject Tester to optimize scenarios.
-    \item \textbf{SkillAegis Dashboard:} Facilitates training session execution and provides real-time insights into participant progress, including completion status and logs of user actions.
+	\item \textbf{SkillAegis Main Application:} Serves as the core component, managing scenario execution and integrating ready-to-use training modules.
+	\item \textbf{SkillAegis Editor:} Enables trainers to create new exercises, including metadata, injects (tasks), execution order, and evaluation criteria. It also features an Inject Tester to optimize scenarios.
+	\item \textbf{SkillAegis Dashboard:} Facilitates training session execution and provides real-time insights into participant progress, including completion status and logs of user actions.
 \end{itemize}
 
 \subsubsection{Integration with MISP}
@@ -49,8 +49,24 @@ For more information and access to SkillAegis, visit the \href{https://www.misp-
 
 \subsection{MISP training Infrastructure}
 
-
 \subsection{Kunai}
+
+While Linux workstations may not rival Windows or macOS systems in popularity, Linux systems dominate the server landscape, often hosting critical services such as web servers, databases, and many public systems accessible via the Internet. However, Linux security monitoring for Security Operation Centers (SOCs) frequently lacks the detailed visibility available on Windows systems, where free tools like Sysmon\footnote{\href{https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon}{https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon}} exist. SOC engineers often rely on audit logs or application logs to create detection scenarios, but these sources are not always security-focused and typically lack correlation capabilities necessary for understanding the occurrence of suspicious events.
+
+An attempt to port Microsoft Sysmon to Linux has been made\footnote{\href{https://github.com/microsoft/SysmonForLinux}{https://github.com/microsoft/SysmonForLinux}}. However, the project suffers from several Linux-specific design flaws and has not seen maintenance since its release, making it unappealing for potential users. Other projects, such as \textbf{Tracee}\footnote{\href{https://github.com/aquasecurity/tracee}{https://github.com/aquasecurity/tracee}} and \textbf{Falco}\footnote{\href{https://github.com/falcosecurity/falco}{https://github.com/falcosecurity/falco}}, address Linux security visibility issues but lack some key features offered by Sysmon, including threat-hunting capabilities and event correlation for root cause analysis.
+
+From our experience, alert contextualization and root cause analysis are crucial for enabling SOC operators to triage alerts effectively and for incident responders to thoroughly investigate security events. These needs motivated the development of \textbf{Kunai}, with the goal of providing a tailored security visibility tool for Linux systems. Kunai empowers SOC engineers and incident responders to perform their jobs more effectively and efficiently.
+
+As part of the \textbf{NGSOTI} project, Kunai has undergone significant enhancements to achieve its goals. Integration with \textbf{MISP}\footnote{\href{https://www.misp-project.org/}{https://www.misp-project.org/}} enables Kunai to leverage Indicators of Compromise (IOCs) and threat intelligence shared through the platform. This fosters community-based intelligence sharing and simplifies the detection of known threats. Additionally, a rule engine was developed to facilitate log filtering and the creation of highly customizable detection rules tailored to specific needs and environments. The rule format was designed to be simple to write and share, promoting collaboration and distribution through platforms like \textbf{MISP}. These contributions make data sharing among SOCs seamless, allowing incidents to be detected and addressed more quickly.
+
+Some of the other contributions made under \textbf{NGSOTI} include:
+\begin{itemize}
+	\item Integration of numerous new security events, providing enhanced visibility, analysis, and detection capabilities.
+	\item File scanning using \textbf{Yara}\footnote{\href{https://virustotal.github.io/yara-x/}{https://virustotal.github.io/yara-x/}} rules for malicious file detection.
+	\item \textbf{Community-ID}\footnote{\href{https://github.com/corelight/community-id-spec}{https://github.com/corelight/community-id-spec}} support, enabling correlation between system logs and network logs from tools like \textbf{Suricata}\footnote{\href{https://suricata.io/}{https://suricata.io/}} and \textbf{Zeek}\footnote{\href{https://zeek.org/}{https://zeek.org/}}.
+\end{itemize}
+
+Finally, several production-readiness features have been implemented, such as automated installation and configuration and log rotation. Background tasks such as maintaining an up-to-date website and documentation\footnote{\href{https://why.kunai.rocks/}{https://why.kunai.rocks/}}, monitoring Linux kernel changes to reflect in the project, and refactoring code have also been undertaken to ensure the project's long-term reliability and relevance.
 
 
 \chapter{NGSOTI Core Infrastructure}
@@ -64,9 +80,9 @@ The NIS2 Directive mandates that regulated entities implement robust incident re
 Furthermore, the directive emphasizes the importance of continuous monitoring and logging of network and information systems to promptly detect and address potential threats. Entities are expected to:
 
 \begin{itemize}
-    \item Implement automated monitoring where feasible.
-    \item Regularly review logs to identify unusual activities.
-    \item Ensure accurate time synchronization across systems to facilitate effective incident analysis.
+	\item Implement automated monitoring where feasible.
+	\item Regularly review logs to identify unusual activities.
+	\item Ensure accurate time synchronization across systems to facilitate effective incident analysis.
 \end{itemize}
 
 By adhering to these requirements, organizations can enhance their resilience against cyber threats and ensure compliance with the NIS2 Directive. Article 21, under point (b), explicitly requires the establishment of incident handling capabilities.
@@ -77,20 +93,20 @@ Given this regulatory landscape, the NGSOTI framework provided an excellent oppo
 
 
 \begin{table}
-    \begin{tabular}{lllll}
-        \hline
-        Date & Training  & Number of participants & Sector & Target audiance\\
-        \hline
-        2024-07-05 & Kunai & 12 & Multiple & Open source enthusiasts \\
-        2024-11-08 & Incident Response & 9 & Finance & Security professionals\\
-        2024-11-10 & Incident Response & 4 & Finance & Security professionals\\
-        2024-11-11 & Incident Response & 4 & Finance & Security professionals\\
-        2024-11-23 & Forensic & 4 & Finance & Security professionals\\
-        2024-11-24 & Forensic & 4 & Finance & Security professionals\\
-        2024-12-11 & Forensic & xx & Education & Engineering students \\
-        2024-12-16 & MISP threat sharing & xx & Education & Engineering students \\
-        \hline
-    \end{tabular}
+	\begin{tabular}{lllll}
+		\hline
+		Date       & Training            & Number of participants & Sector    & Target audiance         \\
+		\hline
+		2024-07-05 & Kunai               & 12                     & Multiple  & Open source enthusiasts \\
+		2024-11-08 & Incident Response   & 9                      & Finance   & Security professionals  \\
+		2024-11-10 & Incident Response   & 4                      & Finance   & Security professionals  \\
+		2024-11-11 & Incident Response   & 4                      & Finance   & Security professionals  \\
+		2024-11-23 & Forensic            & 4                      & Finance   & Security professionals  \\
+		2024-11-24 & Forensic            & 4                      & Finance   & Security professionals  \\
+		2024-12-11 & Forensic            & xx                     & Education & Engineering students    \\
+		2024-12-16 & MISP threat sharing & xx                     & Education & Engineering students    \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \chapter{NGSOTI research}
