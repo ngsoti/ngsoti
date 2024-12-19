@@ -48,6 +48,8 @@ For more information and access to SkillAegis, visit the \href{https://www.misp-
 
 
 \subsection{MISP training Infrastructure}
+MISP is a core element of the NGSOTI infrastructure, and stakeholders often request dedicated MISP training sessions. Since MISP is a fully distributed system, participants should be able to explore and experiment with data flow aspects. To facilitate this, a network of temporary MISP servers was set up for training purposes. These seven servers are publicly accessible, allowing participants to configure synchronization rules as needed. The deployment of the servers was fully automated, including their configuration with default user accounts for participants. After each training session, the servers are reset to provide new trainees with a clean environment. The deployment is managed using LXC technology. LXC (Linux Containers) is a lightweight virtualization technology that enables the creation of isolated environments on a single host by sharing the host's Linux kernel. Unlike traditional virtual machines, LXC containers are more resource-efficient and faster to start, as they don't require a separate operating system. They are ideal for use cases such as development, testing, training, and multi-tenancy, providing secure isolation and flexible resource management through namespaces and cgroups.
+
 
 \subsection{Kunai}
 
