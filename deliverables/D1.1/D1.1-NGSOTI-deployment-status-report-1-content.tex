@@ -93,34 +93,34 @@ NGSOTI Core Infrastrucutre encompassed the software stack that will be used for 
 	\includegraphics[width=\textwidth]{./img/NGSOTI-architecture.png}
 	\caption{NGSOTI core infrastructure diagram}
 	\label{fig1}
-	\end{figure}
+\end{figure}
 
 The virtual training environment hosted on {\bf{ngsoti1}} is built around two main pieces of technology:
 
 \begin{itemize}
 
 	\item {\bf{LXC}} is a container runtime for
-	linux{\footnote{\url{https://linuxcontainers.org/}}}. It allows for the
-	creation of containers holding the differents services used during
-	trainings, as well as for the creation of a virtual network that users will
-	use to connect to the differents services. The LXC infrastructure offers
-	profiles that can be applied on newly created containers to easily create
-	SSH admin access, and mount datasets from {\bf{ngsoti2}}
-	
+	      linux{\footnote{\url{https://linuxcontainers.org/}}}. It allows for the
+	      creation of containers holding the differents services used during
+	      trainings, as well as for the creation of a virtual network that users will
+	      use to connect to the differents services. The LXC infrastructure offers
+	      profiles that can be applied on newly created containers to easily create
+	      SSH admin access, and mount datasets from {\bf{ngsoti2}}
+
 	\item {\bf{tailscale}}{\footnote{\url{https://tailscale.com/}}} is a VPN
-	(Virtual Private Network) technology that allows us to give access to the
-	virtual network from anywhere where the tailscale client can run. In
-	addition to tailscale, we run
-	{\bf{headscale}}{\footnote{\url{https://headscale.net/stable/}}} that is an open
-	source project used to manage tailscale authentication.
-	
+	      (Virtual Private Network) technology that allows us to give access to the
+	      virtual network from anywhere where the tailscale client can run. In
+	      addition to tailscale, we run
+		      {\bf{headscale}}{\footnote{\url{https://headscale.net/stable/}}} that is an open
+	      source project used to manage tailscale authentication.
+
 \end{itemize}
 
 As depicted on~\ref{fig1}, {\bf{ngsoti1}} holds a headscale LXC container to
 manage the authentication of users, and Access Control Lists. Within the LXC
 virtual network, there is a special LXC container that is also part of the
 tailscale VPN (the tailnet) that acts as a router to the virtual training
-infrastructure. 
+infrastructure.
 
 Eventually trainers, trainees, and admin alike can access the virutal training infrastructure throught the tailnet.
 
@@ -160,23 +160,23 @@ Given this regulatory landscape, the NGSOTI framework provided an excellent oppo
 \begin{table}
 	\begin{tabular}{lllll}
 		\hline
-		Date       & Training            & Number of participants & Sector    & Target audiance         \\
+		Date       & Training                                & Number of participants & Sector    & Target audiance              \\
 		\hline
-		2024-07-05 & Kunai               & 12                     & Multiple  & Open source enthusiasts \\
-        2024-09-24 & Incident management - part 1  &14            & Education & Engineering students\\
-        2024-09-24 & Incident management  - part 2 & 14           & Education & Engineering students \\
-        2024-10-01 & Incident management \& crisis  exercise & 14 & Education & Engineering students\\
-		2024-11-08 & Incident Response   & 9                      & Finance   & Security professionals  \\
-		2024-11-10 & Incident Response   & 4                      & Finance   & Security professionals  \\
-		2024-11-11 & Incident Response   & 4                      & Finance   & Security professionals  \\
-		2024-11-23 & Forensic            & 4                      & Finance   & Security professionals  \\
-		2024-11-24 & Forensic            & 4                      & Finance   & Security professionals  \\
-  		2024-12-03 & Awareness		 & 14 			  & Education & Engineering students    \\
-    	2024-12-10 & Awareness		 & 10 			  & Education & Engineering students    \\
-        2024-12-03 & Phishing Lecture & 24 & Education & Bachelor / Master students\\
-        2024-12-10 & Phishing Lecture & 24 & Education & Background / Master students\\
-		2024-12-11 & Forensic            & xx                     & Education & Engineering students    \\
-		2024-12-16 & MISP threat sharing & xx                     & Education & Engineering students    \\
+		2024-07-05 & Kunai                                   & 12                     & Multiple  & Open source enthusiasts      \\
+		2024-09-24 & Incident management - part 1            & 14                     & Education & Engineering students         \\
+		2024-09-24 & Incident management  - part 2           & 14                     & Education & Engineering students         \\
+		2024-10-01 & Incident management \& crisis  exercise & 14                     & Education & Engineering students         \\
+		2024-11-08 & Incident Response                       & 9                      & Finance   & Security professionals       \\
+		2024-11-10 & Incident Response                       & 4                      & Finance   & Security professionals       \\
+		2024-11-11 & Incident Response                       & 4                      & Finance   & Security professionals       \\
+		2024-11-23 & Forensic                                & 4                      & Finance   & Security professionals       \\
+		2024-11-24 & Forensic                                & 4                      & Finance   & Security professionals       \\
+		2024-12-03 & Awareness                               & 14                     & Education & Engineering students         \\
+		2024-12-10 & Awareness                               & 10                     & Education & Engineering students         \\
+		2024-12-03 & Phishing Lecture                        & 24                     & Education & Bachelor / Master students   \\
+		2024-12-10 & Phishing Lecture                        & 24                     & Education & Background / Master students \\
+		2024-12-11 & Forensic                                & xx                     & Education & Engineering students         \\
+		2024-12-16 & MISP threat sharing                     & xx                     & Education & Engineering students         \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -201,20 +201,20 @@ has begun using NGOSTI data to shape a focused research agenda.
 Key directions include:
 
 \begin{itemize}
- \item Port Scanning Analysis: Investigate port scanning activities to
- understand the evolving behavior and interests of attackers over time.
- \item Malware Propagation: Analyze malware spreading patterns and
- generate actionable alerts. These alerts will be published and automated
- through MISP to enhance threat intelligence sharing.
- \item Correlation with CVE Data: Connect scanning activity with the
- Common Vulnerabilities and Exposures (CVE) database to identify
- correlations between observed blackhole activity and newly published
- vulnerabilities, particularly focusing on services of heightened interest.
- \item Threat Intelligence Integration: Combine blackhole data with MISP
- threat intelligence feeds to provide a granular and contextualized view
- of current threats. This will support the development of machine
- learning (ML) models to predict potential attacks and threat trends.
- \end{itemize}
+	\item Port Scanning Analysis: Investigate port scanning activities to
+	      understand the evolving behavior and interests of attackers over time.
+	\item Malware Propagation: Analyze malware spreading patterns and
+	      generate actionable alerts. These alerts will be published and automated
+	      through MISP to enhance threat intelligence sharing.
+	\item Correlation with CVE Data: Connect scanning activity with the
+	      Common Vulnerabilities and Exposures (CVE) database to identify
+	      correlations between observed blackhole activity and newly published
+	      vulnerabilities, particularly focusing on services of heightened interest.
+	\item Threat Intelligence Integration: Combine blackhole data with MISP
+	      threat intelligence feeds to provide a granular and contextualized view
+	      of current threats. This will support the development of machine
+	      learning (ML) models to predict potential attacks and threat trends.
+\end{itemize}
 
 
 \chapter{NGSOTI core working group activities}
@@ -222,18 +222,18 @@ This section describes the activities of the core working group as defined in th
 The sub group of the coreworking group cert.lu meetings are documented in the table \ref{certlu}.
 
 \begin{table}[H]
-    \centering
-    \begin{tabular}{l}
-    Date\\
-    \hline
-    19/02\\
-    29/04\\
-    16/07\\
-    12/09\\
-    15/11\\
-    \end{tabular}
-    \caption{CERT.LU meeting dates}
-    \label{certlu}
+	\centering
+	\begin{tabular}{l}
+		Date  \\
+		\hline
+		19/02 \\
+		29/04 \\
+		16/07 \\
+		12/09 \\
+		15/11 \\
+	\end{tabular}
+	\caption{CERT.LU meeting dates}
+	\label{certlu}
 \end{table}
 
 \chapter{NGOSTI and operational usage status}
@@ -248,18 +248,19 @@ Between April and October 2024, several dissemination activities were conducted 
 
 \subsection*{Blog Posts}
 \begin{itemize}
-    \item \textbf{April 2024:} A blog post was published detailing the integration between MISP (Malware Information Sharing Platform) and Kunai, highlighting how this collaboration enhances threat detection capabilities.
-    \item \textbf{July 2024:} An article was written discussing the outage caused by CrowdStrike earlier this year, using the incident to promote Kunai as a reliable alternative for threat detection.
-    \item \textbf{October 2024:} A blog article was released introducing a Kunai-based sandboxing system that can be used to detonate malware samples and collect Kunai traces. The system aims to ease and streamline the process of creating detection rules.
+	\item \textbf{April 2024:} A blog post\footnote{\url{https://www.misp-project.org/2024/04/19/Using-Your-MISP-IoCs-in-Kunai.html/}} was published detailing the integration between MISP (Malware Information Sharing Platform) and Kunai, highlighting how this collaboration enhances threat detection capabilities.
+	\item \textbf{July 2024:} An article\footnote{\url{https://circl.lu/pub/learning-from-falcon-sensor-outage/}} was written discussing the outage caused by CrowdStrike earlier this year, using the incident to promote Kunai as a reliable alternative for threat detection.
+	\item \textbf{October 2024:} A blog article\footnote{\url{https://why.kunai.rocks/blog/2024/10/02/kunai-malware-sandboxing}} was released introducing a Kunai-based sandboxing system that can be used to detonate malware samples and collect Kunai traces. The system aims to ease and streamline the process of creating detection rules.
 \end{itemize}
 
 \subsection*{Conferences and Workshops}
 \begin{itemize}
-    \item \textbf{July 3-5, 2024:} A talk and workshop were conducted at the \emph{Pass the SALT 2024} conference in Lille, France. During the talk, we presented the latest updates to Kunai, and during the workshop, we provided hands-on exercises for attendees to understand the basics of Kunai and start building their own detection scenarios.
-    \item \textbf{October 10, 2024:} A presentation titled \emph{Kunai: An Open-Source Threat-Detection Tool for Linux} was delivered at the \emph{LibreOffice Conference 2024} during the Cyber Security track. The session provided a high-level overview of Kunai’s development, key features, and practical applications, demonstrating how it enables organizations to better understand and respond to potential threats.
-    \item \textbf{October 22-24, 2024:} A lightning talk about Kunai was presented at the \emph{Hack.lu 2024} conference, a renowned platform for discussions on cybersecurity and related technologies. This talk emphasized Kunai's capabilities and its role in modern security monitoring.
-    \item \textbf{CSAF Community Days in Munich (December 2024)}:
-    During the CSAF Community Days conference, a presentation was delivered on the correlation between CSAF advisories and CVE data. The talk highlighted the practical applications of NGSOTI in automating vulnerability management workflows and improving data interoperability in the field. Slides from the presentation will soon be made available online \cite{csaf_munich}.
+	\item \textbf{July 3-5, 2024:} A talk\footnote{\url{https://cfp.pass-the-salt.org/pts2024/talk/VLT987/}} and workshop\footnote{\url{https://cfp.pass-the-salt.org/pts2024/talk/TFJ3ST/}} were conducted at the \emph{Pass the SALT 2024} conference in Lille, France. During the talk, we presented the latest updates to Kunai, and during the workshop, we provided hands-on exercises for attendees to understand the basics of Kunai and start building their own detection scenarios.
+	\item \textbf{October 10, 2024:} A presentation titled \emph{Kunai: An Open-Source Threat-Detection Tool for Linux}\footnote{\url{https://events.documentfoundation.org/libreoffice-conference-2024/talk/JVCY87/}} was delivered at the \emph{LibreOffice Conference 2024} during the Cyber Security track. The session provided a high-level overview of Kunai’s development, key features, and practical applications, demonstrating how it enables organizations to better understand and respond to potential threats.
+	\item \textbf{October 22-24, 2024:} A lightning talk\footnote{\url{https://pretalx.com/hack-lu-2024/talk/KW9S7Z/}} about Kunai was presented at the \emph{Hack.lu 2024} conference, a renowned platform for discussions on cybersecurity and related technologies. This talk emphasized Kunai's capabilities and its role in modern security monitoring.
+	\item \textbf{CSAF Community Days in Munich (December 2024)}:
+	      During the CSAF Community Days conference, a presentation was delivered on the correlation between CSAF advisories and CVE data. The talk highlighted the practical applications of NGSOTI in automating vulnerability management workflows and improving data interoperability in the field. Slides from the presentation will soon be made available online \cite{csaf_munich}.
+
 \end{itemize}
 
 
@@ -273,24 +274,24 @@ It can be visted at the following location \url{  https://restena.lu/en/project/
 A rollup was created for the Luxinnovation Day. A picture is shown in figure xx.
 
 \begin{figure}
-    \includegraphics[scale=0.3]{img/IMG-ROLLUP-NGSOTI.jpg}
+	\includegraphics[scale=0.3]{img/IMG-ROLLUP-NGSOTI.jpg}
 \end{figure}
 
 \section{Conference publications}
 
 TNC'24 Future talent Programme presentation on Blackhole data:
 
-  \url{https://community.geant.org/denim-latic}
+\url{https://community.geant.org/denim-latic}
 
 
 
 \section{ Social media communication}
 \begin{itemize}
-    \item \textbf{LinkedIn Posts}:
-    \begin{itemize}
-        \item In September 2024, the integration between NGSOTI and the Vulnerability Lookup tool was showcased, emphasizing how it improves the management and tracking of vulnerabilities \cite{kunai_integration}.
-        \item Another post in September 2024 detailed how NGSOTI contributes to open-source cybersecurity and vulnerability management efforts, promoting the project to the cybersecurity community \cite{ngsoti_opensource}.
-    \end{itemize}
+	\item \textbf{LinkedIn Posts}:
+	      \begin{itemize}
+		      \item In September 2024, the integration between NGSOTI and the Vulnerability Lookup tool was showcased, emphasizing how it improves the management and tracking of vulnerabilities \cite{kunai_integration}.
+		      \item Another post in September 2024 detailed how NGSOTI contributes to open-source cybersecurity and vulnerability management efforts, promoting the project to the cybersecurity community \cite{ngsoti_opensource}.
+	      \end{itemize}
 \end{itemize}
 
 
