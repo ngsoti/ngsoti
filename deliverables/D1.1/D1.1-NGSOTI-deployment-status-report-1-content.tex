@@ -21,6 +21,94 @@ In the NGSOTI project, the consortium closely monitored the behavior and require
 
 \subsection{Tenzir}
 
+Tenzir is an open-core data pipeline management (DPM) tool that enables security
+teams to collect, normalize, enrich, and route security data. NGSOTI relies on
+Tenzir for automating the exchange of event data between various tools, such as
+Kunai, MISP, and OpenSearch. In addition to data integration, Tenzir executes
+detection content in the pipeline with its enrichment framework and built-in
+operators to execute Sigma and YARA rules. These features are a central reason
+for using Tenzir within NGSOTI, as they are not available in general-purpose
+data pipeline tools, such as Fluent Bit.
+
+\subsubsection{Use Cases}
+
+For NGSOTI, Tenzir specifically supports the following use cases:
+
+\begin{itemize}
+\item \textbf{Kunai Log Collection}: Tenzir picks up Kunai log files and ships
+	them to a central location. Kunai writes its logs as JSON to a file,
+	which Tenzir can pick up, parse, and normalize.
+\item \textbf{OCSF Event Normalization}: Tenzir is purpose-built to map security
+	telemetry from disparate sources in various formats to a canonical form
+	for easier correlation. The Open Cybersecurity Schema Framework (OCSF)
+	is the de-factor standard for security teams and has been adopted by
+	Linux Foundation in late 2024. Tenzir makes it easy to transform events
+	to OCSF and also add OCSF-compliant enrichment objects in its pipelines.
+\item \textbf{MISP Content Operationalization}: Tenzir can operationalize MISP
+	events and contained attributes by making the data available in
+	pipelines to flag sightings. The reported sightings do not only serve as
+	corroborating evidence in the subsequent alert processing, but also
+	deliver valuable threat insights when sent back to MISP.
+\end{itemize}
+
+\subsubsection{Key Activities}
+
+In 2024, Tenzir focused on building key capabilities that enable the above
+mentioned use cases within the NGSOTI project.
+
+\begin{itemize}
+\item \textbf{Tutorial on OCSF Normalization}: To teach SOC operators how to
+	standardize event data for subsequent analytics across multiple data
+	sources, Tenzir published a tutorial that outlines the key steps in
+	great
+	detail.\footnote{https://docs.tenzir.com/tutorials/map-data-to-ocsf}
+
+\item \textbf{Lookup Table Aggregations}: Tenzir's lookup tables are a building
+	block for several SecOps use cases. In addition to using them for
+	enriching event streams with indicators of compromise that arrive from
+	MISP, they can be used to passively collect observed data for subsequent
+	enrichment.
+
+	This is particularly useful for building a passive inventory of assets.
+	A popular example involves computing first/last/times-seen statistics to
+	build passive DNS tables. But also extracting IP-to-MAC,
+	host-to-username, or any other mappings available in telemetry provide
+	valuable context for entity-based reasoning.
+
+	Tenzir presented this feature along with various examples at Suricon
+	in November
+	2024.\footnote{https://docs.google.com/presentation/d/1SnWQMBN7HQ4ASckUgy_kfQyWzHSnrN9zl-m4ptMVolQ/present}
+
+\item \textbf{OpenSearch/ElasticSearch and Splunk Support}: SOC operators often
+	use a SIEM to analyze logs centrally. Since the mission of NGSOTI is to
+	prepare the next generation of SOC operators for real-world settings
+	where they will likely encounter a SIEM, Tenzir built native
+	integrations for the most commonly used SIEMs out there:
+	OpenSearch/ElasticSearch (via the Bulk API) as well as Splunk.
+
+\item \textbf{String Function Processing}: In order to support flexible
+	dissection of string data that comes—among other tools—from MISP, Tenzir
+	added numerous functions for native string inspection and
+	transformation.\footnote{https://docs.tenzir.com/tql2/functions#string}
+
+	These functions are building block for the MISP integration, which
+	requires receiving data via ZeroMQ, splitting strings at a space, and
+	then parsing the second component as JSON. Tenzir now has all of these
+	building blocks in place to trivially support reading data in real time
+	from MISP in a structured manner.
+
+\item \textbf{Community ID Computation}: In order t correlate network with
+	endpoint events, Tenzir added a function to compute the Community ID of
+	a network
+	flow.\footnote{https://docs.tenzir.com/blog/unifying-network-and-endpoint-data-with-community-ids}.
+
+	Kunai also added a feature to support Community ID computation, making
+	it now possible to correlate network data from Zeek and Suricata with
+	Kunai in Tenzir.
+\end{itemize}
+
+In summary, Tenzir added essential capabilities for SOC operators that seek to
+integreate various security tools and their dataflows.
 
 \subsection{SkillAegis}
 SkillAegis is an excellent outcome of the NGSOTI project, aligning seamlessly with its mission to train the next generation of SOC operators. While the project emphasizes creating operational infrastructures and fostering hands-on training environments, SkillAegis addresses the critical human element by providing a platform for scenario-based training.
