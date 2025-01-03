@@ -479,18 +479,18 @@ The virtual training environment hosted on {\bf{ngsoti1}} is built around two ma
 \begin{itemize}
 
 	\item {\bf{LXC}} is a container runtime for
-	linux{\footnote{\url{https://linuxcontainers.org/}}}. It allows for the
+	linux\cite{linux_containers}. It allows for the
 	creation of containers holding the differents services used during
 	trainings, as well as for the creation of a virtual network that users will
 	use to connect to the differents services. The LXC infrastructure offers
 	profiles that can be applied on newly created containers to easily create
 	SSH admin access, and mount datasets from {\bf{ngsoti2}}
 	
-	\item {\bf{tailscale}}{\footnote{\url{https://tailscale.com/}}} is a VPN
+	\item {\bf{tailscale}}\cite{tailscale,} is a VPN
 	(Virtual Private Network) technology that allows us to give access to the
 	virtual network from anywhere where the tailscale client can run. In
 	addition to tailscale, we run
-	{\bf{headscale}}{\footnote{\url{https://headscale.net/stable/}}} that is an open
+	{\bf{headscale}}\cite{headscale} that is an open
 	source project used to manage tailscale authentication.
 	
 \end{itemize}
