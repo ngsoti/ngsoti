@@ -406,13 +406,12 @@ MISP is a core element of the NGSOTI infrastructure, and stakeholders often requ
 
 While Linux workstations may not rival Windows or macOS systems in popularity, Linux systems dominate the server landscape, often hosting critical services such as web servers, databases, and many public systems accessible via the Internet. However, Linux security monitoring for SOCs frequently lacks the detailed visibility available on Windows systems, where free tools like Sysmon\cite{sysmon_tool} exist. SOC engineers often rely on audit logs or application logs to create detection scenarios, but these sources are not always security-focused and typically lack correlation capabilities necessary for understanding the occurrence of suspicious events.
 
-An attempt to port Microsoft Sysmon to Linux was made
-\footnote{\href{https://github.com/microsoft/SysmonForLinux}{https://github.com/microsoft/SysmonForLinux}}.
+An attempt to port Microsoft Sysmon to Linux was made\cite{sysmon_linux}.
 However, the project suffers from several Linux-specific design flaws and has
 not seen maintenance since its release, making it unappealing for potential
 users. Other projects, such as
-\textbf{Tracee}\footnote{\href{https://github.com/aquasecurity/tracee}{https://github.com/aquasecurity/tracee}}
-and \textbf{Falco}\footnote{\href{https://github.com/falcosecurity/falco}{https://github.com/falcosecurity/falco}},
+\textbf{Tracee}\cite{tracee_aquasecurity}
+and \textbf{Falco}\cite{falco_falcosecurity},
 address Linux security visibility issues but lack some key features offered by Sysmon,
 including threat-hunting capabilities and event correlation for root cause analysis.
 
@@ -426,7 +425,7 @@ efficiently.
 
 As part of the \textbf{NGSOTI} project, Kunai has undergone significant
 enhancements to achieve its goals. Integration with
-\textbf{MISP}\footnote{\href{https://www.misp-project.org/}{https://www.misp-project.org/}}
+\textbf{MISP}\cite{misp_project}
 enables Kunai to leverage Indicators of Compromise (IOCs) and threat intelligence
 shared through the platform. This fosters community-based intelligence sharing
 and simplifies the detection of known threats. Additionally, a rule engine was
@@ -441,18 +440,16 @@ Some of the other contributions made under \textbf{NGSOTI} include:
 	\item Integration of numerous new security events, providing enhanced
 visibility, analysis, and detection capabilities.
 	\item File scanning using
-\textbf{Yara}\footnote{\href{https://virustotal.github.io/yara-x/}{https://virustotal.github.io/yara-x/}}
-rules for malicious file detection.
-	\item \textbf{Community-ID}\footnote{\href{https://github.com/corelight/community-id-spec}{https://github.com/corelight/community-id-spec}}
+\textbf{Yara}\cite{yara_x} rules for malicious file detection.
+	\item \textbf{Community-ID}\cite{community_id_spec}
 support, enabling correlation between system logs and network logs from tools
-like \textbf{Suricata}\footnote{\href{https://suricata.io/}{https://suricata.io/}}
-and \textbf{Zeek}\footnote{\href{https://zeek.org/}{https://zeek.org/}}.
+like \textbf{Suricata}\cite{suricata_website}
+and \textbf{Zeek}\cite{zeek_website}.
 \end{itemize}
 
 Finally, several production-readiness features have been implemented, such as
 automated installation and configuration and log rotation. Background tasks
-such as maintaining an up-to-date website and documentation
-\footnote{\href{https://why.kunai.rocks/}{https://why.kunai.rocks/}},
+such as maintaining an up-to-date website and documentation\cite{kunai_why},
 monitoring Linux kernel changes to reflect in the project, and refactoring
 code have also been undertaken to ensure the project's long-term reliability
 and relevance.
