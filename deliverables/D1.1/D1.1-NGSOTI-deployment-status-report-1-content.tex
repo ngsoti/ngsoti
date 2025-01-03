@@ -457,6 +457,21 @@ and relevance.
 
 \section{NGSOTI Core Infrastructure}
 
+Both partners LHC and Restena procured hardware to support the project. Restena's
+hardware is used for processing activities, such as handling Blackhole data.
+They set up the equipment in the data center and initiated the first
+processing of the Blackhole data. Additionally, Restena established a
+phishing platform to create phishing campaigns as part of the training
+activities. LHC's hardware was also deployed in a data center and serves as
+the core infrastructure for NGSOTI, ensuring the project's operational foundation.
+
+As depicted on~\ref{fig1}, {\bf{ngsoti1}} holds a headscale LXC container to
+manage the authentication of users, and Access Control Lists. Within the LXC
+virtual network, there is a special LXC container that is also part of the
+tailscale VPN (the tailnet) that acts as a router to the virtual training
+infrastructure.
+
+
 NGSOTI Core Infrastrucutre encompassed the software stack that will be used for hosting the services and the datasets that trainees and trainers will have access to in the frame of the action. The core infrastructure has been deployed on the hardware procured for the action (see mgsoti-milestone3-report.pdf for more details):
 
 \begin{itemize}
@@ -494,13 +509,6 @@ The virtual training environment hosted on {\bf{ngsoti1}} is built around two ma
 	source project used to manage tailscale authentication.
 	
 \end{itemize}
-
-As depicted on~\ref{fig1}, {\bf{ngsoti1}} holds a headscale LXC container to
-manage the authentication of users, and Access Control Lists. Within the LXC
-virtual network, there is a special LXC container that is also part of the
-tailscale VPN (the tailnet) that acts as a router to the virtual training
-infrastructure. 
-
 Eventually trainers, trainees, and admin alike can access the virutal training infrastructure throught the tailnet.
 
 The documentation for each of these components can be divided into the following segments.
@@ -567,9 +575,6 @@ and are made persistent across reboots using \texttt{netfilter-persistent}. This
 provides a fully functional and secure tailnet-router for the NGSOTI network.
 
 \end{description}
-
-Restena procured hardware for processing Blackhole data, set up the equipment in the data center, and initiated the first processing of the Blackhole data.
-They also set up of a phishing platform to create phishing campaigns in the framework of the training activity.
 
 \chapter{Usage Status}
 
