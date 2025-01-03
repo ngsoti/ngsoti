@@ -320,7 +320,7 @@ mentioned use cases within the NGSOTI project.
 	standardize event data for subsequent analytics across multiple data
 	sources, Tenzir published a tutorial that outlines the key steps in
 	great
-	detail.\footnote{https://docs.tenzir.com/tutorials/map-data-to-ocsf}
+	detail\cite{tenzir_ocsf_tutorial}.
 
 \item \textbf{Lookup Table Aggregations}: Tenzir's lookup tables are a building
 	block for several SecOps use cases. In addition to using them for
@@ -336,7 +336,7 @@ mentioned use cases within the NGSOTI project.
 
 	Tenzir presented this feature along with various examples at Suricon
 	in November
-	2024.\footnote{\url{https://docs.google.com/presentation/d/1SnWQMBN7HQ4ASckUgy\_kfQyWzHSnrN9zl-m4ptMVolQ/present}}
+	2024.\cite{suricata_meets_ocsf}
 
 \item \textbf{OpenSearch/ElasticSearch and Splunk Support}: SOC operators often
 	use a SIEM to analyze logs centrally. Since the mission of NGSOTI is to
@@ -348,7 +348,7 @@ mentioned use cases within the NGSOTI project.
 \item \textbf{String Function Processing}: In order to support flexible
 	dissection of string data that comes—among other tools—from MISP, Tenzir
 	added numerous functions for native string inspection and
-	transformation.\footnote{\url{https://docs.tenzir.com/tql2/functions\#string}}
+	transformation\cite{tenzir_tql2_string_functions}.
 
 	These functions are building block for the MISP integration, which
 	requires receiving data via ZeroMQ, splitting strings at a space, and
@@ -359,7 +359,7 @@ mentioned use cases within the NGSOTI project.
 \item \textbf{Community ID Computation}: In order t correlate network with
 	endpoint events, Tenzir added a function to compute the Community ID of
 	a network
-	flow.\footnote{https://docs.tenzir.com/blog/unifying-network-and-endpoint-data-with-community-ids}.
+	flow\cite{tenzir_community_ids}.
 
 	Kunai also added a feature to support Community ID computation, making
 	it now possible to correlate network data from Zeek and Suricata with
