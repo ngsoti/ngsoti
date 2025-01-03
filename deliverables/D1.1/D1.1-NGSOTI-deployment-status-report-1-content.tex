@@ -454,6 +454,41 @@ monitoring Linux kernel changes to reflect in the project, and refactoring
 code have also been undertaken to ensure the project's long-term reliability
 and relevance.
 
+\subsection{Vulnerability Lookup}
+Effective vulnerability management is a critical aspect of SOC operations,
+requiring the ability to handle and prioritize vulnerabilities efficiently.
+Historically, only a few vulnerability databases existed, but with the
+introduction of the NIS2 directive promoting enhanced vulnerability management,
+the number of databases has grown significantly. This proliferation poses
+challenges for SOC operators in reconciling and aggregating data across
+multiple sources. To address this, NGSOTI extended and integrated the
+open-source tool Vulnerability Lookup\cite{vulnerability_lookup},
+streamlining the process and improving operational efficiency.
+
+\textbf{Vulnerability-Lookup} is an open-source tool that facilitates the correlation 
+of vulnerabilities from various sources, independent of their IDs, and streamlines 
+Coordinated Vulnerability Disclosure (CVD) management. It serves as a collaborative 
+platform where users can comment on security advisories, create bundles, and add 
+observations. An instance operated by CIRCL is available at 
+\url{https://vulnerability.circl.lu}.
+
+\textbf{Key Features:}
+Vulnerability-Lookup provides a comprehensive API for fast vulnerability searches, 
+a modular feeder system for importing vulnerabilities from sources like CISA, NIST, 
+GitHub, and OpenSSF, and supports creating and editing Security Advisories with the 
+vulnogram editor. Users can add sightings (e.g., seen, exploited, patched) to 
+vulnerabilities, share comments, and create bundles of advisories. Integration with 
+EPSS and extensive RSS/Atom feeds are also included.
+
+\textbf{Sighting Sources:}
+It supports various sighting sources, including Fediverse, MISP, Nuclei, Exploit-DB, 
+CISA KEV, and RSS. Users can also create custom sighting tools using the 
+\texttt{PyVulnerabilityLookup} library.
+
+\textbf{Installation:}
+Vulnerability-Lookup requires Python 3.10, Poetry, and a Kvrocks database. Detailed 
+installation instructions and architecture are provided in the official documentation.
+
 
 \section{NGSOTI Core Infrastructure}
 
