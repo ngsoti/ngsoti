@@ -503,15 +503,70 @@ infrastructure.
 
 Eventually trainers, trainees, and admin alike can access the virutal training infrastructure throught the tailnet.
 
-The documentation for each of these components is accessible in the project's internal notes:
+The documentation for each of these components can be divided into the following segments.
 
-\begin{itemize}
-	\item overall architecture \url{https://github.com/ngsoti/internal-notes/blob/main/WP2/README.md}
-	\item how to create containers \url{https://github.com/ngsoti/internal-notes/blob/main/WP2/containers.md}
-	\item how to manage headscale \url{https://github.com/ngsoti/internal-notes/blob/main/WP2/headscale.md}
-	\item how to onboard new admin user \url{https://github.com/ngsoti/internal-notes/blob/main/WP2/onboarding.md}
-	\item how to manage the tailnet router \url{https://github.com/ngsoti/internal-notes/blob/main/WP2/tailnet-router.md}
-\end{itemize}
+\begin{description}
+	\item [overall architecture] Tailscale is a mesh VPN built on WireGuard,
+enabling secure, private networking within a tailnet. In this setup, a custom
+coordination server replaces the default
+Tailscale servers, providing greater control and privacy. Users authenticate
+using a reusable, non-expiring pre-authentication key and gain access to a
+tailnet-router container that routes traffic to LXC containers hosted on the
+server. After downloading the Tailscale client and connecting with the
+provided configuration, users can securely access resources within the
+tailnet, such as SSH into containers, provided their SSH key is authorized.
+This setup ensures efficient and private access to network resources.
+	\item [how to create containers]
+Headscale is a self-hosted implementation of Tailscale's coordination server,
+responsible for authenticating users, managing access control lists (ACLs),
+and coordinating connections within a tailnet. It runs as a container and can
+be managed directly from the host using commands to create users, generate
+pre-authentication keys, and manage network routes. Configuration files, such
+as `config.yaml`, specify operational details like server addresses, metrics
+endpoints, and policy settings for ACLs and DNS. Headscale integrates seamlessly
+with Tailscale clients, enabling secure network access and advanced management
+capabilities, including ACL enforcement, MagicDNS, and policy-based connectivity.
+The deployment includes support for reverse proxying with Apache and options
+for custom TLS settings.
+            \item [how to manage headscale]
+This section of the documentation addresses user authentication and access
+control lists (ACLs). It describes the setup of a container named headscale
+running on the ngsoti host. Administration is performed from the host system,
+enabling the creation of users, reusable pre-authentication keys, and
+management of network routes. Configuration files, such as config.yaml,
+define operational settings, including server URLs, metrics endpoints,
+gRPC configurations, and DNS management.
+
+	\item [how to onboard new admin user]
+The current process for granting and configuring user access involves several
+manual steps, including granting access to the GitHub organization, creating a
+new user in the Headscale container, generating and sharing a pre-authentication
+key, updating the \texttt{/etc/headscale/policy.hujson} file to include the user
+in the admin list, and restarting the Headscale service. Additionally, the
+\texttt{incus ssh-admins} profile must be modified to add the user and their
+SSH key, which currently requires recreating the container to apply changes.
+Automating this procedure with a script would simplify the workflow, reduce
+errors, and enhance efficiency.
+
+	\item [how to manage the tailnet router]
+This part of the documentation includes the commands to to create a tailnet-router container.
+
+Once the container is running, access the \texttt{headscale} container to authorize
+the routes advertised by the container. Use \texttt{headscale nodes list} to identify
+the container's name, then run \texttt{headscale routes list} to find the IDs of the
+routes that need to be enabled (for both IPv4 and IPv6). Finally, enable the routes
+using the command \texttt{headscale routes enable -r <idroute>}, ensuring that
+routing works as expected.
+
+The \texttt{tailnet-router-profile} configures the container to install necessary
+packages, including Tailscale and \texttt{iptables}, and enables IP forwarding for
+both IPv4 and IPv6. It applies Linux optimizations for subnet routing, advertises
+routes, and sets up NAT to forward traffic between \texttt{incusbr0} and the Tailscale
+interface. Additionally, \texttt{iptables} rules are configured to allow forwarding
+and are made persistent across reboots using \texttt{netfilter-persistent}. This setup
+provides a fully functional and secure tailnet-router for the NGSOTI network.
+
+\end{description}
 
 Restena procured hardware for processing Blackhole data, set up the equipment in the data center, and initiated the first processing of the Blackhole data.
 They also set up of a phishing platform to create phishing campaigns in the framework of the training activity.
