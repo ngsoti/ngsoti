@@ -106,7 +106,6 @@ in some delays to project management tasks. We are actively addressing these
 delays to ensure the project remains on track and aligned with our overall
 objectives.
 &
-\ref{training}
  \\
 \hline
 WP1.O2 &
@@ -142,7 +141,6 @@ and research
 & O &
 A formal teaching agreement was signed with one institution, while two additional educational institutions joined the initiative in a less formal capacity. NGOSTI trainings are being delivered at these institutions, and they are also listed in the training section.
 &
-\ref{training}
 \\
 
 \hline
@@ -177,7 +175,7 @@ phishing platform for training activities. Dataset processing has been
 initiated.
 
 &
-2,3 \\
+\ref{chdeploy},\ref{chuse} \\
 \hline
 WP2.O2 &
 A second objective to maintain the infrastructure agile to easily adapt to new
@@ -194,6 +192,7 @@ Two types of adaptations have already been demonstrated:
 
 &
 %Add reference chapters
+\ref{chdeploy}
 \\
 
 \hline
@@ -204,6 +203,7 @@ A third objective collect data of the infrastructure
 During the first year of the project, over 4 TB of network traffic capture data was collected and presented at two conferences. Additionally, a Linux malware dataset was compiled and published.
 &
 % Add reference chapters
+\ref{chuse}
 %TODO add reference to https://helga.circl.lu/NGSOTI/malware-dataset
 \\
 
@@ -232,11 +232,11 @@ option
     \hline
     Number & Description & State & Achievements & Chapter \\
     \hline
-    WP3.O1 & Evaluate the data of NGSOTI to create up-to-date training materials & O & Training materials are being updated based on analyzed data & \\
+    WP3.O1 & Evaluate the data of NGSOTI to create up-to-date training materials & O & Training materials are being updated based on analyzed data & \ref{chuse}\\
     \hline
-    WP3.O2 & Perform training with NGSOTI & O &  More training sessions than initially expected were successfully delivered using NGSOTI. &  \\
+    WP3.O2 & Perform training with NGSOTI & O &  More training sessions than initially expected were successfully delivered using NGSOTI. &  \ref{chuse}\\
     \hline
-    WP3.O3 & Collect feedback from existing trainings to improve future ones & O & Feedback has been gathered and is being analyzed for implementation &  \\
+    WP3.O3 & Collect feedback from existing trainings to improve future ones & O & Feedback has been gathered and is being analyzed for implementation & \ref{chuse}\\
     \hline
     \end{tabular}
     \caption{NGSOTI Objectives and Achievements Work Package 3}
@@ -254,14 +254,14 @@ option
         WP4.O1 & Make NGSOTI attractive for schools and students & O &NGSOTI was
         utilized for engineering as well as bachelor’s and master’s students.
         Additionally, it garnered interest from security professionals and open-source
-        enthusiasts, where it was successfully demonstrated.  & 1 \\
+        enthusiasts, where it was successfully demonstrated.  & \ref{chdis} \\
         \hline
         WP4.O2 & Enable teachers to use NGSOTI to create training materials & O &
         The NGSOTI infrastructure was demonstrated during a MISP training session for
-        students, and its functionality was explained to teachers. & 2 \\
+        students, and its functionality was explained to teachers. & \ref{chdis} \\
         \hline
         WP4.O3 & Maintain blog posts about the components used within NGSOTI & O &
-        Blog posts published, keeping the community informed about updates &  \\
+        Blog posts published, keeping the community informed about updates &  \ref{chdis}\\
         \hline
         \end{tabular}
     \caption{NGSOTI Objectives and Achievements Work Package 4}
@@ -272,7 +272,7 @@ option
 
 
 
-\chapter{Deployment Status}
+\chapter{Deployment Status}\label{chdeploy}
 
 In the NGSOTI project, the consortium closely monitored the behavior and requirements of its user communities, ensuring the development and customization of tools tailored to support efficient Security Operations Center (SOC) operations. These tools are detailed in the following section.
 
@@ -614,7 +614,7 @@ provides a fully functional and secure tailnet-router for the NGSOTI network.
 
 \end{description}
 
-\chapter{Usage Status}
+\chapter{Usage Status}\label{chuse}
 
 \section{NGSOTI Trainings}\label{training}
 Some EU regulations, such as NIS2 and DORA, have created a significant boost in the demand for NGSOTI training sessions. These sessions are designed to ensure organizations are well-prepared to meet the requirements of these regulations, which are often enforced starting in 2025. A key focus of these regulations is the establishment of local SOCs.
@@ -727,7 +727,7 @@ The sub group of the coreworking group cert.lu meetings are documented in the ta
     \label{certlu}
 \end{table}
 
-\chapter{Dissemination and Endorsement}
+\chapter{Dissemination and Endorsement}\label{chdis}
 
 \section*{Dissemination Activities}
 
