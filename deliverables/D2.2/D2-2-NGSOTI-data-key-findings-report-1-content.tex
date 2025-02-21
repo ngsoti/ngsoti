@@ -64,6 +64,42 @@ Another observed issue was the improper configuration of SYSLOG services. Device
 \end{verbatim}
 This type of misconfiguration can result in the unintentional exposure of internal system information, creating vulnerabilities for exploitation.
 
+The sample of keywords was extracted from the syslog message to derive the origine of the devices.
+
+        \begin{itemize}
+            \item test\_notify\_glucose
+            \item test\_notify\_hyperkalemia
+            \item test\_notify\_hypokalemia
+            \item test\_notify\_hyponatremia
+            \item test\_notify\_na
+            \item test\_xray\_report
+            \item Gateway
+            \item Internal
+            \item Network
+            \item Packet
+            \item Policy
+            \item SharedOfficeWAN
+            \item Password
+            \item Python
+            \item Peer
+            \item Pwn2Own
+            \item Schneider
+            \item ServiceDesk
+            \item TELEPHONE
+            \item ThawtePremiumServerCA
+            \item ThawteCodeSigningCA
+            \item WebAccess
+            \item WebSupport
+            \item Cisco
+            \item CiscoBlogSmallBusiness
+            \item vpncisco
+            \item nettexvpn
+            \item officevpn
+            \item openvpn
+            \item poavpn
+            \item scancode\_vpn
+        \end{itemize}
+
 \section{Intercom Systems and XML Messages}
 Misconfigured intercom systems were also identified during the analysis. For example, an intercom system transmitted an XML-based message containing sensitive details, such as device serial numbers and IP addresses:
 \begin{verbatim}
@@ -82,5 +118,3 @@ Such exposures highlight the risks associated with improper device configuration
 The NGSOTI project demonstrates the critical importance of proper configuration and monitoring in maintaining the security of networked systems. Misconfigured devices, often the result of typographical errors or default settings, represent a significant security risk. The rapid exploitation of known vulnerabilities further emphasizes the need for proactive measures, such as timely patching and effective monitoring.
 
 The project's open-source approach provides a valuable training platform for SOC operators, enabling them to work with real-world data and tools. By fostering practical skills and emphasizing real-time analysis, NGSOTI equips cybersecurity professionals to better respond to emerging threats.
-
-
