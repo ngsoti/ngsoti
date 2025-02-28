@@ -9,29 +9,44 @@ The Next Generation Security Operator Training Infrastructure (NGSOTI) aims to p
 \chapter{Introduction}
 The NGSOTI project is a collaborative effort aimed at enhancing the training infrastructure for SOC operators. Coordinated by CIRCL, the initiative involves partnerships with Restena, Tenzir, and the University of Luxembourg. The project began on January 1, 2024, and is scheduled to conclude on December 31, 2026, with a total budget of €1,477,349.00. CIRCL leads the effort as the project coordinator, with additional funding provided by the European Union.
 
-NGSOTI's primary goal is to equip SOC operators with practical tools and methodologies to handle real-world incidents. By leveraging open-source technologies, the project seeks to create a training platform that emphasizes practical skills, ensuring operators are well-prepared for emerging cybersecurity challenges.
+NGSOTI's primary goal is to equip SOC operators with practical tools and methodologies to handle real-world incidents. {\color{red} it is set to to bridge the gap between theoretical knowledge and practical application, preparing operators for evolving threats through hands-on experience}. By leveraging open-source technologies, the project seeks to create a training platform that emphasizes practical skills, ensuring operators are well-prepared for emerging cybersecurity challenges. 
+
+{\color{red}Moreover, the datasets created and collected thourghout the life span of the project are currently and will be used for research to understand attacks spread and occurence, detect new types of threats and model them to build predictive and preventive systems that will help SOC operators in improving detection methods. The important aspect of NGSOTI data is that it is real data and recorded in live mode, especially for the blackhole data which provide a real-time view on cyber-attack landscape.}
+
+{\color{red}This report is structured as follows: Chapter 2 revisits the project's objectives, Chapter 3 combines blackhole traffic analysis with key observations, and Chapter 4 presents real-world case studies derived from the blackhole data, and finally a conclusion in chapter 5.}
+
 
 % Chapter 2: Objectives
 \chapter{Objectives}
-The NGSOTI project aims to establish an open-source infrastructure tailored for SOC operator training. The infrastructure is designed to address key aspects of cybersecurity operations, including incident response, log management, and SOC management processes. Additionally, the project emphasizes communication, documentation, and the integration of cyber threat intelligence (CTI) using tools like MISP.
+The NGSOTI project aims to establish an open-source infrastructure tailored for SOC operator training. The infrastructure is designed to address key aspects of cybersecurity operations, including incident response {\color{red} which would equip operators with tools to swiftly detect and mitigate threats, as well as handling crisis situations}; log management, {\color{red} which is essential for analyzing vast amounts of data recorded from multiples devices in a network, and take appropriate actions} and SOC management processes {\color{red} to better streamline operational efficiency}. Additionally, the project emphasizes communication {\color{red} for a better team coordination}, documentation {\color{red} for an accurate reporting and swift handling of issues}, and the integration of cyber threat intelligence (CTI) using tools like MISP, {\color{red} which provide actionable insights into emerging threats and would enable a better prevention when combined with other tools and sensors like the blackhole.}
 
-By employing technologies such as Suricata, Zeek, and Tenzir, the project seeks to enhance intrusion detection and analysis capabilities. Tools like FlowIntel for case management and OpenNMS for monitoring are also integral to the training platform. Furthermore, the action incorporates MeliCERTes' Cerebrate tool, ensuring a comprehensive approach to SOC training.
+By employing technologies such as Suricata {\color{red} for intrusion detection}, Zeek {\color{red} for detailed network logs}, and Tenzir \todo{which specific Tenzir's tool we could mention here?} {\color{red} [probably] data processing platform ? to handle large-scale security data}, the project seeks to enhance intrusion detection and analysis capabilities. Tools like FlowIntel for case management and OpenNMS for monitoring are also integral to the training platform. Furthermore, the action incorporates MeliCERTes' Cerebrate tool, {\color{red} which improves collaboration and intelligence sharing across security communities} ensuring a comprehensive approach to SOC training.
+
+
+
 
 % Chapter 3: Blackhole Traffic Analysis
 \chapter{Blackhole Traffic Analysis}
+
+{\color{red} \section{Blackhole Data Overview}}
+
 The project uses a methodical approach to analyze misconfigured systems by routing unused network ranges to a specific IP address for full packet capture. This setup allows for the collection of data on network activities that may indicate misconfigurations or malicious behavior. The captured data is streamed unidirectionally to a D4 collector, enabling a detailed analysis of the traffic.
 
 The dataset analyzed during the project spans from January 1, 2024, to October 17, 2024, and includes over 10,226 unique destination IP addresses. In total, 4.31 TB of data was collected. This data provides invaluable insights into the nature of misconfigured devices and the patterns of malicious activities observed within the blackhole networks.
 
-An evolution of the volume of the dataset is shown in figured \ref{countedpacket}.
+An evolution of the volume of the dataset is shown in figured \ref{countedpacket}. \todo{I'd  also suggest to add a brief description of what the figure shows in terms of patterns and visible findings}
 
 \begin{figure}
     \input{img/counted-packets.tex}
     \caption{Collected IP packets over time}
     \label{countedpacket}
 \end{figure}
+
+{\color{red} \section{Blackhole Data Overview}}
+
 % Chapter 4: Observations
-\chapter{Observations}
+\chapter{Observations} 
+\todo{I would suggest to move this as a section the previous chapter of blakhole data analysis}
 Misconfigured devices are a recurring theme in the analysis. These misconfigurations often result from typographical errors or improper default routing setups. For instance, devices that send SYSLOG messages to unintended networks represent a common type of misconfiguration. Similarly, MikroTik routers are often observed connecting to external services, such as \texttt{cloud.mikrotik.com}, due to default configurations.
 
 DNS misconfigurations are another significant finding. When a secondary DNS resolver is misconfigured, it frequently goes unnoticed, leading to unintended traffic redirection. These observations highlight the importance of proper configuration and monitoring practices to avoid exposing sensitive systems to potential threats.
