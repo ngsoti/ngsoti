@@ -8,3 +8,5 @@ Due to storage limitations in these repositories, only references to the dataset
     - https://vulnerability.circl.lu/dumps/
 - IP enrichement
     - https://cra.circl.lu/opendata/geo-open/
+- Malware datasets
+    - https://helga.circl.lu/NGSOTI/malware-dataset
