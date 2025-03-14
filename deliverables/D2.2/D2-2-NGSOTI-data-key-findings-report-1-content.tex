@@ -26,13 +26,12 @@ By employing technologies such as Suricata for intrusion detection, Zeek for det
 % Chapter 3: Blackhole Traffic Analysis
 \chapter{Blackhole Traffic Analysis}
 
-{\color{red} \section{Blackhole Data Overview}}
 
 The project uses a methodical approach to analyze misconfigured systems by routing unused network ranges to a specific IP address for full packet capture. This setup allows for the collection of data on network activities that may indicate misconfigurations or malicious behavior. The captured data is streamed unidirectionally to a D4 collector, enabling a detailed analysis of the traffic.
 
 The dataset analyzed during the project spans from January 1, 2024, to October 17, 2024, and includes over 10,226 unique destination IP addresses. In total, 4.31 TB of data was collected. This data provides invaluable insights into the nature of misconfigured devices and the patterns of malicious activities observed within the blackhole networks.
 
-An evolution of the volume of the dataset is shown in figured \ref{countedpacket}. \todo{I'd  also suggest to add a brief description of what the figure shows in terms of patterns and visible findings}
+An evolution of the volume of the dataset is shown in figured \ref{countedpacket}. The figure shows a gap between May and June due to DNS issues on the sensor, which was unable to reach the collector. Several peaks were observed on 2024-07-01, 2024-08-27, and 2024-08-28.
 
 \begin{figure}
     \input{img/counted-packets.tex}
@@ -40,11 +39,6 @@ An evolution of the volume of the dataset is shown in figured \ref{countedpacket
     \label{countedpacket}
 \end{figure}
 
-{\color{red} \section{Blackhole Data Overview}}
-
-% Chapter 4: Observations
-\chapter{Observations} 
-\todo{I would suggest to move this as a section the previous chapter of blakhole data analysis}
 Misconfigured devices are a recurring theme in the analysis. These misconfigurations often result from typographical errors or improper default routing setups. For instance, devices that send SYSLOG messages to unintended networks represent a common type of misconfiguration. Similarly, MikroTik routers are often observed connecting to external services, such as \texttt{cloud.mikrotik.com}, due to default configurations.
 
 DNS misconfigurations are another significant finding. When a secondary DNS resolver is misconfigured, it frequently goes unnoticed, leading to unintended traffic redirection. These observations highlight the importance of proper configuration and monitoring practices to avoid exposing sensitive systems to potential threats.
