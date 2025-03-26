@@ -14,6 +14,7 @@
     left=2.5cm,
     right=2.5cm
 }
+\usepackage{rotating}
 
 % Define variables
 \newcommand{\delivtitle}{D3.1 - References of training material updates \#1}
@@ -101,15 +102,15 @@ The training materials are available on the NGSOTI Github repository for this de
 
 
 
-The list of commits related to trainings is shown in Table ~\ref{ir}.
+The list of commits related to trainings is shown in the table below.
 
 \section{MISP}
 Open-source training materials have been developed over several years with support from multiple funding sources and external contributors. To track which parts were funded by which source, the table below lists the open-source materials, along with their dates, training repository names, and commit IDs to retrieve the corresponding content.
 MISP plays a central role in NGSOTI by enabling integration with external sources. Throughout 2024 and early 2025, MISP training has been expanded to align with NGSOTI objectives.
 The commits listed under columns with the repository name 'misptraining' are taken from the MISP-training GitHub repository\footnote{\url{https://github.com/MISP/misp-training}}.
 
-\begin{table}[h]
-\begin{tabular}{llll}
+\begin{sidewaystable}
+\begin{tabular}{l|l|l|l}
     Date & Repository & Title & commit id \\
     \hline
     2025-03-19 & NGSOTI & Introduction to Incident Response & e4691c02f8598bde45d78b11076a3c72dfbf5a02\\
@@ -130,10 +131,7 @@ The commits listed under columns with the repository name 'misptraining' are tak
     2024-11-19  & misp-training & zz-misp-and-isacs & 7b0a37acc97334590c2927794d89f6163deb25a7\\
     2024-11-20 & misp-training &  zz-misp-and-isacs & 34cc81f8e10ecf7fd0f3e31155e3da270f219512\\
 \end{tabular}
-\caption{Git contributions to public training materials for Incident Response and Cryptography trainings}
-\label{ir}
-\end{table}
-
+\end{sidewaystable}
 % End of document
 \end{document}
 
