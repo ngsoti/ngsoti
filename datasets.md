@@ -1,4 +1,4 @@
-# Datasets used in NGSOTI
+# Datasets and AI& ML models used in NGSOTI
 Due to storage limitations in these repositories, only references to the datasets are listed in this document.
 
 - MISP CTI feeds
@@ -10,3 +10,12 @@ Due to storage limitations in these repositories, only references to the dataset
     - https://cra.circl.lu/opendata/geo-open/
 - Malware datasets
     - https://helga.circl.lu/NGSOTI/malware-dataset
+- Vulnerability datasets
+    - https://huggingface.co/datasets/CIRCL/vulnerability
+    - https://huggingface.co/datasets/CIRCL/vulnerability-csaf-cisa
+    - https://huggingface.co/datasets/CIRCL/vulnerability-scores
+    - https://huggingface.co/datasets/CIRCL/vulnerability-csaf-redhat
+- Vulnerability models
+    - https://huggingface.co/datasets/CIRCL/vulnerability
+    - https://huggingface.co/CIRCL/vulnerability-severity-classification-distilbert-base-uncased
+    - https://huggingface.co/CIRCL/vulnerability-description-generation-gpt2
