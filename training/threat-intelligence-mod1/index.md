@@ -1,11 +1,12 @@
 # Cybersecurity Tool for Threat Intelligence and Forensics
 
+![](http://hdoc.csirt-tooling.org/uploads/upload_13235b6957b475dc731b2a392b2fd021.png)
+
 ## Uni.lu Threat Intelligence - Module 1
 
 ![](http://hdoc.csirt-tooling.org/uploads/upload_b1ded684907729d19396c6f79e8d90cb.png)
 
 https://link.infini.fr/misp-unilu
-
 
 
 ## MISP Infrastructure
@@ -19,9 +20,12 @@ Password: uni_lu_training
 
 |Time|Description|Slides| 
 |:---|:---|:---|
-|14:00|An Introduction to Information Sharing and MISP the Threat Intelligence Platform||
-|17:00|Encoding session|[GRU Example](https://www.foo.be/cours/dess-20192020/pub/gru)|
-|18:00|End||
+|14:00-15:00|An Introduction to Information Sharing and MISP the Threat Intelligence Platform|[Slide - MISP Introduction](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/0-misp-introduction-to-information-sharing.pdf)|
+|15:00-15:30|MISP Data sharing and models|[Slide - Data Models](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/MISP%20Data%20model%20overview-with-analyst-data.pdf)|
+|16:00-16:30|Best Practices in Threat Intelligence Gather, document, analyse and contextualise intelligence using MISP|[Slide - Best Practices](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/b.1-best-practices-in-threat-intelligence.pdfb.1-best-practices-in-threat-intelligence.pdf)|
+|16:30-17:00|MISP 10 Pillars|[Slide - 10 Pillars](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/MISP%2010%20Pillars.pdf) [Slide - MISP Collaboration and Sharing](https://github.com/ngsoti/ngsoti/blob/main/training/threat-intelligence-mod1/slides/MISP%20Collaboration%20%26%20Sharing%20-%20Rapid%20Fire%20of%20Features.pdf)|
+|17:00-18:00|Encoding session|[GRU Example](https://www.foo.be/cours/dess-20192020/pub/gru)|
+
 
 ## Training Materials
 
@@ -58,7 +62,6 @@ Password: uni_lu_training
    - (source file): [https://github.com/MISP/misp-training](https://github.com/MISP/misp-training)
    - (PDF): [https://www.misp-project.org/misp-training/](https://www.misp-project.org/misp-training/)
 
-
 ## Interesting MISP events/examples
 
 - [Targeted phishing - PDF documents / phishkit - YARA tracking](https://training5.misp-community.org/events/view/5cdd3938-7134-4908-9552-173cc0a8016e) - graph, tracking via YARA rules
@@ -78,4 +81,3 @@ The notebook can be downloaded:
 
 - [Training Using the API in MISP-public.ipynb](https://github.com/MISP/misp-training/blob/main/complementary/jupyter-notebooks/Training%20-%20Using%20the%20API%20in%20MISP-public.ipynb)
 - [query-misp-public.ipynb](https://github.com/MISP/misp-training/blob/main/complementary/jupyter-notebooks/query-misp-public.ipynb)
-
