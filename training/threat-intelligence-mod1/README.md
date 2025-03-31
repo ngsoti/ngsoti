@@ -2,6 +2,18 @@
 
 ![](http://hdoc.csirt-tooling.org/uploads/upload_13235b6957b475dc731b2a392b2fd021.png)
 
+The course **Cybersecurity Tools for Threat Intelligence and Forensics** is composed of 7 modules that cover the main open-source tools (MISP, AIL Project, FlowIntel, and Kunai) developed by CIRCL. It aims to provide a comprehensive toolbox for security analysts, SOC operators, and security professionals.
+
+|Module Number| Description|
+|:---|:---|
+|1|MISP - CTI|
+|2|MISP Automation|
+|3|CTI at Large|
+|4|AIL Project|
+|5|Forensic|
+|6|Forensic|
+|7|Kunai|
+
 ## Uni.lu Threat Intelligence - Module 1
 
 ![](http://hdoc.csirt-tooling.org/uploads/upload_b1ded684907729d19396c6f79e8d90cb.png)
