@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Jean-Louis Huynen">
+<meta name="dcterms.date" content="2027-04-04">
+
+<title>Cyber Threat Intelligence 101</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="cti-101_files/libs/clipboard/clipboard.min.js"></script>
+<script src="cti-101_files/libs/quarto-html/quarto.js"></script>
+<script src="cti-101_files/libs/quarto-html/popper.min.js"></script>
+<script src="cti-101_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="cti-101_files/libs/quarto-html/anchor.min.js"></script>
+<link href="cti-101_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="cti-101_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="cti-101_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="cti-101_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="cti-101_files/libs/bootstrap/bootstrap-46f243bb8fe06b19cf0534fdd0ce9993.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="cti-101_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="cti-101_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="cti-101_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#cyber-threat-intelligence" id="toc-cyber-threat-intelligence" class="nav-link active" data-scroll-target="#cyber-threat-intelligence">Cyber Threat Intelligence</a>
+  <ul class="collapse">
+  <li><a href="#quick-history" id="toc-quick-history" class="nav-link" data-scroll-target="#quick-history">Quick History</a></li>
+  </ul></li>
+  <li><a href="#intelligence" id="toc-intelligence" class="nav-link" data-scroll-target="#intelligence">Intelligence</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-versus-intelligence" id="toc-data-versus-intelligence" class="nav-link" data-scroll-target="#data-versus-intelligence">Data versus Intelligence</a></li>
+  <li><a href="#traditional-sources-of-intelligence" id="toc-traditional-sources-of-intelligence" class="nav-link" data-scroll-target="#traditional-sources-of-intelligence">Traditional Sources of Intelligence</a></li>
+  </ul></li>
+  <li><a href="#cyber-threat-intelligence-1" id="toc-cyber-threat-intelligence-1" class="nav-link" data-scroll-target="#cyber-threat-intelligence-1">Cyber Threat Intelligence</a>
+  <ul class="collapse">
+  <li><a href="#cti-specific-sources-of-intelligence" id="toc-cti-specific-sources-of-intelligence" class="nav-link" data-scroll-target="#cti-specific-sources-of-intelligence">CTI-specific Sources of Intelligence</a>
+  <ul class="collapse">
+  <li><a href="#free-threat-intelligence-feeds" id="toc-free-threat-intelligence-feeds" class="nav-link" data-scroll-target="#free-threat-intelligence-feeds">Free Threat Intelligence feeds</a></li>
+  <li><a href="#free-threat-intelligence-and-technical-reports" id="toc-free-threat-intelligence-and-technical-reports" class="nav-link" data-scroll-target="#free-threat-intelligence-and-technical-reports">Free Threat Intelligence and Technical reports</a></li>
+  <li><a href="#commercial-threat-intelligence-feeds" id="toc-commercial-threat-intelligence-feeds" class="nav-link" data-scroll-target="#commercial-threat-intelligence-feeds">Commercial Threat Intelligence feeds</a></li>
+  <li><a href="#in-house-telemetry-security-and-other" id="toc-in-house-telemetry-security-and-other" class="nav-link" data-scroll-target="#in-house-telemetry-security-and-other">In house telemetry (security and other)</a></li>
+  <li><a href="#past-incidents" id="toc-past-incidents" class="nav-link" data-scroll-target="#past-incidents">Past incidents</a></li>
+  <li><a href="#past-data-breaches-data-leaks" id="toc-past-data-breaches-data-leaks" class="nav-link" data-scroll-target="#past-data-breaches-data-leaks">Past data breaches / data leaks</a></li>
+  <li><a href="#forums-chatrooms-and-paste-sites" id="toc-forums-chatrooms-and-paste-sites" class="nav-link" data-scroll-target="#forums-chatrooms-and-paste-sites">Forums, chatrooms, and paste sites</a></li>
+  <li><a href="#app-stores-web-extensions" id="toc-app-stores-web-extensions" class="nav-link" data-scroll-target="#app-stores-web-extensions">App Stores, web extensions</a></li>
+  <li><a href="#passive-dns" id="toc-passive-dns" class="nav-link" data-scroll-target="#passive-dns">Passive DNS</a></li>
+  <li><a href="#malware-source" id="toc-malware-source" class="nav-link" data-scroll-target="#malware-source">Malware Source</a></li>
+  <li><a href="#tls-certificate" id="toc-tls-certificate" class="nav-link" data-scroll-target="#tls-certificate">TLS certificate</a></li>
+  <li><a href="#software-library-repositories" id="toc-software-library-repositories" class="nav-link" data-scroll-target="#software-library-repositories">Software library repositories</a></li>
+  <li><a href="#honeypots-honeynets" id="toc-honeypots-honeynets" class="nav-link" data-scroll-target="#honeypots-honeynets">Honeypots / honeynets</a></li>
+  <li><a href="#new-vulnerabilities" id="toc-new-vulnerabilities" class="nav-link" data-scroll-target="#new-vulnerabilities">New vulnerabilities</a></li>
+  <li><a href="#cti-from-isacs-and-information-sharing-communities-misp-3" id="toc-cti-from-isacs-and-information-sharing-communities-misp-3" class="nav-link" data-scroll-target="#cti-from-isacs-and-information-sharing-communities-misp-3">CTI from ISACs and information sharing communities (MISP &lt;3)</a></li>
+  <li><a href="#offer-publicly-available-services" id="toc-offer-publicly-available-services" class="nav-link" data-scroll-target="#offer-publicly-available-services">Offer publicly available services</a></li>
+  <li><a href="#offer-services-to-your-constituencies" id="toc-offer-services-to-your-constituencies" class="nav-link" data-scroll-target="#offer-services-to-your-constituencies">Offer services to your constituencies</a></li>
+  </ul></li>
+  <li><a href="#types-of-threat-intelligence" id="toc-types-of-threat-intelligence" class="nav-link" data-scroll-target="#types-of-threat-intelligence">Types of Threat Intelligence</a></li>
+  <li><a href="#intelligence-life-cycle" id="toc-intelligence-life-cycle" class="nav-link" data-scroll-target="#intelligence-life-cycle">Intelligence Life Cycle</a>
+  <ul class="collapse">
+  <li><a href="#direction" id="toc-direction" class="nav-link" data-scroll-target="#direction">Direction</a></li>
+  <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data Collection</a></li>
+  <li><a href="#collection-management-framework" id="toc-collection-management-framework" class="nav-link" data-scroll-target="#collection-management-framework">Collection Management Framework</a></li>
+  <li><a href="#processing-and-exploitation" id="toc-processing-and-exploitation" class="nav-link" data-scroll-target="#processing-and-exploitation">Processing and Exploitation</a></li>
+  <li><a href="#modelling" id="toc-modelling" class="nav-link" data-scroll-target="#modelling">Modelling</a></li>
+  <li><a href="#analysis-and-production" id="toc-analysis-and-production" class="nav-link" data-scroll-target="#analysis-and-production">Analysis and Production</a></li>
+  <li><a href="#dissemination-and-reporting" id="toc-dissemination-and-reporting" class="nav-link" data-scroll-target="#dissemination-and-reporting">Dissemination and Reporting</a></li>
+  <li><a href="#feedback" id="toc-feedback" class="nav-link" data-scroll-target="#feedback">Feedback</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#case-study" id="toc-case-study" class="nav-link" data-scroll-target="#case-study">Case study</a>
+  <ul class="collapse">
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cyber Threat Intelligence 101</h1>
+<p class="subtitle lead">TLP:CLEAR</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Jean-Louis Huynen </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            CIRCL
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 4, 2027</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cyber-threat-intelligence" class="level1">
+<h1>Cyber Threat Intelligence</h1>
+<section id="quick-history" class="level2">
+<h2 class="anchored" data-anchor-id="quick-history">Quick History</h2>
+<ul>
+<li>In each conflict there are people watching, analyzing and reporting observations about adversaries, this is Threat Intelligence,</li>
+<li>Understanding how the adversaries operate, understand their tactics and sometimes their motivations can shape the outcome of the struggle.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/CTI-venn.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="&nbsp;"><img src="img/CTI-venn.png" style="height:1.66667in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="intelligence" class="level1">
+<h1>Intelligence</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<blockquote class="blockquote">
+<p>It consists of gathering <strong>facts</strong>. … It consists of forming <strong>hypotheses</strong> on the basis of these facts, of testing these hypotheses for traces of one’s own ignorance or <strong>bias</strong>, of cleansing them if possible. The goal is to build better hypotheses than already exist and to establish them as relatively more true: it is to reveal a sharper picture of what happened and to make a closer approach to actuality than anyone has yet contrived.</p>
+</blockquote>
+<p>Sherman Kent</p>
+</section>
+<section id="data-versus-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="data-versus-intelligence">Data versus Intelligence</h2>
+<ul>
+<li>Intelligence is derived from a process of collecting and analysing data,</li>
+<li>Indicator of Compromise like IP addresses, malware hashes, and domain names are only facts if they are shared without context:
+<ul>
+<li>What is the source?</li>
+<li>What is the confidence in the source, and the information?</li>
+<li>What was the activities associated with this data points?</li>
+<li>For how long this data is likely to stay relevant?</li>
+<li>etc.</li>
+</ul></li>
+<li>Though sharing IoC has its value, to jointly produce CTI, or corroborate our own findings.</li>
+</ul>
+</section>
+<section id="traditional-sources-of-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="traditional-sources-of-intelligence">Traditional Sources of Intelligence</h2>
+<ul>
+<li>HUMINT: Human-source Intelligence – covert ops, interviews</li>
+<li>SIGINT: Signal Intelligence – interceptions, electronic devices</li>
+<li>OSINT: Open source Intelligence – publicly available sources</li>
+<li>IMINT / GEOINT: Imagery and Geospatial Intelligence – radar / location data</li>
+<li>MASINT: Measurements and signature Intelligence – waves</li>
+<li>FININT: Financial Intelligence – cryptocurrencies</li>
+</ul>
+</section>
+</section>
+<section id="cyber-threat-intelligence-1" class="level1">
+<h1>Cyber Threat Intelligence</h1>
+<blockquote class="blockquote">
+<p>Acquiring, processing, analyzing, and disseminating information that identifies, tracks, and predicts threats, risks, and opportunities inside the cyber domain to offer courses of action that enhance decision making.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
+<section id="cti-specific-sources-of-intelligence" class="level2 allowframebreak">
+<h2 class="allowframebreak anchored" data-anchor-id="cti-specific-sources-of-intelligence">CTI-specific Sources of Intelligence</h2>
+<section id="free-threat-intelligence-feeds" class="level3">
+<h3 class="anchored" data-anchor-id="free-threat-intelligence-feeds">Free Threat Intelligence feeds</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/threatintelfeeds.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="&nbsp;"><img src="img/threatintelfeeds.png" style="height:2.19444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="free-threat-intelligence-and-technical-reports" class="level3">
+<h3 class="anchored" data-anchor-id="free-threat-intelligence-and-technical-reports">Free Threat Intelligence and Technical reports</h3>
+<ul>
+<li>ANSSI/CERT-FR, CERT EU,</li>
+<li>CIRCL technical reports,</li>
+<li><a href="https://github.com/Bert-JanP/Open-Source-Threat-Intel-Feeds">https://github.com/Bert-JanP/Open-Source-Threat-Intel-Feeds</a></li>
+</ul>
+</section>
+<section id="commercial-threat-intelligence-feeds" class="level3">
+<h3 class="anchored" data-anchor-id="commercial-threat-intelligence-feeds">Commercial Threat Intelligence feeds</h3>
+<ul>
+<li>Feeds on CTI reports,</li>
+<li>YARA rules in VT to grab relevant information</li>
+<li>Shodan / Censys / FOFA alerts on public facing applications</li>
+</ul>
+<hr>
+</section>
+<section id="in-house-telemetry-security-and-other" class="level3">
+<h3 class="anchored" data-anchor-id="in-house-telemetry-security-and-other">In house telemetry (security and other)</h3>
+<ul>
+<li>DNS requests (and responses) is a treasure trove
+<ul>
+<li>Build a in-house passiveDNS database</li>
+</ul></li>
+<li>Alerts or summary of alerts
+<ul>
+<li>SIEM alerts / logs</li>
+<li>Spam filters logs</li>
+<li>Know more about what actually hits the organisation</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="past-incidents" class="level3">
+<h3 class="anchored" data-anchor-id="past-incidents">Past incidents</h3>
+<ul>
+<li>CTI and Incident Reponse are mutually beneficial.</li>
+<li>Analysis of intrusions (successful or not) provides information about:
+<ul>
+<li>initial access vector,</li>
+<li>persistence tactics,</li>
+<li>evasion tactics,</li>
+<li>lateral movement tactics,</li>
+<li>final action and goal,</li>
+</ul>
+<br>
+<strong>→</strong> better filtering rules,<br>
+<strong>→</strong> insights in adversaries motivations, goals, and targetted sectors and industries.<br>
+<strong>→</strong> better overall security guidance,<br>
+</li>
+</ul>
+<hr>
+</section>
+<section id="past-data-breaches-data-leaks" class="level3">
+<h3 class="anchored" data-anchor-id="past-data-breaches-data-leaks">Past data breaches / data leaks</h3>
+<ul>
+<li>Create means to retrieve data leaks and random files securely (VPS seedbox, machine blanche, remote exit nodes)</li>
+<li>This data can be reused by attackers
+<ul>
+<li>Spear phishing hits different.</li>
+</ul></li>
+<li>Uncover trust relationships to tools and other orgs.</li>
+</ul>
+<hr>
+</section>
+<section id="forums-chatrooms-and-paste-sites" class="level3">
+<h3 class="anchored" data-anchor-id="forums-chatrooms-and-paste-sites">Forums, chatrooms, and paste sites</h3>
+<ul>
+<li>Get data about current actors and TTPs,</li>
+<li>Get notified of available data leaks</li>
+<li>Get into adversaries communication loops.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ddosia.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="DDoSIA"><img src="img/ddosia.jpg" style="height:1.25in" alt="DDoSIA" class="figure-img"></a></p>
+<figcaption>DDoSIA</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="app-stores-web-extensions" class="level3">
+<h3 class="anchored" data-anchor-id="app-stores-web-extensions">App Stores, web extensions</h3>
+<ul>
+<li>Impersonation,</li>
+<li>Typosquatting.</li>
+<li>for instance <a href="https://github.com/ail-project/ail-feeder-apk">https://github.com/ail-project/ail-feeder-apk</a></li>
+</ul>
+<hr>
+</section>
+<section id="passive-dns" class="level3">
+<h3 class="anchored" data-anchor-id="passive-dns">Passive DNS</h3>
+<ul>
+<li>DNS requests / responses over time</li>
+</ul>
+</section>
+<section id="malware-source" class="level3">
+<h3 class="anchored" data-anchor-id="malware-source">Malware Source</h3>
+<ul>
+<li>MWDB</li>
+<li>Vx-underground</li>
+</ul>
+</section>
+<section id="tls-certificate" class="level3">
+<h3 class="anchored" data-anchor-id="tls-certificate">TLS certificate</h3>
+<ul>
+<li>Certificate Transparency logs</li>
+</ul>
+</section>
+<section id="software-library-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="software-library-repositories">Software library repositories</h3>
+<ul>
+<li>Keep an eye on your software supply chain,</li>
+<li>Their could be typosquatting and other shenanigans.</li>
+</ul>
+<hr>
+</section>
+<section id="honeypots-honeynets" class="level3">
+<h3 class="anchored" data-anchor-id="honeypots-honeynets">Honeypots / honeynets</h3>
+<ul>
+<li>Create tripwire to see adversaries in your perimeters,</li>
+<li>Get data about Threat Actors and TTPs,</li>
+<li>Get data about currently exploited vulneratilibies.</li>
+</ul>
+</section>
+<section id="new-vulnerabilities" class="level3">
+<h3 class="anchored" data-anchor-id="new-vulnerabilities">New vulnerabilities</h3>
+<ul>
+<li>Get data about new vulneratbiliies, proof of concepts, and exploits,</li>
+<li>Get data about currently exploited vulneratilibies.</li>
+</ul>
+</section>
+<section id="cti-from-isacs-and-information-sharing-communities-misp-3" class="level3">
+<h3 class="anchored" data-anchor-id="cti-from-isacs-and-information-sharing-communities-misp-3">CTI from ISACs and information sharing communities (MISP &lt;3)</h3>
+<ul>
+<li>Get Intelligence from partners, from related sectors and industries,</li>
+<li>Get sightings.</li>
+</ul>
+<hr>
+</section>
+<section id="offer-publicly-available-services" class="level3">
+<h3 class="anchored" data-anchor-id="offer-publicly-available-services">Offer publicly available services</h3>
+<ul>
+<li><strong>if a service is free, you are the product</strong>
+<ul>
+<li>when your organisation uses a freemium product, it provide data to a third-party,</li>
+<li>for instance a file scanned on VirusTotal will be spread as part of VirusTotal data stream.</li>
+</ul></li>
+<li><strong>nothing stops you to do the same</strong>
+<ul>
+<li>provide a free service to the community,</li>
+<li>be very clear about the model.</li>
+</ul></li>
+</ul>
+</section>
+<section id="offer-services-to-your-constituencies" class="level3">
+<h3 class="anchored" data-anchor-id="offer-services-to-your-constituencies">Offer services to your constituencies</h3>
+<ul>
+<li><strong>same model applies to your constituencies</strong>
+<ul>
+<li>Provide the means for scanning files, investigate phishing, etc.</li>
+<li>So this data does not leave your organisation and benefits your CTI program.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="types-of-threat-intelligence" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-threat-intelligence">Types of Threat Intelligence</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/threatinteltypes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="&nbsp;"><img src="img/threatinteltypes.png" style="height:2.63889in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+</section>
+<section id="intelligence-life-cycle" class="level2 allowframebreak">
+<h2 class="allowframebreak anchored" data-anchor-id="intelligence-life-cycle">Intelligence Life Cycle</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/threatintellifecycle.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Intel lifecycle"><img src="img/threatintellifecycle.png" style="height:3.05556in" alt="Intel lifecycle" class="figure-img"></a></p>
+<figcaption>Intel lifecycle</figcaption>
+</figure>
+</div>
+<hr>
+<p>A framework for transforming raw into actionable intelligence:</p>
+<ol type="1">
+<li><strong>Planning and Direction</strong>
+<ul>
+<li><strong>Setting Objectives:</strong> Define what intelligence is needed and why.<br>
+</li>
+<li><strong>Tasking:</strong> Determine the sources and methods to collect the required data.</li>
+</ul></li>
+<li><strong>Collection</strong>
+<ul>
+<li><strong>Data Gathering:</strong> Systematically search for and collect relevant data.</li>
+<li><strong>Source Identification:</strong> Utilize both public and commercial data sources while respecting legal and ethical boundaries.</li>
+</ul></li>
+<li><strong>Processing and Exploitation</strong>
+<ul>
+<li><strong>Data Cleaning:</strong> Organise, filter, and structure raw data into a manageable format.<br>
+</li>
+<li><strong>Initial Analysis:</strong> Begin the process of validating sources and identifying key pieces of information.</li>
+</ul></li>
+</ol>
+<hr>
+<ol start="4" type="1">
+<li><strong>Analysis and Production</strong>
+<ul>
+<li><strong>In-Depth Analysis:</strong> Contextualise and interpret the processed data to form an intelligence product.</li>
+<li><strong>Synthesis:</strong> Combine multiple sources and data points to derive comprehensive insights.</li>
+<li><strong>Intelligence Product:</strong> Produce reports or briefs that address the initial intelligence requirements.</li>
+</ul></li>
+<li><strong>Dissemination</strong>
+<ul>
+<li><strong>Distribution:</strong> Share the intelligence product with the designated audience, ensuring that it reaches those who can act upon it.</li>
+<li><strong>Feedback:</strong> Gather feedback to refine the intelligence cycle, ensuring continuous improvement in future cycles.</li>
+</ul></li>
+<li><strong>Evaluation</strong>
+<ul>
+<li><strong>Assessing Impact:</strong> Review the effectiveness of the intelligence product.</li>
+<li><strong>Lessons Learned:</strong> Identify successes and shortcomings to improve subsequent intelligence operations.</li>
+</ul></li>
+</ol>
+<hr>
+<section id="direction" class="level3">
+<h3 class="anchored" data-anchor-id="direction">Direction</h3>
+<section id="we-look-into-our-organisations-assets" class="level4">
+<h4 class="anchored" data-anchor-id="we-look-into-our-organisations-assets">We look into our organisation’s assets:</h4>
+<ul>
+<li>The organisation’s assets that need to be protected
+<ul>
+<li>a software shop would focus on its source code</li>
+<li>a bank could focus on its Point of Sales systems</li>
+<li>a saas on the availability of its services through the network</li>
+</ul></li>
+<li>The potential impact of losing these assets</li>
+<li>The type of Threat Intel required to protect these assets</li>
+</ul>
+</section>
+<section id="we-define-priorities-about-what-to-focus-on" class="level4">
+<h4 class="anchored" data-anchor-id="we-define-priorities-about-what-to-focus-on">We define priorities about what to focus on:</h4>
+<ul>
+<li>Who are our stakeholders</li>
+<li>We set boundaries and expectations</li>
+<li>We develop Priority Intelligence Requirements (PIR)</li>
+</ul>
+<hr>
+</section>
+<section id="how-to-define-assets" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-assets">How to define assets?</h4>
+<ul>
+<li>Crown-Jewel Analysis (Risk Analysis):
+<ul>
+<li>Indentify critical assets to protect,
+<ul>
+<li>Inventory, asset management.</li>
+</ul></li>
+<li>Assess the value of those assets,
+<ul>
+<li>Operational impact: how it affects business operation</li>
+<li>Financial impact</li>
+<li>Regulatory compliance requirements</li>
+<li>Reputational damage if compromised</li>
+</ul></li>
+<li>Perform a threat modeling and risk assessment to find ways to protect these.
+<ul>
+<li>Asset, Threat, Vulnerability</li>
+<li>Security controls</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="how-to-define-stakeholders" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-stakeholders">How to define stakeholders?</h4>
+<p><br>
+</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/moscow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="MoSCoW analysis"><img src="img/moscow.png" style="height:2.08333in" alt="MoSCoW analysis" class="figure-img"></a></p>
+<figcaption>MoSCoW analysis</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="how-to-define-pir" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-pir">How to define PIR?</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/marinecorpsugirh.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="US Marine Corps Urban Generic Information Requirements Handbook"><img src="img/marinecorpsugirh.png" style="height:2.22222in" alt="US Marine Corps Urban Generic Information Requirements Handbook" class="figure-img"></a></p>
+<figcaption>US Marine Corps Urban Generic Information Requirements Handbook</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="how-to-define-pir-1" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-pir-1">How to define PIR?</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/marinecorpsugirh-list.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="US Marine Corps Urban Generic Information Requirements Handbook"><img src="img/marinecorpsugirh-list.png" style="height:2.22222in" alt="US Marine Corps Urban Generic Information Requirements Handbook" class="figure-img"></a></p>
+<figcaption>US Marine Corps Urban Generic Information Requirements Handbook<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="how-to-define-pir-2" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-pir-2">How to define PIR?</h4>
+<ul>
+<li>Perform focus groups / interviews with stakeholders<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:
+<ul>
+<li>They understand the their assets and the operations (business)</li>
+<li>As a security practitioner you don’t know what you don’t know</li>
+<li>Build relationship, manage expectations.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="how-to-define-pir-3" class="level4">
+<h4 class="anchored" data-anchor-id="how-to-define-pir-3">How to define PIR?</h4>
+<ul>
+<li>Understand their needs:
+<ul>
+<li>Get contact details</li>
+<li>What is their concern related to cyber security that could affect their team’s operations?</li>
+<li>What are the most critical assets that their team needs to have protected?</li>
+<li>What information do they need to maintain their security posture?</li>
+<li>What type of Threat Intelligence would be the most valuable?</li>
+<li>How would they ideally receive intelligence?
+<ul>
+<li>Report? Frequency?</li>
+<li>ad-hoc Request For Information?</li>
+<li>instant message?</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/pir-example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Feedly PIR example"><img src="img/pir-example.png" style="height:2.77778in" alt="Feedly PIR example" class="figure-img"></a></p>
+<figcaption>Feedly PIR example</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="request-for-information" class="level4">
+<h4 class="anchored" data-anchor-id="request-for-information">Request For Information</h4>
+<ul>
+<li>The request: what question is being asked</li>
+<li>The requestor: who ask this question</li>
+<li>The output: what answer is actually needed? IoC? briefing? report?</li>
+<li>References: what initiated the question</li>
+<li>Due Date, priority: deadline.</li>
+</ul>
+<hr>
+</section>
+<section id="planning-updates" class="level4">
+<h4 class="anchored" data-anchor-id="planning-updates">Planning updates</h4>
+<ul>
+<li>Review your CTI plan regularly to update stakeholders’ needs</li>
+<li>Remove Intelligence requirements that are no longer useful</li>
+<li>Implement feedback to improve the provided Intelligence.</li>
+</ul>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/pir-review.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Intel 471 example"><img src="img/pir-review.png" style="height:0.69444in" alt="Intel 471 example" class="figure-img"></a></p>
+<figcaption>Intel 471 example<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="keeping-track-of-the-process" class="level4">
+<h4 class="anchored" data-anchor-id="keeping-track-of-the-process">Keeping track of the process</h4>
+<ul>
+<li>Keeping track of the process and different tasks is challenging,</li>
+</ul>
+<ul>
+<li>flowintel<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> is an OSS case management tool that can help:
+<ul>
+<li>Create templates for each type of tasks (collection, analysis, reporting, etc.),</li>
+<li>Can be used outside of the CTI realm for incident response,</li>
+<li>Use playbooks to follow a given methodology</li>
+<li>Streamline interaction with other OSS tools (e.g.&nbsp;MISP)</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/flowintel_logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Flowintel logo"><img src="img/flowintel_logo.png" style="height:0.69444in" alt="Flowintel logo" class="figure-img"></a></p>
+<figcaption>Flowintel logo</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="data-collection" class="level3">
+<h3 class="anchored" data-anchor-id="data-collection">Data Collection</h3>
+<p>Once we defined PIR, we need to align these with <strong>Data Collection</strong> efforts.</p>
+<p>&nbsp;</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/datacollectionplan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Intel 471 example"><img src="img/datacollectionplan.png" style="height:1.94444in" alt="Intel 471 example" class="figure-img"></a></p>
+<figcaption>Intel 471 example</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="collection-management-framework" class="level3">
+<h3 class="anchored" data-anchor-id="collection-management-framework">Collection Management Framework</h3>
+<ul>
+<li>The team need to understand what is the data aligned to each Intelligence Requirement
+<ul>
+<li>How this data is produced,</li>
+<li>By whom,</li>
+<li>What is available in this data,</li>
+<li>What are the limitations of this data,</li>
+<li>What question is can help answering.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/collectionplan.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="&nbsp;"><img src="img/collectionplan.png" style="height:0.83333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+<section id="vulnerability-monitoring" class="level4">
+<h4 class="anchored" data-anchor-id="vulnerability-monitoring">Vulnerability monitoring</h4>
+<ul>
+<li>My organisation uses a Cicso product called “Acceleration Wide Area Application Services (WAAS)”, is there any recent vulnerabilities that I should be aware of?</li>
+<li>Try to find the information on the Internet.</li>
+</ul>
+<hr>
+<ul>
+<li>OSS Vulnerability feed: vulnerability-lookup<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
+<ul>
+<li>Receive free vulnerability feeds (RSS) and notifications,</li>
+<li>Create bundles, comments and intelligence,</li>
+<li>Gathering sightings from vulnerabilites,</li>
+<li>Producing threat intelligence report.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/VL-hori-coul.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="&nbsp;"><img src="img/VL-hori-coul.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="rss-intermede-curtosy-of-mr.-dulaunoy." class="level4">
+<h4 class="anchored" data-anchor-id="rss-intermede-curtosy-of-mr.-dulaunoy.">RSS intermede – curtosy of Mr.&nbsp;Dulaunoy.</h4>
+<ul>
+<li>RSS 0.90 (Really Simple Syndication) was originally released on March 15, 1999, by Netscape.</li>
+<li>It evolved into a simpler format with RSS 0.91, where the RDF elements were removed, developed by Dave Winer.</li>
+<li>RSS 1.0 was later developed by the RSS-DEV Working Group, followed by the release of RSS 2.0.</li>
+<li>The IETF later published the Atom Syndication Format (RFC 4287), a more consistent format<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> , yet it remains closely related to the RSS format.</li>
+</ul>
+<hr>
+<section id="format-and-concept" class="level5">
+<h5 class="anchored" data-anchor-id="format-and-concept">Format and Concept</h5>
+<ul>
+<li>Atom and RSS are XML-based documents used to describe feeds, which consist of lists of related information.</li>
+<li>Each feed comprises a list of items or entries, each described with metadata such as title, publication date, and link.</li>
+<li>These formats are commonly used for updates of web content and audio content, like podcasts.</li>
+<li>However, the concept also extends to information security, where lists of updated items are crucial for tracking security events, updating threat intelligence feeds, and tracking log files.</li>
+<li>RSS / Atom is a key technology <strong>Data collection</strong> and <strong>Automation</strong>.</li>
+</ul>
+<hr>
+</section>
+<section id="use" class="level5">
+<h5 class="anchored" data-anchor-id="use">Use</h5>
+<ul>
+<li>Broad support in blogs, news sites, Mastodon<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, etc.</li>
+<li>Broad support for RSS in mail clients, Security orchestration, automation and response (SOAR) tools.</li>
+<li>Dedicated clients,</li>
+<li><a href="https://github.com/SK-CERT/Taranis-NG">https://github.com/SK-CERT/Taranis-NG</a></li>
+<li><a href="https://taranis.ai/">https://taranis.ai/</a></li>
+<li><a href="https://github.com/adulau/rss-tools">https://github.com/adulau/rss-tools</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="osint" class="level4">
+<h4 class="anchored" data-anchor-id="osint">OSINT</h4>
+<ul>
+<li>In the <strong>US context</strong>, OSINT is understood as an <strong>intelligence product</strong>:
+<ul>
+<li>Information is collected, processed, and transformed into actionable intelligence.</li>
+<li>The end product is tailored for a specific intelligence requirement and disseminated to the appropriate audience.</li>
+</ul></li>
+<li>In the <strong>EU context</strong>, OSINT is more commonly seen as a <strong>process</strong>:
+<ul>
+<li>It involves the systematic collection and analysis of data from publicly available sources.</li>
+<li>The emphasis is on transforming raw data into actionable intelligence through validation and rigorous analysis.</li>
+</ul></li>
+</ul>
+<hr>
+<ul>
+<li><strong>Open Source INFormation (OSINF)</strong>
+<ul>
+<li>Refers to the raw, unprocessed data available publicly.</li>
+<li>Presenting OSINF without further validation, analysis, or contextualisation does not meet the standard for OSINT.</li>
+</ul></li>
+<li><strong>Open Source INVestigation (OSINV)</strong>
+<ul>
+<li>Involves investigative practices using open sources; notable examples include investigative teams like Bellingcat.</li>
+</ul></li>
+</ul>
+<hr>
+<ul>
+<li><strong>Legality and Boundaries</strong>
+<ul>
+<li>OSINF is obtained legally and diverges from covert or clandestine intelligence methods.</li>
+<li>OSINT practices do <strong>not</strong> involve unauthorized access to data; they focus solely on information that is already publicly available—even if the data originated from a grey area regarding its release.</li>
+</ul></li>
+<li><strong>Types of Sources</strong>
+<ul>
+<li><strong>Public Sources:</strong> Information accessible to everyone, although accessibility can sometimes be limited by factors such as location or language.</li>
+<li><strong>Commercial Sources:</strong> Data that might be available through paid services, such as openRTB (for advertisements), device-graph datasets, MAID data, or geolocation data.</li>
+</ul></li>
+<li><strong>Intelligence Requirements</strong>
+<ul>
+<li>Both the US and EU models stress the need for a clearly defined intelligence requirement that drives the collection and analysis of OSINT.</li>
+</ul></li>
+</ul>
+<hr>
+<section id="ethics-and-the-japan-principle-in-osint" class="level5">
+<h5 class="anchored" data-anchor-id="ethics-and-the-japan-principle-in-osint">Ethics and the JAPAN Principle in OSINT</h5>
+<ul>
+<li><p><strong>Justification:</strong> Every OSINT activity should have a clear, legitimate objective that justifies the collection and use of information.</p></li>
+<li><p><strong>Accountability:</strong> Investigators must be accountable for their methods, ensuring that all procedures are documented and can be scrutinised if necessary.</p></li>
+<li><p><strong>Proportionality:</strong> The methods and scope of data collection should be proportionate to the intelligence requirements.</p></li>
+<li><p><strong>Autonomy:</strong> OSINT should be conducted in a way that maintains the independence and objectivity of the analysis. Avoid blending open source collection with clandestine methods that could lead to ethical or legal breaches.</p></li>
+<li><p><strong>Non-Maleficence:</strong> – <strong>Do No Harm:</strong> Ensure that the collection, analysis, and dissemination of information do not cause unnecessary harm to individuals or groups.</p></li>
+</ul>
+<hr>
+</section>
+<section id="potential-osint-pitfalls" class="level5">
+<h5 class="anchored" data-anchor-id="potential-osint-pitfalls">Potential OSINT pitfalls</h5>
+<ul>
+<li>Was the source translated from foreign languages, by whom? What is their ability? Do they understand Slang?</li>
+<li>Who wrote / published the material? What organisation?</li>
+<li>What is the author/s history based on previous reports?</li>
+<li>Are they multiple point of view in this report?</li>
+<li>What’s the author’s point of view?</li>
+<li>What’s the author’s baskground and motivation? Are they any identifiable biases?</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="data-leak-and-brand-monitoring" class="level4">
+<h4 class="anchored" data-anchor-id="data-leak-and-brand-monitoring">Data leak and Brand Monitoring</h4>
+<ul>
+<li>OSS tool for leak detection and social network monitoring: AIL <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>AIL framework allows to collect, crawl, dig and analyse unstructured data.</li>
+<li>spot <strong>information leaks</strong></li>
+<li>crawling services for <strong>Tor</strong></li>
+<li>specific feeders (Telegram, discord, fediverse, github, paste sites, etc.)</li>
+<li>You will receive a comprehensive AIL training in the following weeks.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ail-project-medium.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="&nbsp;"><img src="img/ail-project-medium.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="forums" class="level4">
+<h4 class="anchored" data-anchor-id="forums">Forums</h4>
+<ul>
+<li>OSS tools for grabing forum’s content: Lookyloo and Lacus <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
+<li>Lacus is a web page capturing system that use microsoft’ playwright</li>
+<li>Lookyloo <a href="https://lookyloo.circl.lu">https://lookyloo.circl.lu</a> uses Lacus to grab webpages
+<ul>
+<li>Dig into urls of alledged phishing,</li>
+<li>Check redirects, content loaded,</li>
+<li>Correlate with previous cases,</li>
+<li>Can configure the capture (location, proxy)</li>
+<li>Can perform <code>headfull</code> captures.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/lacus.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16" title="&nbsp;"><img src="img/lacus.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="certificate-transparency-logs" class="level4">
+<h4 class="anchored" data-anchor-id="certificate-transparency-logs">Certificate Transparency logs</h4>
+<ul>
+<li>OSS tools to get Certificate transparency logs: Cocktailparty<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></li>
+<li>Cocktailparty can grab, filter and stream CT logs
+<ul>
+<li>CT logs is a big dataset</li>
+<li>Cocktailparty allows for filtering the output before sending the data.</li>
+<li>Public instance ar <a href="https://cocktailparty.lu">https://cocktailparty.lu</a></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/cocktailparty.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17" title="&nbsp;"><img src="img/cocktailparty.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="pandora" class="level4">
+<h4 class="anchored" data-anchor-id="pandora">Pandora</h4>
+<ul>
+<li>OSS Analysis tool: pandora<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>
+<ul>
+<li>Check document via a web interface or email,</li>
+<li>Quickly eliminate false positive,</li>
+<li>Prevent data leak to third parties,</li>
+<li>End-user friendly.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/pandora.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18" title="&nbsp;"><img src="img/pandora.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="misp" class="level4">
+<h4 class="anchored" data-anchor-id="misp">MISP</h4>
+<ul>
+<li>OSS Information Sharing Tool: MISP<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>
+<ul>
+<li>Receive free CTI feeds,</li>
+<li>Store data about incidents and add context,</li>
+<li>Correlation, data enrichement,</li>
+<li>Analysis tools (graphs, timelines, reports, etc.)</li>
+<li>Kickstart collaboration with partners, build trust.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/misp-logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19" title="&nbsp;"><img src="img/misp-logo.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="intelmq" class="level4">
+<h4 class="anchored" data-anchor-id="intelmq">IntelMQ</h4>
+<ul>
+<li>OSS CTI feeds collection: IntelMQ<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>
+<ul>
+<li>Automate the collection of data from a lot of sources (e.g.&nbsp;Botnet logs, C2, brute-force attempts, etc. )</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/intelmq.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20" title="&nbsp;"><img src="img/intelmq.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="typosquatting" class="level4">
+<h4 class="anchored" data-anchor-id="typosquatting">Typosquatting</h4>
+<ul>
+<li>OSS tool for detecting typosquatting: typosquatting-finder<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
+<ul>
+<li>generate, find and assess existing <strong>fake domain used by adversaries</strong></li>
+<li><strong>standalone Python library</strong><a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> for integration with other tools.</li>
+<li>Support many (20+) domain generation algorithms, automatic MISP integration and false-positive detections.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ts-medium.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="&nbsp;"><img src="img/ts-medium.png" style="height:0.69444in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="data-filtering" class="level4">
+<h4 class="anchored" data-anchor-id="data-filtering">Data filtering</h4>
+<ul>
+<li>Filtering rules in AIL:
+<ul>
+<li>Genarated from typosquatting-finder,</li>
+<li>Generated by other means (mammouth example)</li>
+</ul></li>
+<li>Filters in security are everywhere
+<ul>
+<li>regex</li>
+<li>yara rules</li>
+<li>suricata datasets</li>
+<li>poppy / flor / fleur / araygrass</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="creativity" class="level4">
+<h4 class="anchored" data-anchor-id="creativity">Creativity</h4>
+<ul>
+<li>You may sometimes wonder how you could get hold of some data to meet an Intelligence Requirements,</li>
+<li>be creative but by all means, respect law and your organisation’s ethical guideline.</li>
+<li>(example ;)</li>
+</ul>
+<hr>
+</section>
+<section id="evaluation-of-source-reliability-admirality-scale" class="level4">
+<h4 class="anchored" data-anchor-id="evaluation-of-source-reliability-admirality-scale">Evaluation of Source Reliability: Admirality Scale</h4>
+<ul>
+<li>Assess <strong>Source Reliability</strong> and <strong>Information Credibility</strong> separately</li>
+<li>A1 -&gt; F6</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/admiraltyscale.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22" title="&nbsp;"><img src="img/admiraltyscale.png" class="img-fluid figure-img" alt="&nbsp;"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+<p><strong>You receive a report from a top-tier cybersecurity firm:</strong></p>
+<ul>
+<li>The source has consistently provided accurate and timely information in the past.</li>
+</ul>
+<p><strong>How would you rate this source?</strong></p>
+<ul>
+<li>Their report claim that a new 0day vulnerability in widely used software is being actively exploited.</li>
+<li>This claim is backed up by multiple independent and trusted sources.</li>
+</ul>
+<p><strong>How would you rate the information?</strong></p>
+<hr>
+<p><strong>You receive a notification about a patch for a vulnerability that affects one of your assets.</strong></p>
+<ul>
+<li>The source has consistently failed to provide patches that actually work.</li>
+</ul>
+<p><strong>How would you rate this source?</strong></p>
+<ul>
+<li>Their security advisory claims that the patch resolves the issue.</li>
+<li>No further explanation is provided.</li>
+</ul>
+<p><strong>How would you rate the information?</strong></p>
+<hr>
+<p><strong>You receive a notification from ShadowServer that your organisation exposes a vulnerable application: <code>erlang Open Telecom Platform -- SSH server</code>.</strong></p>
+<ul>
+<li>The source has consistently provided accurate and timely information in the past.</li>
+</ul>
+<p><strong>How would you rate this source?</strong></p>
+<ul>
+<li>You have no knowledge of this application being used in your organisation.</li>
+</ul>
+<p><strong>How would you rate the information?</strong></p>
+<hr>
+<section id="in-misp" class="level5">
+<h5 class="anchored" data-anchor-id="in-misp">in MISP</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/admiralty.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23" title="In MISP"><img src="img/admiralty.png" style="height:2.5in" alt="In MISP" class="figure-img"></a></p>
+<figcaption>In MISP</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="pivoting" class="level4">
+<h4 class="anchored" data-anchor-id="pivoting">Pivoting</h4>
+<ul>
+<li>You’ve seen a lot of this in the MISP training,</li>
+<li>You will see more in the AIL training,</li>
+<li>It boils down to:</li>
+<li>Domain -&gt; whois:
+<ul>
+<li>CIDR / IP -&gt; passive DNS
+<ul>
+<li>more IPs -&gt; MISP correlations</li>
+</ul></li>
+<li>Pivot on Certificate</li>
+<li>Pivot on Certificate provider</li>
+<li>Pivot on JARM</li>
+<li>Pivot in hosting / hosting provider / server type</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="processing-and-exploitation" class="level3">
+<h3 class="anchored" data-anchor-id="processing-and-exploitation">Processing and Exploitation</h3>
+<ul>
+<li>Data comes in many form, some follow a defined model, some is unstructured:</li>
+<li>Raw pcap</li>
+<li>Netflow</li>
+<li>Raw log - Needs grokking</li>
+<li>OSINT data requires some carving in order to make sense of it.</li>
+<li>Here is a possible flow:
+<ul>
+<li>Normalize</li>
+<li>Enrich</li>
+<li>Structure and deduplicate</li>
+<li>Entity recognition</li>
+<li>Combine and link</li>
+<li>Model</li>
+</ul></li>
+</ul>
+<hr>
+<section id="create-playbooks-and-automate-where-possible" class="level4">
+<h4 class="anchored" data-anchor-id="create-playbooks-and-automate-where-possible">Create Playbooks and automate where possible</h4>
+<ul>
+<li>Normalization playbooks
+<ul>
+<li>Scripts and tooling to facilitate IoC extraction from <code>pdf</code> files, <code>doc</code> documents, and media files.</li>
+<li>data normalization / Extract Transform and Load tools</li>
+<li>Automatic tagging (see MWDB / Karton)</li>
+<li>Use sandboxing services to understand a binary’s behaviour
+<ul>
+<li>JoeSandbox, Anyrun</li>
+<li>Kunai sandbox</li>
+<li>CAPE sandbox</li>
+<li>Cuckoo</li>
+<li>Basic snapshop diffing with QEMU can also do the work ;)</li>
+</ul></li>
+</ul></li>
+<li>Use common framework, tools, and taxonomies</li>
+<li>Correlate automatically indicators against activity in the SIEM, and know indicators,</li>
+<li>Filter out irrelevant information</li>
+</ul>
+<hr>
+</section>
+<section id="normalizing" class="level4">
+<h4 class="anchored" data-anchor-id="normalizing">Normalizing</h4>
+<ul>
+<li>In some cases, you just need to transform from one format to another</li>
+<li>Extract Transform and Load tools
+<ul>
+<li>Apache NIFI</li>
+<li>Redpanda Bento / Benthos</li>
+<li>Elixir Flow / Broadway</li>
+</ul></li>
+<li>Tenzir</li>
+<li>SIEM - Wazuh</li>
+<li>ELK / logstash</li>
+</ul>
+<hr>
+</section>
+<section id="enriching" class="level4">
+<h4 class="anchored" data-anchor-id="enriching">Enriching</h4>
+<ul>
+<li>Use MISP module within MISP, or standalone</li>
+<li>In the ETL pipeline, we can normalize and enrich the data:
+<ul>
+<li>Apache NIFI:</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/analyzer-d4-log-nifi.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24" title="In Apache NIFI"><img src="img/analyzer-d4-log-nifi.png" style="height:2.08333in" alt="In Apache NIFI" class="figure-img"></a></p>
+<figcaption>In Apache NIFI</figcaption>
+</figure>
+</div>
+<hr>
+<ul>
+<li>In the ETL pipeline, we can normalize and enrich the data:
+<ul>
+<li>Benthos</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/benthos1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25" title="In Benthos"><img src="img/benthos1.png" style="height:2.5in" alt="In Benthos" class="figure-img"></a></p>
+<figcaption>In Benthos</figcaption>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/benthos2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26" title="In Benthos"><img src="img/benthos2.png" style="height:2.5in" alt="In Benthos" class="figure-img"></a></p>
+<figcaption>In Benthos</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="entity-recognition" class="level4">
+<h4 class="anchored" data-anchor-id="entity-recognition">Entity recognition</h4>
+<ul>
+<li>Data should already be filtered to fit your needs but you still need to recognize other entities:
+<ul>
+<li>By hand,</li>
+<li>By using filters,</li>
+<li>By using Natural Language Processing techniques:
+<ul>
+<li>Named Entity Recognition with BERT</li>
+<li>see for instance <a href="https://cti.tools">https://cti.tools</a> <a href="https://github.com/ctitools/">https://github.com/ctitools/</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="modelling" class="level3">
+<h3 class="anchored" data-anchor-id="modelling">Modelling</h3>
+<ul>
+<li><p>Cyber Kill Chain</p></li>
+<li><p>Diamond model</p></li>
+<li><p>MITRE ATT&amp;CK</p></li>
+<li><p>The goal is to be able to find patterns and commonalities</p>
+<ul>
+<li>Correlating clusters.</li>
+</ul></li>
+</ul>
+<hr>
+<section id="cyber-kill-chain" class="level4">
+<h4 class="anchored" data-anchor-id="cyber-kill-chain">Cyber Kill Chain</h4>
+<ul>
+<li>Reconnaissance: Intruder selects target, researches it, and attempts to identify vulnerabilities in the target network.</li>
+<li>Weaponization: Intruder creates remote access malware weapon, such as a virus or worm, tailored to one or more vulnerabilities. -Delivery: Intruder transmits weapon to target (e.g., via e-mail attachments, websites or USB drives)</li>
+<li>Exploitation: Malware weapon’s program code triggers, which takes action on target network to exploit vulnerability.</li>
+<li>Installation: Malware weapon installs an access point (e.g., “backdoor”) usable by the intruder.</li>
+<li>Command and Control: Malware enables intruder to have “hands on the keyboard” persistent access to the target network.</li>
+<li>Actions on Objective: Intruder takes action to achieve their goals, such as data exfiltration, data destruction, or encryption for ransom.</li>
+</ul>
+<p>-&gt; map to possible defences</p>
+<hr>
+</section>
+<section id="diamond-model-17" class="level4">
+<h4 class="anchored" data-anchor-id="diamond-model-17">Diamond Model <a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a></h4>
+<ul>
+<li>Four main components:
+<ul>
+<li>Adversary (nation state, hacktivists, cybercriminals, ransomware gangs)</li>
+<li>Infrastructure: The technical resources or assets the adversary uses during the attack. (C2, watering holes, tor hidden services, servers.)</li>
+<li>Capability: A method, tool, or technique the adversary uses during the attack (e.g., malware, tools, exploits).</li>
+<li>Victim (sector, industry, governements, corporations, individuals)</li>
+</ul></li>
+</ul>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/diamond-model.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27" title="&nbsp;"><img src="img/diamond-model.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="diamond-model" class="level4">
+<h4 class="anchored" data-anchor-id="diamond-model">Diamond Model</h4>
+<ul>
+<li>Relationships:
+<ul>
+<li>Adversary-victim: This relationship concerns questions such as why the attacker selected this target and the attacker’s motivations and objectives.</li>
+<li>Adversary infrastructure: This relationship concerns how the attacker establishes and maintains its cyber operations.</li>
+<li>Victim-infrastructure: This relationship concerns the attacker’s use of various channels, methods, and vectors against the target.</li>
+<li>Victim-capability: This relationship concerns specific tactics and attack signatures used against the target.</li>
+</ul></li>
+<li>Attributes:
+<ul>
+<li>Adversary’s name, motivation, TTP, attribution indicators,</li>
+<li>Infrastructure’s location, communication protocols, domain registration, server hosting.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="diamond-model---pivoting" class="level4">
+<h4 class="anchored" data-anchor-id="diamond-model---pivoting">Diamond Model - pivoting</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/analysis-pivoting.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28" title="&nbsp;"><img src="img/analysis-pivoting.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="diamond-model---events" class="level4">
+<h4 class="anchored" data-anchor-id="diamond-model---events">Diamond Model - events</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/diamond-events.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29" title="&nbsp;"><img src="img/diamond-events.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="diamond-model-1" class="level4">
+<h4 class="anchored" data-anchor-id="diamond-model-1">Diamond Model</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/diamond-killchain.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30" title="&nbsp;"><img src="img/diamond-killchain.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="mitre-attck" class="level4">
+<h4 class="anchored" data-anchor-id="mitre-attck">MITRE ATT&amp;CK</h4>
+<ul>
+<li>A framework to document tactices and techniques observed in the real world</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/attack.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31" title="&nbsp;"><img src="img/attack.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="analysis-and-production" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-and-production">Analysis and Production</h3>
+<ul>
+<li>Create Threat analysis playbook
+<ul>
+<li>Defined, documented, and repeatable analysis process</li>
+<li>Use flowintel, a SOAR, or a bunch of python scripts to manage the process</li>
+</ul></li>
+<li>Generate Findings</li>
+<li>Document the rationale</li>
+<li>Give supporting evidence.</li>
+</ul>
+<hr>
+<section id="correlate-clusters" class="level4">
+<h4 class="anchored" data-anchor-id="correlate-clusters">Correlate Clusters</h4>
+<ul>
+<li>Pivot on tags / context added in MISP
+<ul>
+<li>Build graphs</li>
+<li>Build timeline</li>
+<li>Complete the report, document your progress.</li>
+</ul></li>
+<li>Use the Diamond Model and the <code>rule of 2</code>
+<ul>
+<li>Look for overlap between two vertices in intrusions or campaings</li>
+<li>Identify unique characteritics, and map these to the diamond model.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="attritbution" class="level4">
+<h4 class="anchored" data-anchor-id="attritbution">Attritbution</h4>
+<ul>
+<li>Tactical Attribution: Clusters of related indicators: IP addresses, domains. No specific naming</li>
+<li>Operational Attribution: Extrapolation of characteristics from activity clusters (capaiblities, behaviors, and motivations).</li>
+<li>Strategical Attribution: Identify threat group / actor. Uncovering names, association, sponsors or ultimate beneficiary of the threat operations.</li>
+</ul>
+<hr>
+</section>
+<section id="use-the-rule-on-2-with-the-diamond-model" class="level4">
+<h4 class="anchored" data-anchor-id="use-the-rule-on-2-with-the-diamond-model">Use the rule on 2 with the diamond model</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ruleof2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32" title="&nbsp;"><img src="img/ruleof2.png" style="height:1.38889in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="there-is-a-catch" class="level4">
+<h4 class="anchored" data-anchor-id="there-is-a-catch">There is a catch</h4>
+<ul>
+<li>Analyst (people) have biases.
+<ul>
+<li>Confirmation biases: selectively supporting one H0</li>
+<li>Jump to conclusion,</li>
+<li>Frequency biases, etc.</li>
+<li>A diverse team help getting cognitive diversity and mitigate biases somehow,</li>
+<li>Strutured Analysis Techniques help mitigating the issue even individually.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="structured-analysis-techniques" class="level4">
+<h4 class="anchored" data-anchor-id="structured-analysis-techniques">Structured Analysis Techniques</h4>
+<p>Create an auditable and reproducible process to produce insights and findings from raw facts. Akin to “Thinking on paper, in public.”</p>
+<ol type="1">
+<li>Issue identification.</li>
+<li>Evidence Diagnostic: Ensure evidences are systematically reviewed</li>
+<li>Hypothesis generation: Creatively determining reasonable options and alternatives</li>
+<li>Structured Analysis Techniques: Systematically reviewing hypotheses or options to gain insights.</li>
+</ol>
+<ul>
+<li>Brainstorming,</li>
+<li>Devil’ advocate,</li>
+<li>Analysis of Competing Hypotheses</li>
+</ul>
+<hr>
+</section>
+<section id="analysis-of-competing-hypotheses" class="level4">
+<h4 class="anchored" data-anchor-id="analysis-of-competing-hypotheses">Analysis of Competing Hypotheses</h4>
+<p>The Process:</p>
+<ul>
+<li>Hypothesis: Identify hypotheses.</li>
+<li>Evidence: Collect evidence that supports those hypotheses.</li>
+<li>Comparison: Create a matrix to compare the evidence to determine the most plausible hypothesis.</li>
+<li>Refinement: Refine the matrix by removing invalid evidence or hypotheses</li>
+<li>Prioritization: Prioritize hypotheses based on their relative likelihood.</li>
+<li>Dependencies: Determine which hypotheses are most sensitive to evidence being wrong.</li>
+<li>Report: Report your most likely hypotheses to decision-makers and why you came to this conclusion. This will allow them to assess the best course of action.</li>
+</ul>
+<hr>
+<p>Say you discover an indicator in your network logs categorized as “suspicious” by cyber threat intelligence (CTI) sources<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ach.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-33" title="&nbsp;"><img src="img/ach.jpg" style="height:2.08333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/ach2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-34" title="&nbsp;"><img src="img/ach2.jpg" style="height:2.08333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="biases-induced-by-the-use-of-llm" class="level4">
+<h4 class="anchored" data-anchor-id="biases-induced-by-the-use-of-llm">Biases induced by the use of LLM</h4>
+<ul>
+<li>Be super wary about the use of LLM<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></li>
+<li>Using LLM introduce additional analysis biases<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>:
+<ul>
+<li>Interrogate AI answers,</li>
+<li>Dissect summaries,</li>
+<li>Validata narratives,</li>
+<li>Force yourself to slow down and ponder the bot’s answers
+<ul>
+<li>Switch models, use them concurrently</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/oldman.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-35" title="&nbsp;"><img src="img/oldman.jpg" style="height:1.11111in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="dissemination-and-reporting" class="level3">
+<h3 class="anchored" data-anchor-id="dissemination-and-reporting">Dissemination and Reporting</h3>
+<section id="know-your-audience" class="level4">
+<h4 class="anchored" data-anchor-id="know-your-audience">Know your audience</h4>
+<ul>
+<li>The form of your report will change depending on your audience
+<ul>
+<li>Different audiences have difference intelligence needs (as agreed in direction phase)
+<ul>
+<li>Strategic / Operational / Tactical</li>
+</ul></li>
+<li>Different audiences require data in different formats
+<ul>
+<li>reports,</li>
+<li>executive summaries</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="report-conclusions" class="level4">
+<h4 class="anchored" data-anchor-id="report-conclusions">Report conclusions</h4>
+<ul>
+<li>Bottom line up front, or BLUF: Always start the report with your leading hypothesis. It is what the person reading your report is most interested in.</li>
+<li>Estimative language: Qualify your leading hypothesis with estimative language that describes your confidence in your assessment based on the number of possibilities assessed and evidence supporting it.</li>
+<li>Key evidence: Support your assessment with the key pieces of evidence that led to your conclusions.</li>
+<li>Hypotheses considered: Finally, briefly describe the other hypotheses you considered and your reasoning for not prioritizing them. This will help the reader understand the rationale supporting your conclusions.</li>
+</ul>
+<hr>
+<section id="assess-confidence-and-estimative-language" class="level5">
+<h5 class="anchored" data-anchor-id="assess-confidence-and-estimative-language">Assess Confidence and estimative language</h5>
+<ul>
+<li>High confidence:
+<ul>
+<li>No evidence against</li>
+<li>All but certian</li>
+</ul></li>
+<li>Moderate confidence:
+<ul>
+<li>Evidence missing</li>
+<li>New evidence could invalidate the hypothesis</li>
+</ul></li>
+<li>Low confident:
+<ul>
+<li>Other likely hypotheses</li>
+<li>Little evidence</li>
+<li>Low trust in the sources</li>
+</ul></li>
+</ul>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/estimative.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36" title="&nbsp;"><img src="img/estimative.png" style="height:2.08333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+<section id="cti-and-incident-response-why-would-you-share-with-the-world" class="level4">
+<h4 class="anchored" data-anchor-id="cti-and-incident-response-why-would-you-share-with-the-world">CTI and Incident Response, why would you share with the world?</h4>
+<ul>
+<li>Dissemination of CTI products brings:
+<ul>
+<li>observation the emergence of patterns,</li>
+<li>sectorial / industries coordinated response (e.g.&nbsp;Solarwinds),</li>
+<li>identifying vulnerable applications, and their versions,</li>
+<li>Internet wide-scanning (e.g.&nbsp;Shadowserver),</li>
+<li>put more pressure on vendors to produce a functional patch,</li>
+<li>incident response from early indication of network breach,</li>
+<li>shared defensive counter-measures,</li>
+<li>better understanding of the risks.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="applying-classification" class="level4">
+<h4 class="anchored" data-anchor-id="applying-classification">Applying Classification</h4>
+<section id="traffic-light-protocol" class="level5">
+<h5 class="anchored" data-anchor-id="traffic-light-protocol">Traffic Light Protocol</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/TLP.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37" title="&nbsp;"><img src="img/TLP.png" style="height:2.08333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/TLP-MISP.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38" title="&nbsp;"><img src="img/TLP-MISP.png" style="height:2.08333in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="permissible-actions-protocol" class="level5">
+<h5 class="anchored" data-anchor-id="permissible-actions-protocol">Permissible Actions Protocol</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/PAP.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39" title="&nbsp;"><img src="img/PAP.png" style="height:1.38889in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="feedback" class="level3">
+<h3 class="anchored" data-anchor-id="feedback">Feedback</h3>
+<ul>
+<li>Assess the impact of your CTI program with your consistituency / stakeholders</li>
+<li>Define KPI to quantify its impact.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="img/KPI.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40" title="&nbsp;"><img src="img/KPI.png" style="height:2.77778in" alt="&nbsp;" class="figure-img"></a></p>
+<figcaption>&nbsp;</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="case-study" class="level1">
+<h1>Case study</h1>
+<ul>
+<li>Look into NotPetya:
+<ul>
+<li>Find some sources on the Internet,</li>
+<li>Who is the adversary?</li>
+<li>Who were the victim / target?</li>
+<li>What was the infrastructure?</li>
+<li>Whast was the adversary’s capabilities?</li>
+</ul></li>
+<li>Encode what you find in a MISP event,
+<ul>
+<li>Add technical indicators,</li>
+<li>Build a timeline,</li>
+<li>Build a graph,</li>
+<li>Write a report,</li>
+<li>Back up your findings with evidences.</li>
+</ul></li>
+</ul>
+<section id="resources" class="level2 allowframebreak">
+<h2 class="allowframebreak anchored" data-anchor-id="resources">Resources</h2>
+<ul>
+<li>MISP <a href="https://www.misp-project.org">https://www.misp-project.org</a></li>
+<li>flowintel <a href="https://github.com/flowintel/flowtinel">https://github.com/flowintel/flowtinel</a></li>
+<li>lookyloo <a href="https://github.com/Lookyloo/lookyloo">https://github.com/Lookyloo/lookyloo</a></li>
+<li>CIRCL lookyloo <a href="https://lookyloo.circl.lu/">https://lookyloo.circl.lu/</a></li>
+<li>pandora <a href="https://github.com/pandora-analysis/pandora">https://github.com/pandora-analysis/pandora</a></li>
+</ul>
+<hr>
+<ul>
+<li>CIRCL pandora <a href="https://pandora.circl.lu">https://pandora.circl.lu</a></li>
+<li>Vulnerability Lookup <a href="https://vulnerability.circl.lu/">vulnerability-lookup</a></li>
+<li>typosquatting finder <a href="https://typosquatting-finder.circl.lu/">https://typosquatting-finder.circl.lu/</a></li>
+<li><a href="https://github.com/ail-project/ail-typo-squatting">typosquatting finder library</a></li>
+<li>AIL <a href="https://ail-project.org">https://ail-project.org</a></li>
+<li><a href="https://rieas.gr/images/jmbi/ReuserArno.pdf">Reuser &amp; Arno on OSINT</a></li>
+<li><a href="https://medium.com/katies-five-cents/a-cyber-threat-intelligence-self-study-plan-part-1-968b5a8daf9a">Katie Nickels self-study plan</a></li>
+<li><a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html">Cyber Kill Chain</a></li>
+<li><a href="https://apps.dtic.mil/sti/citations/ADA586960">Diamond model original paper</a></li>
+</ul>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>CMU - Cyber Intelligence Tradecraft Report<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>https://irp.fas.org/doddir/usmc/ugirh.pdf<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>https://www.first.org/resources/papers/firstcti24/Josh-Darby-MacLellan-How-to-Start-Using-Priority.pdf<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>https://intel471.com/resources/cyber-underground-handbook<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>flowintel<a href="https://github.com/flowintel/flowtinel">https://github.com/flowintel/flowtinel</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a href="https://vulnerability.circl.lu/">https://vulnerability.circl.lu/</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>It’s worth noting that RSS 1.0 also normalized the use of RDF, enabling compatibility with Activity Streams and other data-sharing standards.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Simply take any Mastodon handle and append .rss to it.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://ail-project.org">https://ail-project.org</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://github.com/ail-project/lacus">https://github.com/ail-project/lacus</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a href="https://github.com/flowintel/cocktailparty">https://github.com/flowintel/cocktailparty</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a href="https://github.com/pandora-analysis/pandora">pandora</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a href="https://misp-project.org">MISP</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a href="https://intelmq.readthedocs.io/en/develop/">https://intelmq.readthedocs.io/en/develop/</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p><a href="https://typosquatting-finder.circl.lu/">tf</a><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p><a href="https://github.com/ail-project/ail-typo-squatting">library</a><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17"><p><a href="https://apps.dtic.mil/sti/citations/ADA586960">https://apps.dtic.mil/sti/citations/ADA586960</a><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a href="https://kravensecurity.com/analysis-of-competing-hypotheses/">https://kravensecurity.com/analysis-of-competing-hypotheses/</a><a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19"><p><a href="https://arxiv.org/pdf/2503.23175">https://arxiv.org/pdf/2503.23175</a><a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20"><p><a href="https://www.dutchosintguy.com/post/the-slow-collapse-of-critical-thinking-in-osint-due-to-ai">https://www.dutchosintguy.com/post/the-slow-collapse-of-critical-thinking-in-osint-due-to-ai</a><a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
