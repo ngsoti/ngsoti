@@ -2,6 +2,8 @@
 
 ## NGSOTI Training SOC – Architecture Overview
 
+![NGOSTI Diagram overview](https://raw.githubusercontent.com/ngsoti/ngsoti/refs/heads/main/deliverables/D4.1/oss-overview.png)
+
 ## Purpose
 
 The NGSOTI stack aims to provide trainees with a full-fidelity, open-source Security Operations Center that looks and behaves like a production environment, yet remains safe, fully reproducible, and easy to extend with new scenarios. To ensure authentic telemetry, it re-uses rich datasets from the D4 Project and other real-world sources, giving students hands-on experience with the kinds of signals a mature detection infrastructure generates.
