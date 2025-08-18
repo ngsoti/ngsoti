@@ -1,6 +1,8 @@
 # Roadmap
 
-TBA
+1. [data-types](./exercises/data-types/src/lib.rs)
+1. [functions](./exercises/functions/src/lib.rs)
+1. [control-flow](./exercises/control-flow/src/lib.rs)
 
 # Requirements
 
