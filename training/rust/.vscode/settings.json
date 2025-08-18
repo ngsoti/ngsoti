@@ -1,6 +1,7 @@
 {
     "rust-analyzer.linkedProjects": [
         "exercises/hello/Cargo.toml",
-        "exercises/basics/Cargo.toml"
+        "exercises/data-types/Cargo.toml",
+        "exercises/control-flow/Cargo.toml"
     ]
 }
