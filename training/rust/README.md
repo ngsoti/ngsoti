@@ -3,6 +3,14 @@
 1. [data-types](./exercises/data-types/src/lib.rs)
 1. [functions](./exercises/functions/src/lib.rs)
 1. [control-flow](./exercises/control-flow/src/lib.rs)
+1. [ownership](./exercises/ownership/src/lib.rs)
+1. [structures](./exercises/structures/src/lib.rs)
+1. [enums](./exercises/enums/src/lib.rs)
+1. [options](./exercises/options/src/lib.rs)
+1. [result](./exercises/result/src/lib.rs)
+1. [generics](./exercises/generics/src/lib.rs)
+1. [traits](./exercises/traits/src/lib.rs)
+1. [project](./exercises/project/src/lib.rs)
 
 # Requirements
 

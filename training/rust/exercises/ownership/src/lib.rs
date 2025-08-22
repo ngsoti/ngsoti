@@ -175,9 +175,186 @@ fn borrowing_3() {
     // println!("r1={r1} r2={r2} r3={r3}");
 }
 
-// EXERCISE: uncomment function, why the compiler complains ?
+// EXERCISE: uncomment function, why does the compiler complains ?
 // fn dangle() -> &String {
 // let s = String::from("hello");
 
 // &s
 // }
+
+/// # Slices in Rust
+///
+/// A slice is a **reference to a contiguous sequence** of elements in a collection rather than the whole collection.
+///
+/// - **View into data**: A way to reference a portion of a collection
+/// - **Non-owning**: Just borrows the data (doesn't own it)
+/// - **Contiguous**: Always refers to a continuous sequence
+/// - **Flexible**: Can refer to any portion of the original data
+///
+/// ## Key Characteristics
+/// - **Zero-cost**: No runtime overhead over raw pointers
+/// - **Bounds-checked**: Access is safe (panics on out-of-bounds)
+/// - **Flexible**: Can refer to arrays, vectors, or other slices
+/// - **Borrow rules apply**: Follow same borrowing rules as references
+#[test]
+fn slice_str() {
+    let greeting = String::from("Hello, world!");
+
+    // &str is a slice pointing to contiguous bytes in memory that form a valid UTF-8 string
+    let hello = &greeting[0..5]; // "Hello"
+    let world = &greeting[7..12]; // "world"
+    let all = &greeting[..]; // "Hello, world!"
+
+    println!("First word: {hello}");
+    println!("Second word: {world}");
+    // the whole string can be a slice
+    println!("All: {all}");
+}
+
+#[test]
+fn array_slice() {
+    let numbers = [10, 20, 30, 40, 50];
+    let first_two = &numbers[0..2]; // [10, 20]
+    let last_two = &numbers[3..]; // [40, 50]
+    let middle = &numbers[1..4]; // [20, 30, 40]
+
+    println!("first_two={first_two:?}");
+    println!("last_two={last_two:?}");
+    println!("middle={middle:?}");
+}
+
+/// Slices can be mutable and used to mutate a part of the data
+#[test]
+fn mut_slice() {
+    fn mod_array(s: &mut [u8]) {
+        for b in s {
+            if *b % 2 == 0 {
+                *b = 42
+            }
+        }
+    }
+
+    let mut numbers = [1, 2, 3, 4, 5, 6];
+    println!("numbers={numbers:?}");
+    mod_array(numbers.as_mut_slice());
+    println!("numbers={numbers:?}");
+}
+
+/// # Golden Rule of Slice Parameters
+///
+/// **"If the reference you want to pass to a function is sliceable,
+///  then implement the function to accept a slice."**
+///
+/// ## Why This Rule Works
+///
+/// 1. **Maximum Flexibility**:
+///    - Accepts `&[T]`, `&Vec<T>`, `&Array<T>`, and other sliceable types
+///    - Works with both stack and heap allocated data
+///
+/// 2. **Zero-Cost Abstraction**:
+///    - No runtime overhead for the abstraction
+///    - Compiles to the same code as if you used concrete types
+///
+/// 3. **API Ergonomics**:
+///    - Callers can pass any sliceable type without conversion
+///    - No need for multiple overloads (e.g., one for `&Vec<T>` and one for `&[T; N]`)
+///
+/// ## When to Apply This Rule
+/// - When your function only needs to read/process elements
+/// - When the operation doesn't depend on the container type
+/// - When you want to accept both arrays and vectors
+/// - For string processing (use `&str` instead of `&String`)
+///
+/// ## Common Sliceable Types
+/// | Type          | Slice Type   | Example Function Parameter |
+/// |---------------|--------------|----------------------------|
+/// | Vec<T>        | &[T]         | `&[T]`                     |
+/// | [T; N]        | &[T]         | `&[T]`                     |
+/// | String        | &str         | `&str`                     |
+/// | Box<[T]>      | &[T]         | `&[T]`                     |
+///
+/// ## Exceptions
+/// - When you specifically need container methods (e.g., `Vec::push`)
+/// - When you need to modify the container itself (not just its elements)
+/// - When you need ownership of the container
+#[test]
+fn slice_golden_rule() {
+    fn print_greeting(message: &String) {
+        println!("{message}");
+    }
+
+    // Works with:
+    print_greeting(&String::from("hello")); // &String coerces to &str
+
+    // EXERCISE: uncomment below and modify print_greeting so that
+    // it accepts both &String and &'static str
+    // print_greeting("hello"); // string literal (&'static str)
+}
+
+/// # Rust Lifetimes
+///
+/// ## 1. The Core Concept
+/// Lifetimes are Rust's way of ensuring that references are always valid.
+/// They track how long references can be safely used.
+///
+/// !!! The Golden Rule !!! : A reference cannot outlive the data it refers to
+///
+/// ## 2. The Problem They Solve
+/// ```rust
+/// // This would create a dangling reference:
+/// fn dangling_reference() -> &i32 {
+///      let x = 5;          // x is created
+///      &x                  // Try to return reference to x
+/// }                      // x is dropped here - reference becomes invalid!
+/// ```
+/// Lifetimes prevent this by ensuring references don't outlive their data.
+///
+/// ## 3. Lifetime Basics
+/// - Every reference (`&T`) has a lifetime
+/// - Most lifetimes are inferred by the compiler
+/// - You only need to specify them when there's ambiguity
+///
+/// ## 4. Syntax
+/// ```rust
+/// &i32        // Reference with inferred lifetime
+/// &'a i32     // Reference with explicit lifetime 'a
+/// &'a mut i32 // Mutable reference with lifetime 'a
+/// ```
+///
+/// ## 5. Key Properties
+/// - Most lifetimes are invisible (compiler infers them)
+/// - They don't change how long data lives
+/// - They only affect references, not owned types
+/// - Zero runtime cost (checked at compile time)
+///
+/// ## 6. Remember
+/// - If code compiles without explicit lifetimes, you're good
+/// - Lifetime errors mean a reference might outlive its data
+/// - Solution: restructure so references don't outlive their data
+///
+/// ## 7. Lifetime Elision Rules
+/// The compiler uses these rules to infer lifetimes:
+/// 1. Each input reference gets its own lifetime
+/// 2. If one input lifetime, it's assigned to all outputs
+/// 3. For methods with `&self`, self's lifetime is assigned to outputs
+#[test]
+fn lifetime_example() {
+    let s1 = String::from("hello");
+    let s2 = String::from("world");
+
+    // The reference must live as long as what it refers to
+
+    // EXERCISE: uncomment the code below
+    //
+    // fn longest(x: &str, y: &str) -> &str {
+    //    if x.len() > y.len() { x } else { y }
+    // }
+    //
+    // let result = longest(&s1, &s2);
+    // println!("The longest string is {}", result);
+
+    // EXERCISE: lets break things down and understand what happens
+    // - understand lifetime elision
+    // - how to fix the error
+    // - this function is defined for any &str (this is the issue)
+}
