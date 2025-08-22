@@ -3,6 +3,13 @@
         "exercises/hello/Cargo.toml",
         "exercises/data-types/Cargo.toml",
         "exercises/control-flow/Cargo.toml",
-        "exercises/ownership/Cargo.toml"
+        "exercises/ownership/Cargo.toml",
+        "exercises/structures/Cargo.toml",
+        "exercises/enums/Cargo.toml",
+        "exercises/options/Cargo.toml",
+        "exercises/result/Cargo.toml",
+        "exercises/generics/Cargo.toml",
+        "exercises/traits/Cargo.toml",
+        "exercises/project/Cargo.toml",
     ]
 }
