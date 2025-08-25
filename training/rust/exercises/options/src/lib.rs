@@ -15,14 +15,29 @@ fn generic_basics() {
         None,
     }
 
+    // Here we provide a value in Some variant so the compiler can infer
+    // the type T of the enum. Here the compiler generates an enum for T being String
+    // enum OptionalValue<String> {
+    //    Some(String)),
+    //    None,
+    // }
     let so = OptionalValue::Some(String::from("Hello World"));
     println!("{so:?}");
 
+    // Here we provide a value in Some variant so the compiler can infer
+    // the type T of the enum. Here the compiler generates an enum for T being i32
+    // enum OptionalValue<i32> {
+    //    Some(i32),
+    //    None,
+    // }
     let io = OptionalValue::Some(42);
     println!("{io:?}");
 
-    // here we must be explicit with the type because the compiler
-    // cannot know it if we do not specify it.
+    // **`None` is a unit-like variant**:
+    //   - `None` doesn't contain any value to infer the type from
+    //   - The compiler doesn't know if you want `OptionValue<i32>`, `OptionValue<String>`, etc.
+    // So we need to explicitly type the variable to tell the compiler
+    // what enum it must generate.
     let none: OptionalValue<()> = OptionalValue::None;
     println!("{none:?}");
 
@@ -71,7 +86,7 @@ fn option_1() {
             }
         }
 
-        fn filled_age(&self) -> bool {
+        fn has_age(&self) -> bool {
             // this is a method implemented for Option<T>
             // that returns true if the Option is a Some variant
             self.age.is_some()
@@ -82,12 +97,13 @@ fn option_1() {
                 "id:{} passwd:{} filled age:{}",
                 self.identifier,
                 self.password,
-                self.filled_age()
+                self.has_age()
             )
         }
     }
 
     let u1 = User::new(String::from("toto"), String::from("Password123"), Some(42));
+
     let u2 = User::new(String::from("joe"), String::from("0xdeadbeef"), None);
 
     u1.print();
@@ -224,7 +240,6 @@ fn option_safe_unwrap() {
 /// - Only works in functions that return `Option`
 /// - Makes code cleaner by handling `None` cases automatically
 /// - Much safer than `unwrap()` which panics on `None`
-/// - Helps avoid deep nesting of `match` statements
 #[test]
 #[allow(clippy::manual_find)]
 #[allow(clippy::question_mark)]
@@ -241,21 +256,20 @@ fn question_mark_operator() {
     }
 
     fn square_first_even(numbers: &[i32]) -> Option<i32> {
-        let num = match find_first_even_number(numbers) {
-            Some(num) => num,
+        let n = match find_first_even_number(numbers) {
+            Some(banana) => banana,
             None => return None,
         };
-        Some(num * num)
+        Some(n * n)
     }
 
     println!("square_first_even = {:?}", square_first_even(&[3, 1, 9, 2]));
 
-    // the above syntax is quite heavy, that is why `?`
-    // got introduced. We can see it syntax sugar to make
-    // more concise code.
+    // the above syntax is quite heavy, that is why question mark operator `?`
+    // got introduced. We can see it syntax sugar to make more concise code.
     fn square_first_even_short(numbers: &[i32]) -> Option<i32> {
-        let num = find_first_even_number(numbers)?;
-        Some(num * num)
+        let n = find_first_even_number(numbers)?;
+        Some(n * n)
     }
 
     println!(

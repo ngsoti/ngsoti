@@ -331,7 +331,7 @@ fn pattern_matching_beyond_enums_3() {
         println!("My answer to: {s}");
 
         match s {
-            "What is the answer to the ultimate question of line, the universe, and everything ?" =>
+            "What is the answer to the ultimate question of life, the universe, and everything ?" =>
             {
                 println!("Wait I'm computing ");
                 for _ in 0..100 {

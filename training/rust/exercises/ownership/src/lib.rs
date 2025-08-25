@@ -12,7 +12,7 @@ fn on_the_stack() {
     let pair: (f64, bool) = (3.42, true); // 9 bytes (8 + 1, padded)
     let arr: [u8; 4] = [1, 2, 3, 4]; // 4 bytes
 
-    // When we move a type allocated on the stack it gets
+    // When we use a type allocated on the stack the value it contains gets
     // COPIED (this is a very important concept to understand).
     // The process of copy-ing allocates KNOWN SIZE space on the stack
     // at compile and put the data in it.
@@ -67,7 +67,7 @@ fn type_on_heap_string() {
     // Me: No :) ! The data just got MOVED
 
     // EXERCISE: uncomment below + try to fix it
-    //println!("{s1}");
+    // println!("{s1}");
 }
 
 /// # Ownership Rules !!! VERY IMPORTANT !!!
@@ -177,9 +177,9 @@ fn borrowing_3() {
 
 // EXERCISE: uncomment function, why does the compiler complains ?
 // fn dangle() -> &String {
-// let s = String::from("hello");
-
-// &s
+//     let s = String::from("hello");
+//
+//     &s
 // }
 
 /// # Slices in Rust
@@ -214,6 +214,7 @@ fn slice_str() {
 #[test]
 fn array_slice() {
     let numbers = [10, 20, 30, 40, 50];
+
     let first_two = &numbers[0..2]; // [10, 20]
     let last_two = &numbers[3..]; // [40, 50]
     let middle = &numbers[1..4]; // [20, 30, 40]

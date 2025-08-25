@@ -10,11 +10,6 @@
 /// }
 /// ```
 ///
-/// ## Why Use Result?
-/// - Better than exceptions (explicit error handling)
-/// - Forces you to handle errors (compiler checks)
-/// - Clearer than returning special values (like -1 for errors)
-///
 /// ## Key Points
 /// - `Result` makes error handling explicit
 /// - You MUST handle both success and failure cases
@@ -170,6 +165,6 @@ fn result_in_practice() {
     let i = -42;
     println!("input={i} result={:?}", handle_positive_number(i));
 
-    // EXERCISE: make an example where you handle both the errors
-    // and where you print a different message for each
+    // EXERCISE: make an example where you handle the result of `handle_positive_number`
+    // and where you print a different message for each variant of Error enum.
 }
