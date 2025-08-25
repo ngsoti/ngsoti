@@ -15,6 +15,7 @@ fn simple_structure() {
         width: 10,
         height: 30,
     };
+
     let area = r.width * r.height;
 
     // {?} is used to print a debug version of our struct
@@ -157,6 +158,8 @@ fn structure_method() {
 
     // method defintion is done in an `impl` block
     impl Rectangle {
+        // we can put here all our method definitions
+
         fn area(&self) -> u32 {
             self.width * self.height
         }
@@ -175,7 +178,7 @@ fn structure_method() {
     // in some cases to structure the code.
     impl Rectangle {
         // if we want to modify the structure
-        // we must declare it as muttable with `mut`
+        // we must declare it as mutable with `mut`
         fn modify_width(&mut self, width: u32) {
             self.width = width
         }

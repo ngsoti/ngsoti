@@ -134,8 +134,8 @@ fn generic_in_structure_3() {
     println!("swapped integer:{integer:?}");
     println!();
 
-    // it doesn't really make sense to define a Point from
-    // str but it is just to show you that it is possible
+    // it doesn't really make sense to define a Point with
+    // str members but it is just to show you that it is possible
     let mut string = Point {
         x: "hello",
         y: "hola",
@@ -170,7 +170,7 @@ fn generic_structure_3() {
 
     println!("concat:{}", string.concat())
 
-    // EXERCISE: try to call concat on a Point<i32>
+    // EXERCISE: can you call concat on a Point<i32>?
 }
 
 /// While examples above are not very usable in practice

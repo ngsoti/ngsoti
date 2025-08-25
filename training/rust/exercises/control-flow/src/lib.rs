@@ -28,7 +28,7 @@ fn if_else_expression() {
         "odd"
     };
 
-    println!("The number is {result}"); // Prints "The number is odd"
+    println!("The number is {result}");
 }
 
 #[test]
@@ -90,8 +90,13 @@ fn iterating_loop() {
     }
 }
 
-/// Loops can be used in const context meaning that we can
-/// create loops executed at compile time.
+/// In Rust, `loop` can be used in `const` contexts **only in very specific cases**:
+///
+/// ## Key Requirements:
+/// - The loop must have a **clear termination condition**
+/// - All operations must be **const-evaluable**
+/// - No heap allocations or non-const functions
+/// - Limited to basic control flow (no complex patterns)
 const fn factorial(n: u32) -> u32 {
     let mut result = 1;
     let mut i = 1;
@@ -106,22 +111,30 @@ const fn factorial(n: u32) -> u32 {
     result
 }
 
+// We have seen `const` are fixed values known at compile time.
+// So here factorial fn is ran at compile time
+const FACT_5: u32 = factorial(5);
+
 #[test]
 fn const_in_loop() {
-    const FACT_5: u32 = factorial(5); // Computed during compilation
     println!("{FACT_5}");
 
-    // const functions are not always run at compile time
+    // using a const fn doesn't mean it must run at compile time
+    // rather it means: "it is possible to run it a compile time"
     let nanoseconds = SystemTime::now()
         .duration_since(SystemTime::UNIX_EPOCH)
         .unwrap()
         .as_secs();
-    // here the parameter cannot be known at compile time so
-    // the function cannot be computed as a const.
+    // here the parameter cannot be known at compile time, because we get
+    // it at runtime. So the result cannot be computed as a constant value.
     println!("{}", factorial((nanoseconds >> 28) as u32));
 
     // EXERCISE: uncomment code to verify
     // const FACT_RAND: u32 = factorial((nanoseconds >> 28) as u32);
+
+    // GOING FURTHER: many functions on primary types in Rust can be ran
+    // in a `const` context. Take a look at the documentation to have an
+    // overview.
 }
 
 /// This uses Rust's `while` construct which is ideal when:
@@ -165,10 +178,33 @@ fn iterate_with_for() {
 
 #[test]
 fn iterate_over_range() {
-    // iterating over a range
+    println!("range [1;4[");
+    // iterating over a range from [1; 4[
     for number in 1..4 {
         println!("the value is: {number}");
     }
+    println!();
 
-    // EXERCISE: explore ranges variants (inclusive range, reverse)
+    // EXERCISE: let's explore together ranges usage
+    //   - inclusive range
+    //   - iterate in reverse order
+}
+
+/// One can also walk an array and several other collections
+/// implementing `Iterator` and `DoubleEndedIterator`
+///
+/// ## Common Types That Support `rev()`:
+/// - Ranges (`(1..5).rev()`)
+/// - Vectors (`vec![1,2,3].into_iter().rev()`)
+/// - Arrays (`[1,2,3].iter().rev()`)
+/// - Strings (`"hello".chars().rev()`)
+#[test]
+fn reverse_iterator() {
+    let a = [1, 2, 3, 4, 5];
+
+    for element in a.iter().rev() {
+        println!("the value is: {element}");
+    }
+
+    println!("BOOOOM!");
 }
