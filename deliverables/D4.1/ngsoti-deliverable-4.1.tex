@@ -1,5 +1,5 @@
 \documentclass[10pt,a4paper]{report}
-
+\usepackage[style=numeric, backend=biber]{biblatex}
 % Packages for formatting and styling
 \usepackage{graphicx} % For including images
 \usepackage{hyperref} % For hyperlinks and metadata
@@ -15,6 +15,7 @@
     left=2.5cm,
     right=2.5cm
 }
+\usepackage{float}
 
 % Define variables
 \newcommand{\delivtitle}{D4.1 -NGSOTI architecture document}
@@ -74,12 +75,19 @@ and is accessible via the above link. The content is included in this deliverabl
 
 
 \chapter{NGSOTI – Architecture Overview}
-The Next Generation SOC Training Infrastructure (NGSOTI) project is an open-source initiative to build realistic, reproducible SOC environments for training and education. It integrates mature open-source components with ReST APIs and OpenAPI specifications to ensure interoperability, scalability, and extensibility.
+The Next Generation SOC Training Infrastructure (NGSOTI) project\cite{ngsoti} is
+an open-source initiative to build realistic, reproducible SOC
+environments for training and education. It integrates mature open-source
+components with \textbf{ReST APIs and OpenAPI specifications} to ensure
+interoperability, scalability, and extensibility.
 
-This document aims to present a comprehensive overview of the NGSOTI architecture while also reflecting on the insights, feedback, and experience gained during the initial phase of the project.
+This document aims to present a comprehensive overview of the
+NGSOTI architecture while also reflecting on the insights, feedback, and
+experience gained during the initial phase of the project.
 
-
-%TODO image 
+\begin{figure}[h]
+\includegraphics[scale=0.11]{oss-overview.png}
+\end{figure}
 
 \section{Scope}
 
@@ -425,6 +433,7 @@ creating authentic training environments. Whether deployed in its entirety or in
 parts, NGSOTI empowers institutions to deliver realistic, modern, and effective
 SOC training experiences.
 
+\printbibliography
 % End of document
 \end{document}
 
