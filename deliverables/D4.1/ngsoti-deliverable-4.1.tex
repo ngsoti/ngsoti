@@ -60,23 +60,29 @@
 \tableofcontents
 \newpage
 \section*{Disclaimer}
-Co-funded by the European Union. Views and opinions expressed are however those of the author(s) only
-and do not necessarily reflect those of the European Union or the European Cybersecurity Competence Centre. Neither
-the European Union nor the granting authority can be held responsible for them.
+Co-funded by the European Union. Views and opinions expressed are however
+those of the author(s) only and do not necessarily reflect those of the
+European Union or the European Cybersecurity Competence Centre. Neither the
+European Union nor the granting authority can be held responsible for them.
 % Main content
+
 \section*{Deliverable definition}
-The identifier of the deliverable is \textbf{D4.1} and it adheres to the definition outlined in the grant agreement written in \textbf{bold}. \textbf{Blog post of the NGSOTI architecture and exploitation  to collect data on d4-project.org}.
+The identifier of the deliverable is \textbf{D4.1} and it adheres to the
+definition outlined in the grant agreement written in \textbf{bold}.
+\textbf{Blog post of the NGSOTI architecture and exploitation  to collect data
+on d4-project.org}.
 
 \section*{Executive Summary}
 \addcontentsline{toc}{section}{Executive Summary}
 
 The blog post was published on \url{https://d4-project.org/2025/06/19/NGSOTI-Architecture-Overview.html}
-and is accessible via the above link. The content is included in this deliverable.
+and is accessible via the above link.
+The content is included in this deliverable.
 
 
 \chapter{NGSOTI – Architecture Overview}
-The Next Generation SOC Training Infrastructure (NGSOTI) project\cite{ngsoti} is
-an open-source initiative to build realistic, reproducible SOC
+The Next Generation SOC Training Infrastructure (NGSOTI) project\cite{ngsoti}
+is an open-source initiative to build realistic, reproducible SOC
 environments for training and education. It integrates mature open-source
 components with \textbf{ReST APIs and OpenAPI specifications} to ensure
 interoperability, scalability, and extensibility.
@@ -91,28 +97,60 @@ experience gained during the initial phase of the project.
 
 \section{Scope}
 
-The NGSOTI project is designed to replicate the day-to-day environment of a modern Security Operations Center (SOC) and provide trainees with the essential skills required to operate effectively in such settings. To achieve this, the training infrastructure must cover the core requirements of SOC analysts and incident responders:
+The NGSOTI project is designed to replicate the day-to-day environment of a
+modern Security Operations Center (SOC) and provide trainees with the
+essential skills required to operate effectively in such settings. To achieve
+this, the training infrastructure must cover the core requirements of SOC
+analysts and incident responders:
 
 \begin{description}
-    \item [Log Management and Analysis] SOC analysts must be able to collect, normalise, store, and query large volumes of heterogeneous logs (endpoint, network, application, cloud). Training scenarios need to expose students to real log pipelines, from raw ingestion to search and correlation.
-    \item [ False-Positive Handling and Triage ] Analysts must learn to distinguish between benign anomalies and true security incidents. Training must include workflows for alert triage, suppression of recurring false positives, and case escalation.
-    \item [Detection Engineering] SOC teams are not only consumers of alerts but also creators of new detection rules. Training requires environments where students can experiment with creating, testing, and deploying new signatures, queries, or behavioural detections across different telemetry sources.
-    \item [Information Sharing and Collaboration] Modern SOCs rarely work in isolation. They rely on information exchange with other teams and communities. Exercises must therefore include mechanisms for sharing Indicators of Compromise (IOCs), Tactics, Techniques, and Procedures (TTPs), and incident reports in structured formats.
-    \item [Threat Intelligence Integration] To contextualise alerts and drive better decision-making, analysts need access to threat intelligence feeds and vulnerability information. Training environments must integrate open-source threat intelligence platforms (e.g., MISP) and vulnerability knowledge bases (e.g., Vulnerability-Lookup) to provide authentic enrichment and prioritisation workflows.
+    \item [Log Management and Analysis] SOC analysts must be able to collect,
+          normalise, store, and query large volumes of heterogeneous logs
+          (endpoint, network, application, cloud). Training scenarios need
+          to expose students to real log pipelines, from raw ingestion to
+          search and correlation.
+    \item [ False-Positive Handling and Triage ] Analysts must learn to
+          distinguish between benign anomalies and true security incidents.
+          Training must include workflows for alert triage, suppression of
+          recurring false positives, and case escalation.
+    \item [Detection Engineering] SOC teams are not only consumers of alerts
+          but also creators of new detection rules. Training requires
+          environments where students can experiment with creating, testing,
+          and deploying new signatures, queries, or behavioural detections
+          across different telemetry sources.
+    \item [Information Sharing and Collaboration] Modern SOCs rarely work in
+          isolation. They rely on information exchange with other teams and
+          communities. Exercises must therefore include mechanisms for sharing
+          Indicators of Compromise (IOCs), Tactics, Techniques, and
+          Procedures (TTPs), and incident reports in structured formats.
+    \item [Threat Intelligence Integration] To contextualise alerts and drive
+          better decision-making, analysts need access to threat intelligence
+          feeds and vulnerability information. Training environments must
+          integrate open-source threat intelligence platforms (e.g., MISP) and
+          vulnerability knowledge bases (e.g., Vulnerability-Lookup) to provide
+          authentic enrichment and prioritisation workflows.
 \end{description}
 
 
-By embedding these requirements into the training scope, NGSOTI ensures that students are not only exposed to realistic datasets and tools, but also to the \textbf{operational processes} and textbf{analytical workflows} that define real-world SOC operations. This explains the architectural choices described in the following sections.
+By embedding these requirements into the training scope, NGSOTI ensures that
+students are not only exposed to realistic datasets and tools, but also to
+the \textbf{operational processes} and \textbf{analytical workflows} that
+define real-world SOC operations.
+This explains the architectural choices described in the following sections.
 
 \section{Purpose of the Architecture}
 
 NGSOTI addresses key challenges in SOC training:
 
 \begin{description}
-    \item [Infrastructure Access:] Many training centers/universities lack resources to simulate SOC environments.
-    Integration with Modern Tooling: SOC tools evolve quickly; training must adapt.
-    \item [Reusable Exercises:] Scenarios must be standardised (via CEXF) for replay and sharing.
-    \item [Accessible Datasets:] Trainees should work with realistic telemetry and dataset from real-world sources.
+    \item [Infrastructure Access:] Many training centers/universities lack
+          resources to simulate SOC environments.
+    \item [Integration with Modern Tooling:] SOC tools evolve quickly; training
+          must adapt.
+    \item [Reusable Exercises:] Scenarios must be standardised (via CEXF) for
+          replay and sharing.
+    \item [Accessible Datasets:] Trainees should work with realistic telemetry
+          and dataset from real-world sources.
 \end{description}
 
 \section{Layered Design}
@@ -163,7 +201,8 @@ principles of interoperability, open standards, and reproducibility.
 \subsection{SkillAegis \& CEXF}
 \begin{description}
   \item[Purpose:] Web portal for instructors and trainees. Defines and executes
-exercises in \textbf{Common Exercise Format (CEXF)}. Provides live scoreboard and feedback.
+        exercises in \textbf{Common Exercise Format (CEXF)}. Provides live
+        scoreboard and feedback.
   \item[Inputs:] Exercise definitions (JSON), datasets, injects.
   \item[Outputs:] Exercise deployment instructions, scoreboard updates.
   \item[APIs:] ReST API (OpenAPI).
@@ -178,8 +217,8 @@ artefacts from MISP, and telemetry triggers from Tenzir.
 \subsection{Kunai}
 
 \begin{description}
-  \item[Purpose:] Lightweight Linux sensor using \textbf{eBPF} for syscall and network
-       visibility.
+  \item[Purpose:] Lightweight Linux sensor using \textbf{eBPF} for syscall and
+       network visibility.
   \item[Inputs:] Kernel-level telemetry.
   \item[Outputs:] JSON structured logs (syscalls, processes, sockets, files).
   \item[APIs:] gRPC \& ReST endpoints to push events into pipelines. Online
