@@ -2,7 +2,7 @@
 TEXFILE = ngsoti-deliverable-4.1
 PDFLATEX = pdflatex
 BIBTEX = biber
-TEMP_FILES = *.aux *.log *.out *.bbl *.blg *.toc *.lot *.lof *.gz *.idx *.ilg *.ind
+TEMP_FILES = *.aux *.log *.out *.bbl *.blg *.toc *.lot *.lof *.gz *.idx *.ilg *.ind *.xml *.bcf
 # Default target
 all: $(TEXFILE).pdf
 
