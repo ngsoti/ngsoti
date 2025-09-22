@@ -1,0 +1,172 @@
+\documentclass[10pt,a4paper]{report}
+
+% Packages for formatting and styling
+\usepackage{graphicx} % For including images
+\usepackage{hyperref} % For hyperlinks and metadata
+\usepackage{fancyhdr} % For headers and footers
+\usepackage{geometry} % Adjusting page geometry
+\usepackage{lastpage}
+\usepackage{tabularx}
+% Page geometry
+\geometry{
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm
+}
+
+% Define variables
+\newcommand{\delivtitle}{D4.1 -NGSOTI architecture document}
+\newcommand{\delivdate}{23 September 2025}
+
+% Hyperref setup
+\hypersetup{
+    pdftitle={\delivtitle},
+    pdfauthor={TEAM NGSOTI},
+    pdfsubject={EU Project Deliverable Report},
+    pdfkeywords={NGSOTI, EU Project, Deliverable, Cybersecurity},
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+% Set up the header and footer
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[L]{NGSOTI – Project: 101127921 —  DIGITAL-ECCC-2022-CYBER-03}
+\fancyfoot[C]{\delivtitle{} - Page \thepage/\pageref{LastPage}}
+
+% Title page setup
+\title{
+    \Huge \textbf{\delivtitle} \\[0.5cm]
+    \includegraphics[width=0.3\textwidth]{img/ngsoti.eps}
+    \hspace{1cm}
+    \includegraphics[width=0.3\textwidth]{img/eu_funded_en.eps}
+}
+\author{\textbf{TEAM NGSOTI}}
+\date{\delivdate}
+
+% Document starts here
+\begin{document}
+
+% Title page
+\maketitle
+\thispagestyle{empty} % Remove header and footer from the title page
+
+% Table of contents
+\newpage
+\tableofcontents
+\newpage
+\section*{Disclaimer}
+Co-funded by the European Union. Views and opinions expressed are however those of the author(s) only
+and do not necessarily reflect those of the European Union or the European Cybersecurity Competence Centre. Neither
+the European Union nor the granting authority can be held responsible for them.
+% Main content
+\section*{Deliverable definition}
+The identifier of the deliverable is \textbf{D4.1} and it adheres to the definition outlined in the grant agreement written in \textbf{bold}. \textbf{Blog post of the NGSOTI architecture and exploitation  to collect data on d4-project.org}.
+
+\section*{Executive Summary}
+\addcontentsline{toc}{section}{Executive Summary}
+
+The blog post was published on \url{https://d4-project.org/2025/06/19/NGSOTI-Architecture-Overview.html}
+and is accessible via the above link. The content is included in this deliverable.
+
+
+\chapter{NGSOTI – Architecture Overview}
+The Next Generation SOC Training Infrastructure (NGSOTI) project is an open-source initiative to build realistic, reproducible SOC environments for training and education. It integrates mature open-source components with ReST APIs and OpenAPI specifications to ensure interoperability, scalability, and extensibility.
+
+This document aims to present a comprehensive overview of the NGSOTI architecture while also reflecting on the insights, feedback, and experience gained during the initial phase of the project.
+
+
+%TODO image 
+
+\section{Scope}
+
+The NGSOTI project is designed to replicate the day-to-day environment of a modern Security Operations Center (SOC) and provide trainees with the essential skills required to operate effectively in such settings. To achieve this, the training infrastructure must cover the core requirements of SOC analysts and incident responders:
+
+\begin{description}
+    \item [Log Management and Analysis] SOC analysts must be able to collect, normalise, store, and query large volumes of heterogeneous logs (endpoint, network, application, cloud). Training scenarios need to expose students to real log pipelines, from raw ingestion to search and correlation.
+    \item [ False-Positive Handling and Triage ] Analysts must learn to distinguish between benign anomalies and true security incidents. Training must include workflows for alert triage, suppression of recurring false positives, and case escalation.
+    \item [Detection Engineering] SOC teams are not only consumers of alerts but also creators of new detection rules. Training requires environments where students can experiment with creating, testing, and deploying new signatures, queries, or behavioural detections across different telemetry sources.
+    \item [Information Sharing and Collaboration] Modern SOCs rarely work in isolation. They rely on information exchange with other teams and communities. Exercises must therefore include mechanisms for sharing Indicators of Compromise (IOCs), Tactics, Techniques, and Procedures (TTPs), and incident reports in structured formats.
+    \item [Threat Intelligence Integration] To contextualise alerts and drive better decision-making, analysts need access to threat intelligence feeds and vulnerability information. Training environments must integrate open-source threat intelligence platforms (e.g., MISP) and vulnerability knowledge bases (e.g., Vulnerability-Lookup) to provide authentic enrichment and prioritisation workflows.
+\end{description}
+
+
+By embedding these requirements into the training scope, NGSOTI ensures that students are not only exposed to realistic datasets and tools, but also to the \textbf{operational processes} and textbf{analytical workflows} that define real-world SOC operations. This explains the architectural choices described in the following sections.
+
+\section{Purpose of the Architecture}
+
+NGSOTI addresses key challenges in SOC training:
+
+\begin{description}
+    \item [Infrastructure Access:] Many training centers/universities lack resources to simulate SOC environments.
+    Integration with Modern Tooling: SOC tools evolve quickly; training must adapt.
+    \item [Reusable Exercises:] Scenarios must be standardised (via CEXF) for replay and sharing.
+    \item [Accessible Datasets:] Trainees should work with realistic telemetry and dataset from real-world sources.
+\end{description}
+
+\section{Layered Design}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+\textbf{Layer} & \textbf{Components} \\
+\hline
+Trainee \& Instructor & SkillAegis \\
+\hline
+Telemetry & Kunai, Zeek, Suricata, Sysmon \\
+\hline
+Data Pipeline & Tenzir, Poppy \\
+\hline
+Threat \& Vulnerability Intelligence & MISP, Vulnerability-Lookup \\
+\hline
+Collection & D4 Project, Honeypots, Network Telescope \\
+\hline
+Storage & NFS, S3 / MinIO \\
+\hline
+Analyst Tooling & FlowIntel, RTIR, Wazuh dashboards \\
+\hline
+Dark Web \& OSINT & AIL \\
+\hline
+Forensics \& Enrichment & Lookyloo, Typo-squatting finder, Pandora \\
+\hline
+Sharing & Cerebrate \\
+\hline
+\end{tabularx}
+\caption{Overview of layers and their associated components}
+\label{tab:layers-components}
+\end{table}
+
+\section{Component Details}
+
+It is important to note that the components described in this section
+represent the \textbf{current set of integrated tools}, but the architecture is
+not limited to these specific projects. The NGSOTI stack is intentionally
+designed to be \textbf{modular and extensible}, making it possible to replace,
+extend, or complement components as new tools and technologies emerge. This
+means that future iterations of the architecture document can evolve to
+incorporate additional open-source projects, new detection capabilities, or
+alternative analyst platforms, while still adhering to the same design
+principles of interoperability, open standards, and reproducibility.
+
+\subsection{SkillAegis \& CEXF}
+\begin{description}
+  \item[Purpose:] Web portal for instructors and trainees. Defines and executes
+exercises in \textbf{Common Exercise Format (CEXF)}. Provides live scoreboard and feedback.
+  \item[Inputs:] Exercise definitions (JSON), datasets, injects.
+  \item[Outputs:] Exercise deployment instructions, scoreboard updates.
+  \item[APIs:] ReST API (OpenAPI).
+    \begin{itemize}
+        \item ReST API (OpenAPI)
+    \end{itemize}
+  \item[Integration:] Pulls case status from FlowIntel, IOC/CVE
+artefacts from MISP, and telemetry triggers from Tenzir.
+\end{description}
+
+
+% End of document
+\end{document}
+
