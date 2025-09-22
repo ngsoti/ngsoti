@@ -212,7 +212,7 @@ principles of interoperability, open standards, and reproducibility.
     \begin{itemize}
         \item ReST API (OpenAPI)
     \end{itemize}
-  \item[Integration:] Pulls case status from FlowIntel, IOC/CVE
+  \item[Integration:] Pulls case status from FlowIntel \cite{flowintel}, IOC/CVE
 artefacts from MISP, and telemetry triggers from Tenzir.
 \end{description}
 
@@ -225,7 +225,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Inputs:] Kernel-level telemetry.
   \item[Outputs:] JSON structured logs (syscalls, processes, sockets, files).
   \item[APIs:] gRPC \& ReST endpoints to push events into pipelines. Online
-       sandbox available at \url{https://sandbox.kunai.rocks/}.
+       sandbox\cite{sandbox} available at \url{https://sandbox.kunai.rocks/}.
   \item[Integration:] Feeds events directly into Tenzir for enrichment and
        storage or MISP event.
 \end{description}
@@ -282,7 +282,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Purpose:] Bloom filter engine for efficient set membership testing.
   \item[Inputs:] IOC sets (IP, hash, domain).
   \item[Outputs:] Boolean match/no-match on streaming telemetry.
-  \item[APIs:] Library.
+  \item[APIs:] Library\cite{poppy}.
   \item[Integration:] Embedded in Tenzir pipelines for inline detection.
 \end{description}
 
@@ -294,7 +294,11 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   misp-modules.
   \item[Inputs:] IOCs from AIL, Lookyloo, Pandora, Cerebrate, external feeds.
   \item[Outputs:] Events, correlations, sightings, enriched attributes.
-  \item[APIs:] ReST API (OpenAPI). Feed sync APIs for federation.
+  \item[APIs:]
+    \begin{itemize}
+        \item ReST API (OpenAPI)\cite{mopenapi}.
+        \item Feed sync APIs for federation.
+    \end{itemize}
   \item[Integration:] Queried by Tenzir for enrichment. Injects IOCs/CVEs
   into SkillAegis exercises. Synced across training centers via Cerebrate.
 \end{description}
@@ -305,7 +309,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   predictions.
   \item[Inputs:] NVD CVE feeds, vendor advisories, predictive datasets.
   \item[Outputs:] Vulnerability metadata, risk scores, exploit predictions.
-  \item[APIs:] ReST API (OpenAPI).
+  \item[APIs:] ReST API (OpenAPI)\cite{vopenapi}.
   \item[Integration:] Queried by Tenzir for contextual enrichment. Linked into
   FlowIntel cases. Provides CVE injection for SkillAegis.
 \end{description}
@@ -325,7 +329,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Purpose:] Case management platform for SOC investigations.
   \item[Inputs:] Alerts from Tenzir, Wazuh dashboards, MISP correlations.
   \item[Outputs:] Cases, workflows, analyst notes.
-  \item[APIs:] ReST API (OpenAPI) for case lifecycle.
+  \item[APIs:] ReST API (OpenAPI) for case lifecycle \cite{fopenapi}.
   \item[Integration:] Linked to SkillAegis to update scoreboard. Receives
   MISP IOCs for case enrichment.
 \end{description}
@@ -335,7 +339,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Purpose:] Dark web \& OSINT collection framework.
   \item[Inputs:] Social networks, Tor hidden services, paste sites, leaks.
   \item[Outputs:] Extracted IOCs, credentials, malware samples.
-  \item[APIs:] ReST API --- AIL Framework API documentation.
+  \item[APIs:] ReST API \cite{aopenapi}.
   \item[Integration:] Feeds directly into MISP for correlation and exercise
   design. Alerts can be fed into FlowIntel.
 \end{description}
@@ -345,7 +349,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Purpose:] Web forensic capture and analysis tool.
   \item[Inputs:] URLs/domains.
   \item[Outputs:] DOM tree, tracker info, TLS certificates, screenshots.
-  \item[APIs:] ReST API, OpenAPI documentation.
+  \item[APIs:] ReST API, OpenAPI documentation. \cite{lopenapi}
   \item[Integration:] Enrichment service for MISP events and SkillAegis
   injects.
 \end{description}
@@ -355,7 +359,7 @@ artefacts from MISP, and telemetry triggers from Tenzir.
   \item[Purpose:] File/malware static analysis and enrichment framework.
   \item[Inputs:] Samples (executables, scripts, documents).
   \item[Outputs:] Behavioural analysis reports, indicators.
-  \item[APIs:] ReST API. pypandora API reference.
+  \item[APIs:] ReST API\cite{}. pypandora API reference\cite{papi}.
   \item[Integration:] Pushes enriched artefacts into MISP.
 \end{description}
 
