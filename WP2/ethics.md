@@ -55,8 +55,8 @@ the option that minimizes harm or compromise.
 
 ## Suggested CSIRTs / Incident Response Contacts
 
-- ** [CIRCL] **  https://circl.lu/contact/
-- ** [Restena CSIRT] **  https://www.restena.lu/en/csirt
+- **[CIRCL]**  https://circl.lu/contact/
+- **[Restena CSIRT]**  https://www.restena.lu/en/csirt
 
 This document is a **living resource**
 It may be updated periodically based on **observations, feedback, and lessons learned** during the NGOSTI activities.
