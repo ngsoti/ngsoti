@@ -109,5 +109,5 @@ Password: uni_lu_training
 - https://github.com/neolea/neolea-training-materials/tree/master/Forensic-course-for-university
 
 ## Module 7 - Kunai - EDR
-
+- [Kunai training materials](https://github.com/ngsoti/ngsoti/tree/main/training/kunai/teaching-master)
 
