@@ -1,63 +1,43 @@
-# CIRCL Beamer template
+# Introduction to Endpoint Visibility: Kunai for Threat Hunting
 
-## Description
+This repository contains the slides and materials for a **master-level course** on **Linux endpoint visibility** and the use of **Kunai** for threat hunting. The presentation introduces students to the limitations of traditional antivirus solutions and the importance of context-rich endpoint monitoring for effective incident response.
 
-A sleek Beamer template, ready for the future!
+---
 
-It uses the packages:
+## 📚 Course Overview
 
-- minted: for the code blocks (with Pygments).
-- awesomebox and fontawesome: modern icons and boxes.
+### Objectives
+By the end of this course, students will:
+- Understand the limitations of traditional antivirus software.
+- Learn the importance of **context** in incident response.
+- Explore the role of **endpoint visibility tools** in detecting and responding to advanced threats.
+- Get an introduction to **Kunai**, a Linux monitoring tool for threat hunting.
 
-You must have installed:
+---
 
-- texlive-latex-extra
-- texlive-fonts-extra
+## 🎯 Key Topics Covered
 
-A few slides have been created as examples.
+1. **How Antivirus Works (and Why It’s Not Enough)**
+   - Signature-based detection.
+   - Limitations against advanced threats.
 
-The default layout is 16:9, but you can adjust this easily.
+2. **The Role of Context in Incident Response**
+   - Why alerts without context are "just noise."
+   - Building an incident timeline.
 
+3. **Endpoint Visibility Tools**
+   - What they monitor (processes, files, network activity).
+   - Examples: `auditd`, `Kunai`, `Falco`, `Sysmon`.
 
-## Compile your presentation
+4. **Kunai: A Linux Monitoring Tool**
+   - Features: real-time event collection, JSON output, rule engine.
+   - Use cases for threat hunting and incident response.
 
-### Using `make`
+5. **Practical Considerations**
+   - Logging policies, performance impact, and signal-to-noise ratio.
+   - Combining AV with endpoint visibility for layered defense.
 
-Simply use the provided Makefile. Example:
+---
 
-```bash
-$ make
-.
-.
-.
-Output written on presentation.pdf (9 pages, 321589 bytes).
-Transcript written on presentation.log.
-```
-
-The ``-shell-escape`` option, required for using Minted, is automatically included in ``LATEX_FLAGS``.
-
-The required LaTeX style files are located in the styles folder, and the Makefile handles this configuration.
-
-### Using `latexmk`
-
-`latexmk` is a Perl script designed to automate the process of building LaTeX documents. It is convenient to use when wanting to build the `.tex` file in 
-an **IDE** such as **vscode** with **texlab** plugin.
-
-A `.latexmkrc` file is created within the template and includes `latexmk` options to build the project.
-
-```bash
-latexmk presentation.tex
-```
-
-If we need to **cleanup** build files using `latexmk`
-
-```
-latexmk -c
-```
-
-## Contribution
-
-Do not hesitate to contribute to this template !
-
-
-## License
+## 📝 Prerequisites
+- Basic knowledge of **Linux systems** and **cybersecurity concepts**.
