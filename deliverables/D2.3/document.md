@@ -214,7 +214,9 @@ TO ANALYSE
 ![](http://hdoc.csirt-tooling.org/uploads/upload_45efbd2d789d43d5ad308da6194c35ce.png)
 
 MISCONFIG
-![](http://hdoc.csirt-tooling.org/uploads/upload_cf8e5f858174412541b121f0b940f2a4.png)
+
+
+![](http://hdoc.csirt-tooling.org/uploads/upload_4072d0d9f3a72eb9d8b7c5ca606fdf49.png)
 
 
 ### Anomalies investigation
@@ -242,7 +244,7 @@ For the first type of scan, it do a SNMP get request and ask the following gener
 * 1.3.6.1.2.1.4.22.1 ipNetToMediaTable
 Then finally the unknown regitered vendor 9999 oid
 * 1.3.6.1.2.1.9999.1.1.6.4.1
-
+* 
 This last scan may be related to microtiK os devices as documented [here](https://fossies.org/linux/opennms/features/enlinkd/tests/src/test/resources/linkd/nms102/mikrotik-192.168.0.1-walk.txt) And seems to allows determination of internal IP's.
 ```bash
 snmpwalk [redacted] -v1 -c public 1.3.6.1.2.1.9999.1.1.6.4.1 | head
@@ -260,10 +262,15 @@ The second scan is also a SNMP get request on; 
 For all the request, no payload are present.
 
 Example in c0bb49e788964718af4dfea4c0ab898c-2025-04-27-174644
-![](http://hdoc.csirt-tooling.org/uploads/upload_a40a19c1ccc3f3e12aacc687e9797daa.png)
+
+![](http://hdoc.csirt-tooling.org/uploads/upload_2bef7e1c9efbcaf612703bb99a4cc4a8.png)
+![](http://hdoc.csirt-tooling.org/uploads/upload_1e581d01dfc76ae96bfe7a865755fe6c.png)
+
 
 Example in c0bb49e788964718af4dfea4c0ab898c-2025-03-16-011212
-![](http://hdoc.csirt-tooling.org/uploads/upload_02013d5831e6aec2a922a4f8cbf2299c.png)
+![](http://hdoc.csirt-tooling.org/uploads/upload_35a30ee610d25de9c99ac555a0e502e7.png)
+![](http://hdoc.csirt-tooling.org/uploads/upload_dc9a8d91d38b389644571599512a7881.png)
+![](http://hdoc.csirt-tooling.org/uploads/upload_4072d0d9f3a72eb9d8b7c5ca606fdf49.png)
 
 This schema is observable for all destination IP's.
 
