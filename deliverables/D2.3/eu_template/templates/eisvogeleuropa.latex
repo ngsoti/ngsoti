@@ -89,6 +89,7 @@ $if(titlepage-logo-partner)$
 $endif$
 
 
+
 % add backlinks to footnote references, cf. https://tex.stackexchange.com/questions/302266/make-footnote-clickable-both-ways
 $if(footnotes-disable-backlinks)$
 $else$
@@ -127,6 +128,16 @@ $endif$
 \date{$date$}
 
 $eisvogel-addedeuropa.latex()$
+
+\makeatletter
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{%
+  \oldparagraph{#1}%
+    \mbox{}\\[0.7em]%
+    }
+    \makeatother
+
+
 
 \begin{document}
 
