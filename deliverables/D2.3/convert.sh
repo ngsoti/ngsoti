@@ -1,8 +1,8 @@
 #!/bin/bash
 # Usage: ./getmd.sh https://your-hedgedoc/note-id
 URL="$1"
-DOCUMENT="document"
 
+DOCUMENT="Deliverable_D2_3"
 
 # Remove trailing slash AND trailing '#'
 URL="${URL%/}"
@@ -21,4 +21,4 @@ pandoc $DOCUMENT.md --columns=10  --pdf-engine=xelatex -V colorlinks=true -V lin
 # --lua-filter=table-nowrap.lua --extract-media ./picts
 rm mermaid-filter.err
 echo "$DOCUMENT.pdf generated"
-
+evince "$DOCUMENT.pdf"
