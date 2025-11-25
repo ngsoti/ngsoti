@@ -58,14 +58,15 @@ $if(titlepage)$
 
     % --- Logos A et B sur la même ligne ---
     $if(titlepage-logo-a)$
-    $if(titlepage-logo-b)$
     \includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo-a$}
-    \hspace{4em}
-    \includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo-b$}
     $endif$
+    \vskip 2em
+    % --- Logo B centré dessous ---
+    $if(titlepage-logo-b)$
+    \includegraphics[width=$if(logo-widthb)$$logo-widthb$$else$35mm$endif$]{$titlepage-logo-b$}
     $endif$
 
-    \vskip 2em
+    \vskip 3em
 
     % --- Logo C centré dessous ---
     $if(titlepage-logo-c)$
