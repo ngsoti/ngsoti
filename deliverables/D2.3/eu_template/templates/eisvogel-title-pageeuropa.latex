@@ -69,7 +69,7 @@ $if(titlepage)$
 
     % --- Logo C centré dessous ---
     $if(titlepage-logo-c)$
-    \includegraphics[width=$if(logo-width)$$logo-width$$else$35mm$endif$]{$titlepage-logo-c$}
+    \includegraphics[width=$if(logo-widthc)$$logo-widthc$$else$35mm$endif$]{$titlepage-logo-c$}
     $endif$
 
 \end{minipage}
