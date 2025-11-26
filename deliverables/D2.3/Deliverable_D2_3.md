@@ -3,8 +3,9 @@ tags: ngsoti
 subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03   D2.3 - NGSOTI data key finding report #2"
 title: "Learning from large-scale IPv4 blackhole: Behavioral analysis of SNMP traffic"
 page-title: "Project: 101127921 — NGSOTI — DIGITAL-ECCC-2022-CYBER-03"
-author: [TLP:CLEAR - Team CIRCL/NGSOTI]
+author: [Team CIRCL/NGSOTI]
 date: "2025-11-30"
+tlp: "CLEAR"
 keywords: [threat intelligence, blackhole analysis, snmp]
 titlepage: true
 titlepage-logo-c: "./eu_template/logo-eufunded_eccc.png"
