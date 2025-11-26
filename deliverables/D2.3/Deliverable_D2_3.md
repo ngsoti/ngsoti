@@ -1,15 +1,17 @@
 ---
 tags: ngsoti
-title: "NGSOTI \\ Project: 101127921 \\ DIGITAL-ECCC-2022-CYBER-03 \\  D2.3 - NGSOTI data key finding report #2 \\ Learning from large-scale IPv4 blackhole:<br> \\ Behavioral analysis of SNMP traffic"
+subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03   D2.3 - NGSOTI data key finding report #2"
+title: "Learning from large-scale IPv4 blackhole: Behavioral analysis of SNMP traffic"
 page-title: "Project: 101127921 — NGSOTI — DIGITAL-ECCC-2022-CYBER-03"
-author: [Team CIRCL/NGSOTI]
+author: [TLP:CLEAR - Team CIRCL/NGSOTI]
 date: "2025-11-30"
 keywords: [threat intelligence, blackhole analysis, snmp]
 titlepage: true
-titlepage-logo-a: "./eu_template/logo-eufunded.png"
-titlepage-logo-b: "./eu_template/logo-ngsoti.png"
-titlepage-logo-c: "./eu_template/logo-partners.png"
-logo-width: "42mm"
+titlepage-logo-c: "./eu_template/logo-eufunded_eccc.png"
+titlepage-logo-a: "./eu_template/logo-ngsoti.png"
+titlepage-logo-b: "./eu_template/logo-partners.png"
+logo-width: "35mm"
+logo-widthb: "126mm"
 logo-widthc: "126mm"
 footnotes-pretty: true
 toc-own-page: true
@@ -1017,23 +1019,24 @@ This analysis provides valuable insights and constitutes a meaningful contributi
 
 \pagebreak
 # References 
+[restena] [https://restena.lu/en/project/ngsoti](https://restena.lu/en/project/ngsoti) NGSOTI project overview  
+[networktelescope]: [https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf](https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf) Network Telescope Analysis  
+[rfc1918]: [https://datatracker.ietf.org/doc/html/rfc1918](https://datatracker.ietf.org/doc/html/rfc1918) Address Allocation for Private Internets  
+[suricata]: [https://suricata.io](https://suricata.io/) Suricata high performance, open source network analysis software.  
+[clickhouse]: [https://clickhouse.com/](https://clickhouse.com/) Clickhouse analytical database for observability  
+[canon]: [https://oip.manual.canon/USRMA-0219-zz-SS-enUS/contents/10040030.html](https://oip.manual.canon/USRMA-0219-zz-SS-enUS/contents/10040030.html) Canon default SNMP configuration.  
+[ipasn]: [https://github.com/D4-project/IPASN-History](https://github.com/D4-project/IPASN-History) CIRCL D4 project IPASN-History   
+[cisco]: [https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/7282-12.html](https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/7282-12.html) Cisco devices management documentation.   
+[oid]: [https://support.huawei.com/enterprise/en/doc/EDOC1100126900/861a99d5/obtaining-device-information-through-snmp-get](https://support.huawei.com/enterprise/en/doc/EDOC1100126900/861a99d5/obtaining-device-information-through-snmp-get) Huawei devices device information.  
+[mikrotik]: [https://fossies.org/linux/opennms/features/enlinkd/tests/src/test/resources/linkd/nms102/mikrotik-192.168.0.1-walk.txt](https://fossies.org/linux/opennms/features/enlinkd/tests/src/test/resources/linkd/nms102/mikrotik-192.168.0.1-walk.txt) Mikrotik SNMPWALK sample  
+[vt]: [https://www.virustotal.com/gui/file/aa518f13570fa2eec0fc3a4dd5ff0a7438fff5491d6e0650c94520651b02f456/content](https://www.virustotal.com/gui/file/aa518f13570fa2eec0fc3a4dd5ff0a7438fff5491d6e0650c94520651b02f456/content) Second stage RONDODOX dropper.  
+[rondodox]:[https://www.trendmicro.com/en_us/research/25/j/rondodox.html](https://www.trendmicro.com/en_us/research/25/j/rondodox.html) Trend Micro report on Rondodox campaign  
+[nessus]:[https://www.tenable.com/products/nessus](https://www.tenable.com/products/nessus) Nessus Scanner  
+[mispwl]: [https://github.com/MISP/misp-warninglists](https://github.com/MISP/misp-warninglists) Mips Warning lists  
 
-restena [https://restena.lu/en/project/ngsoti](https://restena.lu/en/project/ngsoti) NGSOTI project overview
-[networktelescope]: [https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf](https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf) Network Telescope Analysis
-[rfc1918]: [https://datatracker.ietf.org/doc/html/rfc1918](https://datatracker.ietf.org/doc/html/rfc1918) Address Allocation for Private Internets
-[suricata]: [https://suricata.io](https://suricata.io/) Suricata high performance, open source network analysis software.
-[clickhouse]: [https://clickhouse.com/](https://clickhouse.com/) Clickhouse analytical database for
-observability
-[canon]: [https://oip.manual.canon/USRMA-0219-zz-SS-enUS/contents/10040030.html](https://oip.manual.canon/USRMA-0219-zz-SS-enUS/contents/10040030.html) Canon default SNMP configuration.
-[ipasn]: [https://github.com/D4-project/IPASN-History](https://github.com/D4-project/IPASN-History) CIRCL D4 project IPASN-History 
-[cisco]: [https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/7282-12.html](https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/7282-12.html) Cisco devices management documentation. 
-[oid]: [https://support.huawei.com/enterprise/en/doc/EDOC1100126900/861a99d5/obtaining-device-information-through-snmp-get](https://support.huawei.com/enterprise/en/doc/EDOC1100126900/861a99d5/obtaining-device-information-through-snmp-get) Huawei devices device information.
-[mikrotik]: [https://fossies.org/linux/opennms/features/enlinkd/tests/src/test/resources/linkd/nms102/mikrotik-192.168.0.1-walk.txt](https://fossies.org/linux/opennms/features/enlinkd/tests/src/test/resources/linkd/nms102/mikrotik-192.168.0.1-walk.txt) Mikrotik SNMPWALK sample
-[vt]: [https://www.virustotal.com/gui/file/aa518f13570fa2eec0fc3a4dd5ff0a7438fff5491d6e0650c94520651b02f456/content](https://www.virustotal.com/gui/file/aa518f13570fa2eec0fc3a4dd5ff0a7438fff5491d6e0650c94520651b02f456/content) Second stage RONDODOX dropper.
-[rondodox]:[https://www.trendmicro.com/en_us/research/25/j/rondodox.html](https://www.trendmicro.com/en_us/research/25/j/rondodox.html) Trend Micro report on Rondodox campaign
-[nessus]:[https://www.tenable.com/products/nessus](https://www.tenable.com/products/nessus) Nessus Scanner
-[mispwl]: [https://github.com/MISP/misp-warninglists](https://github.com/MISP/misp-warninglists) Mips Warning lists
---------
+
+
+
 [^restena]: [https://restena.lu/en/project/ngsoti](https://restena.lu/en/project/ngsoti) NGSOTI project overview
 [^networktelescope]: [https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf](https://circl.lu/assets/files/circl-blackhole-honeynetworkshop2014.pdf) Network Telescope Analysis
 [^rfc1918]: [https://datatracker.ietf.org/doc/html/rfc1918](https://datatracker.ietf.org/doc/html/rfc1918) Address Allocation for Private Internets
