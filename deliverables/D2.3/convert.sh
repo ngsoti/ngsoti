@@ -27,7 +27,20 @@ if echo "$CONTENT" | grep -qi "<html"; then
         echo "$CONTENT" > $DOCUMENT.md
         echo "Downloaded as $DOCUMENT.md"
 
+echo -n "Generating..."
 pandoc $DOCUMENT.md --columns=10  --pdf-engine=xelatex -V colorlinks=true -V linkcolor=blue  -V urlcolor=red  -V toccolor=gray --number-sections -V toc-own-page=true -V footnotes-pretty=true -V table-use-row-color=true --template eisvogeleuropa  -o ./$DOCUMENT.pdf -F mermaid-filter --toc --lof --data-dir=./eu_template --extract-media=./picts --reference-links=true
 # rm mermaid-filter.err
 echo "$DOCUMENT.pdf Generated"
+
+# http://hdoc.csirt-tooling.org/uploads/upload_
+# Sed document with local file
+
+ROOTURL=`echo $URL| cut -d / -f 3`
+SEDURL="https://${ROOTURL}/uploads/upload_"
+echo $ROOTURL
+sed "s|$SEDURL|./picts/|g" "$DOCUMENT.md" > tmp.md
+SEDURL="http://${ROOTURL}/uploads/upload_"
+sed "s|$SEDURL|./picts/|g" tmp.md > "$DOCUMENT.md"
+rm tmp.md
 evince "$DOCUMENT.pdf"
+
