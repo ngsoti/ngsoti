@@ -127,20 +127,18 @@ These metadata extracted by Suricata were ingested into [ClickHouse](https://cli
 
 The final data lake contains the following structure; 
 
-**THIS EXPORT SHOULD BE UPDATED ONCE IMPORT FINISHED**
-
 ```
     ┌─name──────┬─compressed_size─┬─uncompressed_size─┬──ratio─┐
- 1. │ version   │ 18.75 MiB       │ 61.78 MiB         │    3.3 │
- 2. │ file      │ 19.64 MiB       │ 4.49 GiB          │ 234.37 │
- 3. │ dest_ip   │ 123.48 MiB      │ 468.34 MiB        │   3.79 │
- 4. │ src_ip    │ 83.98 MiB       │ 436.18 MiB        │   5.19 │
- 5. │ oids      │ 161.12 MiB      │ 1.67 GiB          │   10.6 │
- 6. │ src_port  │ 45.64 MiB       │ 61.78 MiB         │   1.35 │
- 7. │ rtype     │ 40.92 MiB       │ 422.14 MiB        │  10.32 │
- 8. │ dest_port │ 525.22 KiB      │ 61.78 MiB         │ 120.44 │
- 9. │ community │ 7.27 MiB        │ 214.04 MiB        │  29.44 │
-10. │ timestamp │ 6.34 MiB        │ 123.55 MiB        │  19.48 │
+ 1. │ version   │ 345.82 MiB      │ 1.18 GiB          │    3.5 │
+ 2. │ file      │ 386.29 MiB      │ 87.98 GiB         │ 233.21 │
+ 3. │ dest_ip   │ 2.39 GiB        │ 8.89 GiB          │   3.72 │
+ 4. │ src_ip    │ 1.71 GiB        │ 8.42 GiB          │   4.93 │
+ 5. │ oids      │ 3.15 GiB        │ 36.20 GiB         │   11.5 │
+ 6. │ src_port  │ 950.56 MiB      │ 1.18 GiB          │   1.27 │
+ 7. │ rtype     │ 662.99 MiB      │ 7.82 GiB          │  12.07 │
+ 8. │ dest_port │ 11.71 MiB       │ 1.18 GiB          │ 103.31 │
+ 9. │ community │ 188.44 MiB      │ 4.07 GiB          │  22.13 │
+10. │ timestamp │ 151.82 MiB      │ 2.36 GiB          │  15.93 │
     └───────────┴─────────────────┴───────────────────┴────────┘
 ```
 * `version`, is the SNMP version could be 1,2 or 3.
