@@ -1573,6 +1573,8 @@ subset at stable rhythms against a single destination, aligning with
 lightweight, recurring host-monitoring loops retrieving fixed system
 metrics.
 
+\pagebreak
+
 # Future Work
 
 This analysis opens several promising avenues for further research and
@@ -1665,7 +1667,7 @@ Second stage RONDODOX dropper.\
 \[rondodox\]:<https://www.trendmicro.com/en_us/research/25/j/rondodox.html>
 Trend Micro report on Rondodox campaign\
 \[nessus\]:<https://www.tenable.com/products/nessus> Nessus Scanner\
-\[mispwl\]: <https://github.com/MISP/misp-warninglists> Mips Warning
+\[mispwl\]: <https://github.com/MISP/misp-warninglists> MISP Warning
 lists
 
 [^1]: <https://restena.lu/en/project/ngsoti> NGSOTI project overview
@@ -1707,6 +1709,6 @@ lists
 
 [^14]: <https://www.tenable.com/products/nessus> Nessus Scanner
 
-[^15]: <https://github.com/MISP/misp-warninglists> Mips Warning lists
+[^15]: <https://github.com/MISP/misp-warninglists> MISP Warning lists
 
-[^16]: <https://github.com/MISP/misp-warninglists> Mips Warning lists
+[^16]: <https://github.com/MISP/misp-warninglists> MISP Warning lists
