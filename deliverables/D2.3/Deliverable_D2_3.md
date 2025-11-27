@@ -316,7 +316,7 @@ Many interesting insights emerge from this output:
 
 - Indonesia is the leading country in terms of packets emitted, just
   ahead of China, despite having 50 times fewer source IPs.
-- Palestine emitted 98 billion packets from only two IP addresses. This
+- Palestine emitted 98 million packets from only two IP addresses. This
   behavior is analyzed in the chapter *Anomalies Investigation /
   Palestinian Traffic*.
 
@@ -778,7 +778,7 @@ issuing SNMP queries.
 
 Commercials:
 
-- [Cencys](https://search.censys.io/) 96 Hosts
+- [Censys](https://search.censys.io/) 96 Hosts
 - [Shodan](https://www.shodan.io/) 50 Hosts
 - [Onyphe](https://www.onyphe.io/) 32 Hosts
 - [Internet Census](https://www.internet-census.org/home.html) 440 Hosts
@@ -1526,7 +1526,21 @@ traffic enables analysts to better understand protocol behaviors and to
 distinguish between benign background scanning and events that warrant
 closer investigation. Together, these outcomes strengthen analysts’
 ability to prioritize relevant signals and maintain effective
-situational awareness.
+situational.  
+Finally our analysis further demonstrates significant limitations in
+geolocation source of [identified commercial
+scanners](https://arxiv.org/pdf/2412.15696v1)[^17], revealing a
+pronounced U.S. predominance among scanning services. This bias
+introduces critical detection gaps for geofenced assets, as scanners
+disproportionately identify U.S.-based infrastructure while failing to
+accurately map non-U.S. geofenced assets.
+
+# Contacts
+
+Interested in collaborating on network network telescope data analysis,
+contributing datasets, or sharing your feedback and comments on our
+research? Contact us at info@circl.lu to explore partnerships, discuss
+potential collaborations, or provide insights.
 
 # References
 
@@ -1562,7 +1576,9 @@ Second stage RONDODOX dropper.
 Trend Micro report on Rondodox campaign  
 \[nessus\]:<https://www.tenable.com/products/nessus> Nessus Scanner  
 \[mispwl\]: <https://github.com/MISP/misp-warninglists> MISP Warning
-lists
+lists  
+\[arxiv\]: <https://arxiv.org/pdf/2412.15696v1> Unidentified scanners
+remains an open challenge for detection.
 
 [^1]: <https://restena.lu/en/project/ngsoti> NGSOTI project overview
 
@@ -1606,3 +1622,6 @@ lists
 [^15]: <https://github.com/MISP/misp-warninglists> MISP Warning lists
 
 [^16]: <https://github.com/MISP/misp-warninglists> MISP Warning lists
+
+[^17]: <https://arxiv.org/pdf/2412.15696v1> Unidentified scanners
+    remains an open challenge for detection.
