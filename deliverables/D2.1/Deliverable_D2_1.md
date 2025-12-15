@@ -1,6 +1,6 @@
 ---
 tags: ngsoti
-subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03   D2.1 - requirement analysis deliverable"
+subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03   D2.1"
 title: "Requirement analysis"
 page-title: "Project: 101127921 
  NGSOTI 
@@ -45,7 +45,7 @@ International
 
 The document is distributed as TLP:CLEAR.
 
-### Deliverable Definition
+## Deliverable Definition
 
 The identifier of the deliverable is D2.1 and it adheres to the
 definition outlined in the grant agreement **Public report with key
