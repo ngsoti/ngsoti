@@ -20,6 +20,7 @@ footnotes-pretty: true
 toc-own-page: true
 colorlinks: true
 header-includes:
+  - \usepackage{graphicx}
   - \usepackage[table]{xcolor}
   - \definecolor{lightgray}{gray}{0.95}
   - \usepackage{tabularx}
@@ -54,8 +55,7 @@ including its deployment and usage status**.
 
 This report outlines the progress and achievements of the NGSOTI
 project, aligning with the objectives and scope of the
-**DIGITAL-2022-CYBER-B-03 — Cybersecurity and Trust** call . The project
-aims to support the market uptake and dissemination of innovative
+[**DIGITAL-2022-CYBER-B-03 — Cybersecurity and Trust** call](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/digital/wp-call/2022/call-fiche_digital-eccc-2022-cyber-b-03_en.pdf) . The project aims to support the market uptake and dissemination of innovative
 cybersecurity solutions, with a particular focus on improving knowledge
 and auditing cybersecurity preparedness across the EU. The key outcomes
 and contributions of the project are as follows:
@@ -99,7 +99,7 @@ and contributions of the project are as follows:
 
 As part of our commitment to fostering market-ready innovative
 cybersecurity solutions, **Kunai** has been successfully adopted by the
-**Internet Storm Center (ISC)**, a division of the SANS Institute. ISC
+[**Internet Storm Center (ISC)**](https://isc.sans.edu/diary/Kunai+Keep+an+Eye+on+your+Linux+Hosts+Activity/31054), a division of the SANS Institute. ISC
 operates as a global cybersecurity monitoring and analysis center, known
 for its role in identifying and mitigating emerging threats. By
 leveraging Kunai, ISC has enhanced its diaries in analyzing and
@@ -199,7 +199,7 @@ above mentioned use cases within the NGSOTI project.
 - **Tutorial on OCSF Normalization**: To teach SOC operators how to
   standardize event data for subsequent analytics across multiple data
   sources, Tenzir published a tutorial that outlines the key steps in
-  great detail.
+  [great detail](https://docs.tenzir.com/tutorials/map-data-to-ocsf).
 
 - **Lookup Table Aggregations**: Tenzir’s lookup tables are a building
   block for several SecOps use cases. In addition to using them for
@@ -213,8 +213,7 @@ above mentioned use cases within the NGSOTI project.
   host-to-username, or any other mappings available in telemetry provide
   valuable context for entity-based reasoning.
 
-  Tenzir presented this feature along with various examples at Suricon
-  in November 2024.
+  Tenzir presented this feature along with [various examples at Suricon in November 2024](https://suricon.net/agenda-madrid/).
 
 - **OpenSearch/ElasticSearch and Splunk Support**: SOC operators often
   use a SIEM to analyze logs centrally. Since the mission of NGSOTI is
@@ -225,8 +224,7 @@ above mentioned use cases within the NGSOTI project.
 
 - **String Function Processing**: In order to support flexible
   dissection of string data that comes—among other tools—from MISP,
-  Tenzir added numerous functions for native string inspection and
-  transformation.
+  Tenzir added numerous functions for [native string inspection and transformation](https://docs.tenzir.com/tql2/functions#string).
 
   These functions are building block for the MISP integration, which
   requires receiving data via ZeroMQ, splitting strings at a space, and
@@ -758,8 +756,7 @@ conducted to promote the NGSOTI project or its components.
   presentation was delivered on the correlation between CSAF advisories
   and CVE data. The talk highlighted the practical applications of
   NGSOTI in automating vulnerability management workflows and improving
-  data interoperability in the field. Slides from the presentation will
-  soon be made available online .
+  data interoperability in the field. Slides from the presentation are [available online](https://web.archive.org/web/20250320071905/https://www.csaf.io/communitydays/) [PDF](https://www.vulnerability-lookup.org/files/events/2024/20241213-CSAF-Community-Days-2024.pdf)  .
 
 A project website on Projects Section on Restena website was setup in
 French and English. It can be visted at the following location
@@ -781,8 +778,8 @@ alt="NGSOTI Rollup" />
 
   - In September 2024, the integration between NGSOTI and the
     Vulnerability Lookup tool was showcased, emphasizing how it improves
-    the management and tracking of vulnerabilities .
+    the management and [tracking of vulnerabilities](https://www.linkedin.com/posts/cedricbonhomme_were-really-excited-to-unveil-vulnerability-lookup-activity-7274718611762561024-l43z/) .
 
   - Another post in September 2024 detailed how NGSOTI contributes to
     open-source cybersecurity and vulnerability management efforts,
-    promoting the project to the cybersecurity community .
+    promoting the project to the [cybersecurity community](https://www.linkedin.com/posts/cedricbonhomme_cybersecurity-vulnerabilitymanagement-opensource-activity-7267896221917237248-TIg7/) .
