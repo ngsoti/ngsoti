@@ -346,7 +346,7 @@ events.
 An attempt to port Microsoft [Sysmon to Linux](https://github.com/microsoft/SysmonForLinux) was made. However, the
 project suffers from several Linux-specific design flaws and has not
 seen maintenance since its release, making it unappealing for potential
-users. Other projects, such as **Tracee** and **Falco**, address Linux
+users. Other projects, such as **[Tracee](https://github.com/aquasecurity/tracee)** and **[Falco](https://github.com/falcosecurity/falco)**, address Linux
 security visibility issues but lack some key features offered by Sysmon,
 including threat-hunting capabilities and event correlation for root
 cause analysis.
@@ -375,17 +375,17 @@ more quickly.
 Some of the other contributions made under **NGSOTI** include:
 
 - Integration of numerous new security events, providing enhanced
-  visibility, analysis, and detection capabilities.
+  visibility, analysis, and [detection capabilities](https://www.misp-project.org/2024/04/19/Using-Your-MISP-IoCs-in-Kunai.html/).
 
-- File scanning using **Yara** rules for malicious file detection.
+- File scanning using **[Yara](https://virustotal.github.io/yara-x/)** rules for malicious file detection.
 
-- **Community-ID** support, enabling correlation between system logs and
-  network logs from tools like **Suricata** and **Zeek**.
+- **[Community-ID](https://github.com/corelight/community-id-spec)** support, enabling correlation between system logs and
+  network logs from tools like **[Suricata](https://suricata.io/)** and **[Zeek](https://zeek.org/)**.
 
 Finally, several production-readiness features have been implemented,
 such as automated installation and configuration and log rotation.
 Background tasks such as maintaining an up-to-date website and
-documentation, monitoring Linux kernel changes to reflect in the
+[documentation](https://why.kunai.rocks/), monitoring Linux kernel changes to reflect in the
 project, and refactoring code have also been undertaken to ensure the
 project’s long-term reliability and relevance.
 
@@ -402,7 +402,7 @@ To address this, NGSOTI extended and integrated the open-source tool
 Vulnerability Lookup, streamlining the process and improving operational
 efficiency.
 
-**Vulnerability-Lookup** is an open-source tool that facilitates the
+**[Vulnerability-Lookup](https://github.com/vulnerability-lookup/vulnerability-lookup)** is an open-source tool that facilitates the
 correlation of vulnerabilities from various sources, independent of
 their IDs, and streamlines Coordinated Vulnerability Disclosure (CVD)
 management. It serves as a collaborative platform where users can
@@ -468,17 +468,17 @@ diagram</figcaption>
 The virtual training environment hosted on **ngsoti1** is built around
 two main pieces of technology:
 
-- **LXC** is a container runtime for linux. It allows for the creation
+- **[LXC](https://linuxcontainers.org/)** is a container runtime for linux. It allows for the creation
   of containers holding the differents services used during trainings,
   as well as for the creation of a virtual network that users will use
   to connect to the differents services. The LXC infrastructure offers
   profiles that can be applied on newly created containers to easily
   create SSH admin access, and mount datasets from **ngsoti2**
 
-- **tailscale** is a VPN (Virtual Private Network) technology that
+- **[tailscale](https://tailscale.com/)** is a VPN (Virtual Private Network) technology that
   allows us to give access to the virtual network from anywhere where
   the tailscale client can run. In addition to tailscale, we run
-  **headscale** that is an open source project used to manage tailscale
+  **[headscale](https://headscale.net/stable/)** that is an open source project used to manage tailscale
   authentication.
 
 The virtual training infrastructure is accessible to trainers, trainees,
@@ -665,16 +665,13 @@ Key directions include:
 ## Malware Dataset
 
 One of NGOSTI’s objectives is to provide real data to its users, which
-includes the creation of a malware dataset . The malware-dataset
+includes the creation of a [malware dataset](https://helga.circl.lu/NGSOTI/malware-dataset) . The malware-dataset
 repository offers a collection of malware samples, primarily focused on
 Linux, designed for testing, evaluation, and research purposes. The
 dataset features a diverse range of samples, accompanied by detailed
 analyses to support understanding and improve detection methodologies.
 The process of dataset creation and analysis is documented in the blog
-post titled **Enhancing Detection Engineering with Automated Malware
-Sandboxing**. The repository is **open-source** and distributed under
-the permissive 2-clause BSD license, promoting collaboration and further
-development.
+post titled **Enhancing Detection Engineering with [Automated Malware Sandboxing](https://www.d4-project.org/2024/10/02/Enhancing-Detection-Engineering-with-Automated-Malware-Sandboxing.html)**. The repository is **open-source** and distributed under the permissive 2-clause BSD license, promoting collaboration and further development.
 
 ## NGSOTI Core Working Group Activities
 
@@ -692,11 +689,11 @@ data-reference="certlu">3.2</a>.
 
 | Date  |
 |-------|
-| 19/02 |
-| 29/04 |
-| 16/07 |
-| 12/09 |
-| 15/11 |
+| 19/02/2024 |
+| 29/04/2024 |
+| 16/07/2024 |
+| 12/09/2024 |
+| 15/11/2024 |
 
 CERT.LU meeting dates
 
@@ -718,13 +715,13 @@ conducted to promote the NGSOTI project or its components.
 
 - **July 2024:** An article was written discussing the outage caused by
   CrowdStrike earlier this year, using the incident to promote Kunai as
-  a reliable alternative for threat detection.
+  a [reliable alternative](https://www.circl.lu/pub/learning-from-falcon-sensor-outage/) for threat detection.
 
 - **August 2024:** The release of **SkillAegis v1.0.0** was announced on
   misp-project.org. The blog post includes a description of the features
-  in SkillAegis.
+  in [SkillAegis](https://www.misp-project.org/2024/08/14/SkillAegis-v1.0.0.html/).
 
-- **October 2024:** A blog article was released introducing a
+- **October 2024:** A [blog article](https://d4-project.org/2024/10/02/Enhancing-Detection-Engineering-with-Automated-Malware-Sandboxing.html) was released introducing a
   Kunai-based sandboxing system that can be used to detonate malware
   samples and collect Kunai traces. The system aims to ease and
   streamline the process of creating detection rules.
@@ -732,23 +729,21 @@ conducted to promote the NGSOTI project or its components.
 ### Conferences and Workshops
 
 - **June 10-14, 2024** Preliminary results of Blackhole data processing
-  activities were presented at the TNC’24 Future Talent Programme.
+  activities were [presented at the TNC’24 Future Talent Programme](https://community.geant.org/denim-latic).
 
-- **July 3-5, 2024:** A talk and workshop were conducted at the *Pass
-  the SALT 2024* conference in Lille, France. During the talk, we
+- **July 3-5, 2024:** A talk and workshop were conducted at the *[Pass the SALT 2024](https://cfp.pass-the-salt.org/pts2024/talk/TFJ3ST/)* conference in Lille, France. During the talk, we
   presented the latest updates to Kunai, and during the workshop, we
   provided hands-on exercises for attendees to understand the basics of
   Kunai and start building their own detection scenarios.
 
 - **October 10, 2024:** A presentation titled *Kunai: An Open-Source
-  Threat-Detection Tool for Linux* was delivered at the *LibreOffice
-  Conference 2024* during the Cyber Security track. The session provided
+  Threat-Detection Tool for Linux* was delivered at the *[LibreOffice Conference 2024](https://events.documentfoundation.org/libreoffice-conference-2024/talk/JVCY87/)* during the Cyber Security track. The session provided
   a high-level overview of Kunai’s development, key features, and
   practical applications, demonstrating how it enables organizations to
   better understand and respond to potential threats.
 
 - **October 22-24, 2024:** A lightning talk about Kunai was presented at
-  the *Hack.lu 2024* conference, a renowned platform for discussions on
+  the *[Hack.lu 2024](https://archive.hack.lu/hack-lu-2024/talk/KW9S7Z/)* conference, a renowned platform for discussions on
   cybersecurity and related technologies. This talk emphasized Kunai’s
   capabilities and its role in modern security monitoring.
 
