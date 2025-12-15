@@ -234,7 +234,7 @@ above mentioned use cases within the NGSOTI project.
 
 - **Community ID Computation**: In order t correlate network with
   endpoint events, Tenzir added a function to compute the Community ID
-  of a network flow.
+  of a [network flow](https://docs.tenzir.com/blog/unifying-network-and-endpoint-data-with-community-ids).
 
   Kunai also added a feature to support Community ID computation, making
   it now possible to correlate network data from Zeek and Suricata with
@@ -337,13 +337,13 @@ popularity, Linux systems dominate the server landscape, often hosting
 critical services such as web servers, databases, and many public
 systems accessible via the Internet. However, Linux security monitoring
 for SOCs frequently lacks the detailed visibility available on Windows
-systems, where free tools like Sysmon exist. SOC engineers often rely on
+systems, where free tools like [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) exist. SOC engineers often rely on
 audit logs or application logs to create detection scenarios, but these
 sources are not always security-focused and typically lack correlation
 capabilities necessary for understanding the occurrence of suspicious
 events.
 
-An attempt to port Microsoft Sysmon to Linux was made. However, the
+An attempt to port Microsoft [Sysmon to Linux](https://github.com/microsoft/SysmonForLinux) was made. However, the
 project suffers from several Linux-specific design flaws and has not
 seen maintenance since its release, making it unappealing for potential
 users. Other projects, such as **Tracee** and **Falco**, address Linux
