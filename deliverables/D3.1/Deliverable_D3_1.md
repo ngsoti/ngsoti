@@ -21,10 +21,11 @@ toc-own-page: true
 colorlinks: true
 lof: false
 header-includes:
-  - \usepackage{graphicx}
   - \usepackage[table]{xcolor}
-  - \usepackage{longtable}
   - \usepackage{pdflscape}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{graphicx}
   - \definecolor{lightgray}{gray}{0.95}
   - \let\OldLongtable\longtable
   - \let\OldEndLongtable\endlongtable
@@ -105,4 +106,26 @@ expanded to align with NGSOTI objectives. The commits listed under
 columns with the repository name ’misp-training’ are taken from the
 MISP-training GitHub repository3 .
 
-The list of commits related to trainings is shown in the table below.
+The list of commits related to trainings is shown in the table below including each commit reference in
+the GitHub link:
+
+| Date       | Repository      | Title                                                     | Commit |
+|------------|-----------------|-----------------------------------------------------------|--------|
+| 2025-03-19 | NGSOTI          | Introduction to Incident Response                         | [#1](https://github.com/NGSOTI/NGSOTI/commit/e4691c02f8598bde45d78b11076a3c72dfbf5a02) |
+| 2025-03-20 | NGSOTI          | Cryptography - Past and Present                           | [#2](https://github.com/NGSOTI/NGSOTI/commit/10d49a74ee373709d697d70cd3b285dcb03b7bee) |
+| 2024-01-31 | misp-training   | a.7-rest                                                  | [#3](https://github.com/MISP/misp-training/commit/ba9d72ad3ca550528cd6d7b5c63b599f7241f672) |
+| 2024-01-31 | misp-training   | a.7-restAPI                                               | [#4](https://github.com/MISP/misp-training/commit/3fca4fdc5c26a468d0c6c03bf8e026cdedff7cb8) |
+| 2024-04-12 | misp-training   | cheatsheet                                                | [#5](https://github.com/MISP/misp-training/commit/a84e06b1346c2365a1b5eb39fbbd66e010d08128) |
+| 2024-04-12 | misp-training   | MISP Data model overview-with-analyst-data                | [#6](https://github.com/MISP/misp-training/commit/fe271814ee846baf0d527a31cff6e09c09121505) |
+| 2024-04-15 | misp-training   | jupyter-notebooks                                         | [#7](https://github.com/MISP/misp-training/commit/f5e5a9cdaeb06f89a8ac0c87289be5aef75bbe15) |
+| 2024-05-16 | misp-training   | x.17-eu-attack-community                                  | [#8](https://github.com/MISP/misp-training/commit/0561d3524831dff6a3ae1839045b97252b7f75f0) |
+| 2024-05-20 | misp-training   | x.17-eu-attack-community                                  | [#9](https://github.com/MISP/misp-training/commit/861cf9a39a703300d02418633cfd028a451a7cf6) |
+| 2024-07-09 | misp-training   | 3.1-misp-modules                                          | [#10](https://github.com/MISP/misp-training/commit/ccc0eaa41ebb0a53fb742b5d353888f2d8263028) |
+| 2024-07-10 | misp-training   | a.7-rest-API                                              | [#11](https://github.com/MISP/misp-training/commit/91dcefa17bf800b4d993595db47e10af8b2da485) |
+| 2024-08-22 | misp-training   | exercises campaign-targeting-multiple-isacs               | [#12](https://github.com/MISP/misp-training/commit/af5e3218edc21bebd3fe57ede4ec2957ce8c2c76) |
+| 2024-09-06 | misp-training   | MISP Collaboration & Sharing - Rapid Fire of Features     | [#13](https://github.com/MISP/misp-training/commit/66d23e28ab747917fcddfa29fb6fa45482169915) |
+| 2024-10-02 | misp-training   | c-deployment                                              | [#14](https://github.com/MISP/misp-training/commit/2257fd57087d12624d3fa7e86a8cc9599c6b656f) |
+| 2024-11-19 | misp-training   | zz-misp-and-isacs                                         | [#15](https://github.com/MISP/misp-training/commit/5dc38486f64792b8f69455908e17947f1df8cea5) |
+| 2024-11-19 | misp-training   | zz-misp-and-isacs                                         | [#16](https://github.com/MISP/misp-training/commit/7b0a37acc97334590c2927794d89f6163deb25a7) |
+| 2024-11-20 | misp-training   | zz-misp-and-isacs                                         | [#17](https://github.com/MISP/misp-training/commit/34cc81f8e10ecf7fd0f3e31155e3da270f219512) |
+
