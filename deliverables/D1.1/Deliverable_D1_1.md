@@ -1,6 +1,6 @@
 ---
 tags: ngsoti
-subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03 D1.1 - NGSOTI Deployment Status Report #1"
+subtitle: "NGSOTI Project: 101127921 DIGITAL-ECCC-2022-CYBER-03 D1.1 - NGSOTI Deployement status report #1"
 title: "First-Year Status Overview"
 page-title: "Project: 101127921 
  NGSOTI 
@@ -20,13 +20,11 @@ footnotes-pretty: true
 toc-own-page: true
 colorlinks: true
 header-includes:
-  - \usepackage{graphicx}
   - \usepackage[table]{xcolor}
   - \definecolor{lightgray}{gray}{0.95}
   - \usepackage{tabularx}
   - \usepackage{pdflscape}
 ---
-
 # First-Year Status Overview
 
 ## Disclaimer
@@ -56,7 +54,8 @@ including its deployment and usage status**.
 
 This report outlines the progress and achievements of the NGSOTI
 project, aligning with the objectives and scope of the
-[**DIGITAL-2022-CYBER-B-03 — Cybersecurity and Trust** call](https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/digital/wp-call/2022/call-fiche_digital-eccc-2022-cyber-b-03_en.pdf) . The project aims to support the market uptake and dissemination of innovative
+**DIGITAL-2022-CYBER-B-03 — Cybersecurity and Trust** call . The project
+aims to support the market uptake and dissemination of innovative
 cybersecurity solutions, with a particular focus on improving knowledge
 and auditing cybersecurity preparedness across the EU. The key outcomes
 and contributions of the project are as follows:
@@ -65,7 +64,7 @@ and contributions of the project are as follows:
   training environment leveraging advanced technologies has been
   deployed to enhance cybersecurity capabilities for SMEs, public
   organizations, and educational institutions. The following advanced
-  technologies were utilized: **Headscale, LXC (Linux Containers)**. The NGSOTI project aims
+  technologies were utilized: **Headscale,LXC**. The NGSOTI project aims
   to rely on **open-source technology** to ensure scalability,
   innovation, and community collaboration. The following stakeholders
   used in 2024 NGSOTI, SMEs, educational institutions.
@@ -100,7 +99,7 @@ and contributions of the project are as follows:
 
 As part of our commitment to fostering market-ready innovative
 cybersecurity solutions, **Kunai** has been successfully adopted by the
-[**Internet Storm Center (ISC)**](https://isc.sans.edu/diary/Kunai+Keep+an+Eye+on+your+Linux+Hosts+Activity/31054), a division of the SANS Institute. ISC
+**Internet Storm Center (ISC)**, a division of the SANS Institute. ISC
 operates as a global cybersecurity monitoring and analysis center, known
 for its role in identifying and mitigating emerging threats. By
 leveraging Kunai, ISC has enhanced its diaries in analyzing and
@@ -147,15 +146,6 @@ indicating the state. States are represented as follows: “O” for
 ongoing, “P” for pending, and “C” for closed. The subsequent column
 summarizes the achievements, while the final column includes references
 to chapters in the report for further details.
-
-| Number | Description | State | State Achievements | Chapter |
-|--------|-------------|-------|--------------------|---------|
-| WP1.O1 | A first objective is to ensure that the work defined in this project is executed in a timely matter | O | The demand for training has exceeded initial projections, driven in part by upcoming regulations such as DORA and NIS2, set to take effect in 2025. The partial training infrastructure has been successfully utilized in these sessions. While the increased demand for training was successfully managed through the reallocation of resources, this did result in some delays to project management tasks. We are actively addressing these delays to ensure the project remains on track and aligned with our overall objectives.|
-| WP1.O2 | A second objective is that a smooth coordination between the partners is ensured | O |A real-time communication platform was established using Mat- termost technology. Monthly consortium meetings were held, subject to the availability of partners. A mailing list was setup and is operational. |
-| WP1.O3 | A third objective is that the necessary project management data is recorded to ensure the reporting towards the funding agency  | O | In the first month, with the support of the project officer, the necessary final documents were transmitted to the consortium to enable each partner to evaluate what to expect during formal project reviews. These topics were regularly discussed during consortium meetings. |
-| WP1.O4 | A fourth objective is to set up the agreements to use NGSOTI for teaching and research | O | A formal teaching agreement was signed with one institution, while two additional educational institutions joined the initiative in a less formal capacity. NGOSTI trainings are being delivered at these institutions, and the trainings are also listed in the training section. |
-
-: Work Package 1 – Objectives Achievements
 
 # Deployment Status
 
@@ -209,7 +199,7 @@ above mentioned use cases within the NGSOTI project.
 - **Tutorial on OCSF Normalization**: To teach SOC operators how to
   standardize event data for subsequent analytics across multiple data
   sources, Tenzir published a tutorial that outlines the key steps in
-  [great detail](https://docs.tenzir.com/tutorials/map-data-to-ocsf).
+  great detail.
 
 - **Lookup Table Aggregations**: Tenzir’s lookup tables are a building
   block for several SecOps use cases. In addition to using them for
@@ -223,7 +213,8 @@ above mentioned use cases within the NGSOTI project.
   host-to-username, or any other mappings available in telemetry provide
   valuable context for entity-based reasoning.
 
-  Tenzir presented this feature along with [various examples at Suricon in November 2024](https://suricon.net/agenda-madrid/).
+  Tenzir presented this feature along with various examples at Suricon
+  in November 2024.
 
 - **OpenSearch/ElasticSearch and Splunk Support**: SOC operators often
   use a SIEM to analyze logs centrally. Since the mission of NGSOTI is
@@ -234,7 +225,8 @@ above mentioned use cases within the NGSOTI project.
 
 - **String Function Processing**: In order to support flexible
   dissection of string data that comes—among other tools—from MISP,
-  Tenzir added numerous functions for [native string inspection and transformation](https://docs.tenzir.com/tql2/functions#string).
+  Tenzir added numerous functions for native string inspection and
+  transformation.
 
   These functions are building block for the MISP integration, which
   requires receiving data via ZeroMQ, splitting strings at a space, and
@@ -244,7 +236,7 @@ above mentioned use cases within the NGSOTI project.
 
 - **Community ID Computation**: In order t correlate network with
   endpoint events, Tenzir added a function to compute the Community ID
-  of a [network flow](https://docs.tenzir.com/blog/unifying-network-and-endpoint-data-with-community-ids).
+  of a network flow.
 
   Kunai also added a feature to support Community ID computation, making
   it now possible to correlate network data from Zeek and Suricata with
@@ -347,16 +339,16 @@ popularity, Linux systems dominate the server landscape, often hosting
 critical services such as web servers, databases, and many public
 systems accessible via the Internet. However, Linux security monitoring
 for SOCs frequently lacks the detailed visibility available on Windows
-systems, where free tools like [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) exist. SOC engineers often rely on
+systems, where free tools like Sysmon exist. SOC engineers often rely on
 audit logs or application logs to create detection scenarios, but these
 sources are not always security-focused and typically lack correlation
 capabilities necessary for understanding the occurrence of suspicious
 events.
 
-An attempt to port Microsoft [Sysmon to Linux](https://github.com/microsoft/SysmonForLinux) was made. However, the
+An attempt to port Microsoft Sysmon to Linux was made. However, the
 project suffers from several Linux-specific design flaws and has not
 seen maintenance since its release, making it unappealing for potential
-users. Other projects, such as **[Tracee](https://github.com/aquasecurity/tracee)** and **[Falco](https://github.com/falcosecurity/falco)**, address Linux
+users. Other projects, such as **Tracee** and **Falco**, address Linux
 security visibility issues but lack some key features offered by Sysmon,
 including threat-hunting capabilities and event correlation for root
 cause analysis.
@@ -385,17 +377,17 @@ more quickly.
 Some of the other contributions made under **NGSOTI** include:
 
 - Integration of numerous new security events, providing enhanced
-  visibility, analysis, and [detection capabilities](https://www.misp-project.org/2024/04/19/Using-Your-MISP-IoCs-in-Kunai.html/).
+  visibility, analysis, and detection capabilities.
 
-- File scanning using **[Yara](https://virustotal.github.io/yara-x/)** rules for malicious file detection.
+- File scanning using **Yara** rules for malicious file detection.
 
-- **[Community-ID](https://github.com/corelight/community-id-spec)** support, enabling correlation between system logs and
-  network logs from tools like **[Suricata](https://suricata.io/)** and **[Zeek](https://zeek.org/)**.
+- **Community-ID** support, enabling correlation between system logs and
+  network logs from tools like **Suricata** and **Zeek**.
 
 Finally, several production-readiness features have been implemented,
 such as automated installation and configuration and log rotation.
 Background tasks such as maintaining an up-to-date website and
-[documentation](https://why.kunai.rocks/), monitoring Linux kernel changes to reflect in the
+documentation, monitoring Linux kernel changes to reflect in the
 project, and refactoring code have also been undertaken to ensure the
 project’s long-term reliability and relevance.
 
@@ -412,7 +404,7 @@ To address this, NGSOTI extended and integrated the open-source tool
 Vulnerability Lookup, streamlining the process and improving operational
 efficiency.
 
-**[Vulnerability-Lookup](https://github.com/vulnerability-lookup/vulnerability-lookup)** is an open-source tool that facilitates the
+**Vulnerability-Lookup** is an open-source tool that facilitates the
 correlation of vulnerabilities from various sources, independent of
 their IDs, and streamlines Coordinated Vulnerability Disclosure (CVD)
 management. It serves as a collaborative platform where users can
@@ -478,17 +470,17 @@ diagram</figcaption>
 The virtual training environment hosted on **ngsoti1** is built around
 two main pieces of technology:
 
-- **[LXC](https://linuxcontainers.org/)** is a container runtime for linux. It allows for the creation
+- **LXC** is a container runtime for linux. It allows for the creation
   of containers holding the differents services used during trainings,
   as well as for the creation of a virtual network that users will use
   to connect to the differents services. The LXC infrastructure offers
   profiles that can be applied on newly created containers to easily
   create SSH admin access, and mount datasets from **ngsoti2**
 
-- **[tailscale](https://tailscale.com/)** is a VPN (Virtual Private Network) technology that
+- **tailscale** is a VPN (Virtual Private Network) technology that
   allows us to give access to the virtual network from anywhere where
   the tailscale client can run. In addition to tailscale, we run
-  **[headscale](https://headscale.net/stable/)** that is an open source project used to manage tailscale
+  **headscale** that is an open source project used to manage tailscale
   authentication.
 
 The virtual training infrastructure is accessible to trainers, trainees,
@@ -633,23 +625,21 @@ data-reference="deltrain">3.1</a>:
 
 NGSOTI training delivered in 2024
 
-</div>
-
-The public training sources are listed below. In the 'Training' column,
-publicly available training materials include a link to the repository where
-the material is hosted. For the other entries, only a description and focus
-is provided.
-
+The public training sources are listed below. In the ‘Training’ column,
+publicly available training materials include a link to the repository
+where the material is hosted. For the other entries, only a description
+and focus is provided.
 
 | Training | Description | Focus |
-|----------|-------------|-------|
-| [Kunai](https://github.com/ngsoti/ngsoti/tree/main/training/kunai) |This training provides a master-level introduction to Linux endpoint visibility and threat hunting using Kunai. It covers the limitations of traditional antivirus solutions, the importance of context-rich monitoring for effective incident response, and the role of endpoint visibility tools in detecting advanced threats. Through theoretical concepts and practical examples, participants are introduced to Kunai as a Linux monitoring solution for threat hunting and incident response. | This training focuses on the operational use of Kunai by SOC operators, covering its deployment for endpoint telemetry collection and its use in sandbox environments to analyze malicious behavior, enrich alerts, and support threat hunting and incident response activities. |
+|----|----|----|
+| [Kunai](https://github.com/ngsoti/ngsoti/tree/main/training/kunai) | This training provides a master-level introduction to Linux endpoint visibility and threat hunting using Kunai. It covers the limitations of traditional antivirus solutions, the importance of context-rich monitoring for effective incident response, and the role of endpoint visibility tools in detecting advanced threats. Through theoretical concepts and practical examples, participants are introduced to Kunai as a Linux monitoring solution for threat hunting and incident response. | This training focuses on the operational use of Kunai by SOC operators, covering its deployment for endpoint telemetry collection and its use in sandbox environments to analyze malicious behavior, enrich alerts, and support threat hunting and incident response activities. |
 | Incident Management | The incident management course provides an overview of incident management principles, explaining the various processes, roles, and responsibilities involved. It also covers crisis escalation procedures and coordination aspects. | During cyber incidents, SOC operators play a critical role, particularly in the collection of evidence and the implementation of mitigation measures. For this reason, it is essential that SOC operators are familiar with incident and crisis management methodologies, enabling them to operate effectively under pressure and coordinate efficiently during escalated situations. |
-| [Incident Response](https://github.com/ngsoti/ngsoti/tree/main/training/incident-response/NGSOTI-Incident-Response) | The incident response training focuses on practical incident response activities in operational environments. It explains how evidence is collected, how CSIRTs analyze and use that evidence, and highlights common pitfalls observed during real-world incidents. The training also provides an overview of the NGSOTI tooling that can be used either online or locally within a SOC.| This training emphasizes the importance of preparatory actions for SOC operators, including ensuring that logging is correctly configured, logs can be effectively correlated, and data acquisition procedures are in place and ready to be executed during an incident. |
-| [Forensic](https://www.circl.lu/services/forensic-training-materials/) | This training includes slide decks, exercises, and disk images used in forensic analysis trainings such as post-mortem file system forensics—allowing learners to study presentation content and complete practical exercises on their own.  | This training focuses on enabling SOC operators to understand what is and is not possible in forensic analysis, including the types of data artifacts and indicators that can be revealed. It also emphasizes how forensic findings can be used to provide feedback to infrastructure teams, particularly by identifying potential weaknesses in system configurations and logging practices. |
-| [MISP](https://github.com/MISP/misp-training)  | This GitHub repository hosts the official MISP training materials, including slide decks and source content for courses on MISP usage, threat intelligence, OSINT, information sharing, and related topics. All materials are open-source and provided with LaTeX source code to support learning, customization, and contribution. |This training focuses on enabling SOC operators to understand what types of information particularly indicators of compromise (IOCs) are shared by other SOC teams and how to integrate this information into SOC activities such as detection, alerting, and blocking. It also demonstrates how SOC operators can effectively share relevant threat intelligence with other SOCs to support collaborative defense efforts.|
-| Phishing Lecture |  The Phishing Lecture provides an overview of phishing attacks, explaining common techniques used by attackers, how phishing campaigns are conducted, and how they can be detected and mitigated by SOC teams. It includes a phishing exercise to assess whether the audience is susceptible. | This lecture focuses on helping SOC operators recognize phishing techniques, analyze phishing emails and artifacts, and apply appropriate detection and mitigation measures. It emphasizes practical approaches to identifying indicators of phishing and supporting response and awareness activities within the organization.|
+| [Incident Response](https://github.com/ngsoti/ngsoti/tree/main/training/incident-response/NGSOTI-Incident-Response) | The incident response training focuses on practical incident response activities in operational environments. It explains how evidence is collected, how CSIRTs analyze and use that evidence, and highlights common pitfalls observed during real-world incidents. The training also provides an overview of the NGSOTI tooling that can be used either online or locally within a SOC. | This training emphasizes the importance of preparatory actions for SOC operators, including ensuring that logging is correctly configured, logs can be effectively correlated, and data acquisition procedures are in place and ready to be executed during an incident. |
+| [Forensic](https://www.circl.lu/services/forensic-training-materials/) | This training includes slide decks, exercises, and disk images used in forensic analysis trainings such as post-mortem file system forensics—allowing learners to study presentation content and complete practical exercises on their own. | This training focuses on enabling SOC operators to understand what is and is not possible in forensic analysis, including the types of data artifacts and indicators that can be revealed. It also emphasizes how forensic findings can be used to provide feedback to infrastructure teams, particularly by identifying potential weaknesses in system configurations and logging practices. |
+| [MISP](https://github.com/MISP/misp-training) | This GitHub repository hosts the official MISP training materials, including slide decks and source content for courses on MISP usage, threat intelligence, OSINT, information sharing, and related topics. All materials are open-source and provided with LaTeX source code to support learning, customization, and contribution. | This training focuses on enabling SOC operators to understand what types of information particularly indicators of compromise (IOCs) are shared by other SOC teams and how to integrate this information into SOC activities such as detection, alerting, and blocking. It also demonstrates how SOC operators can effectively share relevant threat intelligence with other SOCs to support collaborative defense efforts. |
+| Phishing Lecture | The Phishing Lecture provides an overview of phishing attacks, explaining common techniques used by attackers, how phishing campaigns are conducted, and how they can be detected and mitigated by SOC teams. | This lecture focuses on helping SOC operators recognize phishing techniques, analyze phishing emails and artifacts, and apply appropriate detection and mitigation measures. It emphasizes practical approaches to identifying indicators of phishing and supporting response and awareness activities within the organization. |
 
+</div>
 
 Starting in the second semester of the academic year 2024-2025, NGSOTI
 training activities will also be integrated into the Master in
@@ -691,13 +681,16 @@ Key directions include:
 ## Malware Dataset
 
 One of NGOSTI’s objectives is to provide real data to its users, which
-includes the creation of a [malware dataset](https://helga.circl.lu/NGSOTI/malware-dataset) . The malware-dataset
+includes the creation of a malware dataset . The malware-dataset
 repository offers a collection of malware samples, primarily focused on
 Linux, designed for testing, evaluation, and research purposes. The
 dataset features a diverse range of samples, accompanied by detailed
 analyses to support understanding and improve detection methodologies.
 The process of dataset creation and analysis is documented in the blog
-post titled **Enhancing Detection Engineering with [Automated Malware Sandboxing](https://www.d4-project.org/2024/10/02/Enhancing-Detection-Engineering-with-Automated-Malware-Sandboxing.html)**. The repository is **open-source** and distributed under the permissive 2-clause BSD license, promoting collaboration and further development.
+post titled **Enhancing Detection Engineering with Automated Malware
+Sandboxing**. The repository is **open-source** and distributed under
+the permissive 2-clause BSD license, promoting collaboration and further
+development.
 
 ## NGSOTI Core Working Group Activities
 
@@ -715,11 +708,11 @@ data-reference="certlu">3.2</a>.
 
 | Date  |
 |-------|
-| 19/02/2024 |
-| 29/04/2024 |
-| 16/07/2024 |
-| 12/09/2024 |
-| 15/11/2024 |
+| 19/02 |
+| 29/04 |
+| 16/07 |
+| 12/09 |
+| 15/11 |
 
 CERT.LU meeting dates
 
@@ -741,13 +734,13 @@ conducted to promote the NGSOTI project or its components.
 
 - **July 2024:** An article was written discussing the outage caused by
   CrowdStrike earlier this year, using the incident to promote Kunai as
-  a [reliable alternative](https://www.circl.lu/pub/learning-from-falcon-sensor-outage/) for threat detection.
+  a reliable alternative for threat detection.
 
 - **August 2024:** The release of **SkillAegis v1.0.0** was announced on
   misp-project.org. The blog post includes a description of the features
-  in [SkillAegis](https://www.misp-project.org/2024/08/14/SkillAegis-v1.0.0.html/).
+  in SkillAegis.
 
-- **October 2024:** A [blog article](https://d4-project.org/2024/10/02/Enhancing-Detection-Engineering-with-Automated-Malware-Sandboxing.html) was released introducing a
+- **October 2024:** A blog article was released introducing a
   Kunai-based sandboxing system that can be used to detonate malware
   samples and collect Kunai traces. The system aims to ease and
   streamline the process of creating detection rules.
@@ -755,21 +748,23 @@ conducted to promote the NGSOTI project or its components.
 ### Conferences and Workshops
 
 - **June 10-14, 2024** Preliminary results of Blackhole data processing
-  activities were [presented at the TNC’24 Future Talent Programme](https://community.geant.org/denim-latic).
+  activities were presented at the TNC’24 Future Talent Programme.
 
-- **July 3-5, 2024:** A talk and workshop were conducted at the *[Pass the SALT 2024](https://cfp.pass-the-salt.org/pts2024/talk/TFJ3ST/)* conference in Lille, France. During the talk, we
+- **July 3-5, 2024:** A talk and workshop were conducted at the *Pass
+  the SALT 2024* conference in Lille, France. During the talk, we
   presented the latest updates to Kunai, and during the workshop, we
   provided hands-on exercises for attendees to understand the basics of
   Kunai and start building their own detection scenarios.
 
 - **October 10, 2024:** A presentation titled *Kunai: An Open-Source
-  Threat-Detection Tool for Linux* was delivered at the *[LibreOffice Conference 2024](https://events.documentfoundation.org/libreoffice-conference-2024/talk/JVCY87/)* during the Cyber Security track. The session provided
+  Threat-Detection Tool for Linux* was delivered at the *LibreOffice
+  Conference 2024* during the Cyber Security track. The session provided
   a high-level overview of Kunai’s development, key features, and
   practical applications, demonstrating how it enables organizations to
   better understand and respond to potential threats.
 
 - **October 22-24, 2024:** A lightning talk about Kunai was presented at
-  the *[Hack.lu 2024](https://archive.hack.lu/hack-lu-2024/talk/KW9S7Z/)* conference, a renowned platform for discussions on
+  the *Hack.lu 2024* conference, a renowned platform for discussions on
   cybersecurity and related technologies. This talk emphasized Kunai’s
   capabilities and its role in modern security monitoring.
 
@@ -777,7 +772,8 @@ conducted to promote the NGSOTI project or its components.
   presentation was delivered on the correlation between CSAF advisories
   and CVE data. The talk highlighted the practical applications of
   NGSOTI in automating vulnerability management workflows and improving
-  data interoperability in the field. Slides from the presentation are [available online](https://web.archive.org/web/20250320071905/https://www.csaf.io/communitydays/) [PDF](https://www.vulnerability-lookup.org/files/events/2024/20241213-CSAF-Community-Days-2024.pdf)  .
+  data interoperability in the field. Slides from the presentation will
+  soon be made available online .
 
 A project website on Projects Section on Restena website was setup in
 French and English. It can be visted at the following location
@@ -799,8 +795,8 @@ alt="NGSOTI Rollup" />
 
   - In September 2024, the integration between NGSOTI and the
     Vulnerability Lookup tool was showcased, emphasizing how it improves
-    the management and [tracking of vulnerabilities](https://www.linkedin.com/posts/cedricbonhomme_were-really-excited-to-unveil-vulnerability-lookup-activity-7274718611762561024-l43z/) .
+    the management and tracking of vulnerabilities .
 
   - Another post in September 2024 detailed how NGSOTI contributes to
     open-source cybersecurity and vulnerability management efforts,
-    promoting the project to the [cybersecurity community](https://www.linkedin.com/posts/cedricbonhomme_cybersecurity-vulnerabilitymanagement-opensource-activity-7267896221917237248-TIg7/) .
+    promoting the project to the cybersecurity community .
