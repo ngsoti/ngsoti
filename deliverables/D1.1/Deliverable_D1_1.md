@@ -148,6 +148,15 @@ ongoing, “P” for pending, and “C” for closed. The subsequent column
 summarizes the achievements, while the final column includes references
 to chapters in the report for further details.
 
+| Number | Description | State | State Achievements | Chapter |
+|--------|-------------|-------|--------------------|---------|
+| WP1.O1 | A first objective is to ensure that the work defined in this project is executed in a timely matter | O | The demand for training has exceeded initial projections, driven in part by upcoming regulations such as DORA and NIS2, set to take effect in 2025. The partial training infrastructure has been successfully utilized in these sessions. While the increased demand for training was successfully managed through the reallocation of resources, this did result in some delays to project management tasks. We are actively addressing these delays to ensure the project remains on track and aligned with our overall objectives.|
+| WP1.O2 | A second objective is that a smooth coordination between the partners is ensured | O |A real-time communication platform was established using Mat- termost technology. Monthly consortium meetings were held, subject to the availability of partners. A mailing list was setup and is operational. |
+| WP1.O3 | A third objective is that the necessary project management data is recorded to ensure the reporting towards the funding agency  | O | In the first month, with the support of the project officer, the necessary final documents were transmitted to the consortium to enable each partner to evaluate what to expect during formal project reviews. These topics were regularly discussed during consortium meetings. |
+| WP1.O4 | A fourth objective is to set up the agreements to use NGSOTI for teaching and research | O | A formal teaching agreement was signed with one institution, while two additional educational institutions joined the initiative in a less formal capacity. NGOSTI trainings are being delivered at these institutions, and the trainings are also listed in the training section. |
+
+: Work Package 1 – Objectives Achievements
+
 # Deployment Status
 
 In the NGSOTI project, the consortium closely monitored the behavior and
