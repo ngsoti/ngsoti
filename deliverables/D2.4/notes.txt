@@ -1,0 +1,22 @@
+Deliverable name:  NGSOTI Sustainability Report
+Deliverable identifier: D2.3 
+
+
+Description: Report that is published with sustainability mechanisms to sustain NGSOTI such as Application Programming Interfaces documentation to move NGSOTI to European Cloud infrastructures
+
+
+
+Structure (Ideas to be evaluated)
+
+1. List European cloud infrastructures
+2. Extract which technologies they use
+3. Create a mapping with the NGSOTI technologies used
+4. Gap analysis  on how the NGOSTI tools can be deployed in cloud infrastructures
+(see how the tools can import / export data from the cloud infrastructures
+Focus on the installation part of the tools i.e. an image must be shiped, containers must be created a shell is available etc
+
+# Potential references:
+
+https://european-alternatives.eu/alternatives-to
+https://www.eucloud.tech/
+https://wire.com/en/blog/sovereign-cloud-eu-providers-challenges-opportunities#:~:text=Sovereign%20clouds%20require%20significant%20ongoing%20investment%20in,and%20enable%20real%2Dtime%20monitoring%20and%20automated%20reporting.
