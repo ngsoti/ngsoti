@@ -84,37 +84,29 @@ the MISP-training GitHub repository.
 The list of commits related to trainings is shown in the table below
 including each commit reference in the GitHub link:
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------
-  Date             Repository       Title                                                                                                   Commit
-  ---------------- ---------------- ------------------------------------------------ -------------------------------------------------------------
-  2024-12-12       misp-training    chg: \[exercises/spearphishing-exercise\] fixed     [#1](https://github.com/MISP/misp-training/commit/f844a18)
-                                    url of samples                                   
-
-  2024-12-15       misp-training    chg: \[exercises/flubot-exercise\] fixed sample     [#2](https://github.com/MISP/misp-training/commit/ccf380c)
-                                    url                                              
-
-  2025-04-16       misp-training    chg: \[b.6-automation\] improvements                [#3](https://github.com/MISP/misp-training/commit/04da244)
-
-  2025-04-25       misp-training    new:                                                [#4](https://github.com/MISP/misp-training/commit/469a3f1)
-                                    \[events:FIRSTCTI25_MISP_automation_workshop\]   
-                                    Added slides, custom modules and SkillAegis      
-                                    scenario                                         
-
-  2025-05-02       misp-training    new: \[c.0-current-state\] Added slide deck         [#5](https://github.com/MISP/misp-training/commit/c6b8f97)
-
-  2025-05-05       misp-training    add: \[complementary\] Updated Data model           [#6](https://github.com/MISP/misp-training/commit/3da0404)
-                                    overview in light color mode                     
-
-  2025-05-26       misp-training    \- chg \[NATO MUG\] presentation added              [#7](https://github.com/MISP/misp-training/commit/9f00da0)
-
-  2025-12-16       misp-training    Human Operated Ransomware pivot exercice            [#8](https://github.com/MISP/misp-training/commit/637028b)
-
-  2026-03-30       misp-training    new: \[election-guidelines\] First draft            [#9](https://github.com/MISP/misp-training/commit/e428233)
-
-  2026-03-30       misp-training    chg: \[election-guidelines\] Added AIL             [#10](https://github.com/MISP/misp-training/commit/ce0a6ed)
-
-  2026-03-30       misp-training    chg: \[election-guideline\] Added pdf              [#11](https://github.com/MISP/misp-training/commit/c7ddcbd)
-  ------------------------------------------------------------------------------------------------------------------------------------------------
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{center}
+\begin{tabular}{p{2.2cm}p{2.8cm}p{8.1cm}p{1.2cm}}
+\hline
+Date & Repository & Title & Commit \\
+\hline
+2024-12-12 & misp-training & chg: [exercises/spearphishing-exercise] fixed url of samples & \href{https://github.com/MISP/misp-training/commit/f844a18}{\#1} \\
+2024-12-15 & misp-training & chg: [exercises/flubot-exercise] fixed sample url & \href{https://github.com/MISP/misp-training/commit/ccf380c}{\#2} \\
+2025-04-16 & misp-training & chg: [b.6-automation] improvements & \href{https://github.com/MISP/misp-training/commit/04da244}{\#3} \\
+2025-04-25 & misp-training & new: [events:FIRSTCTI25\_MISP\_automation\_workshop] Added slides, custom modules and SkillAegis scenario & \href{https://github.com/MISP/misp-training/commit/469a3f1}{\#4} \\
+2025-05-02 & misp-training & new: [c.0-current-state] Added slide deck & \href{https://github.com/MISP/misp-training/commit/c6b8f97}{\#5} \\
+2025-05-05 & misp-training & add: [complementary] Updated Data model overview in light color mode & \href{https://github.com/MISP/misp-training/commit/3da0404}{\#6} \\
+2025-05-26 & misp-training & - chg [NATO MUG] presentation added & \href{https://github.com/MISP/misp-training/commit/9f00da0}{\#7} \\
+2025-12-16 & misp-training & Human Operated Ransomware pivot exercice & \href{https://github.com/MISP/misp-training/commit/637028b}{\#8} \\
+2026-03-30 & misp-training & new: [election-guidelines] First draft & \href{https://github.com/MISP/misp-training/commit/e428233}{\#9} \\
+2026-03-30 & misp-training & chg: [election-guidelines] Added AIL & \href{https://github.com/MISP/misp-training/commit/ce0a6ed}{\#10} \\
+2026-03-30 & misp-training & chg: [election-guideline] Added pdf & \href{https://github.com/MISP/misp-training/commit/c7ddcbd}{\#11} \\
+\hline
+\end{tabular}
+\end{center}
+\endgroup
 
 ## AIL
 
@@ -135,83 +127,35 @@ repository.
 The list of commits related to trainings is shown in the table below,
 including each commit reference in the GitHub link:
 
-  ------------------------------------------------------------------------------------------------------------------------
-  Date             Repository       Title                                                                           Commit
-  ---------------- ---------------- ------------------ -------------------------------------------------------------------
-  2024-12-10       ail-training     chg: \[ail-intro\]    [#1](https://github.com/ail-project/ail-training/commit/956e7e2)
-                                    features updated   
-
-  2024-12-10       ail-training     chg: \[quick          [#2](https://github.com/ail-project/ail-training/commit/1aa32b7)
-                                    intro\] updated    
-
-  2025-02-03       ail-training     chg: \[update\]       [#3](https://github.com/ail-project/ail-training/commit/e5a1244)
-                                    small update       
-
-  2025-02-03       ail-training     chg: \[update         [#4](https://github.com/ail-project/ail-training/commit/4d283c0)
-                                    introduction\] add 
-                                    ocr + qrcodes +    
-                                    barcodes           
-
-  2025-02-03       ail-training     chg:                  [#5](https://github.com/ail-project/ail-training/commit/65c8972)
-                                    \[introduction\]   
-                                    update             
-                                    ail-internal       
-
-  2025-05-22       ail-training     chg: \[short          [#6](https://github.com/ail-project/ail-training/commit/8feffa9)
-                                    intro\] update     
-
-  2025-05-22       ail-training     chg: \[short          [#7](https://github.com/ail-project/ail-training/commit/196cbaf)
-                                    intro\] add search 
-                                    screenshot         
-
-  2025-05-22       ail-training     chg: \[short\]        [#8](https://github.com/ail-project/ail-training/commit/61a81a5)
-                                    image missing      
-
-  2025-05-22       ail-training     chg: \[training\]     [#9](https://github.com/ail-project/ail-training/commit/6899f8b)
-                                    ail-training       
-                                    updated            
-
-  2025-07-16       ail-training     chg: \[short         [#10](https://github.com/ail-project/ail-training/commit/90df6d9)
-                                    intro\] migate     
-                                    latex              
-
-  2025-07-16       ail-training     chg: \[ail short     [#11](https://github.com/ail-project/ail-training/commit/754d9f5)
-                                    intro\] add ail    
-                                    internal           
-
-  2025-07-16       ail-training     chg: \[ail short     [#12](https://github.com/ail-project/ail-training/commit/560fae8)
-                                    intro\] remove old 
-                                    slide              
-
-  2025-07-16       ail-training     chg: \[intro\]       [#13](https://github.com/ail-project/ail-training/commit/5bcad57)
-                                    migrate latex      
-
-  2025-07-16       ail-training     chg: \[intro\]       [#14](https://github.com/ail-project/ail-training/commit/4fac428)
-                                    improve feeders    
-                                    section            
-
-  2025-07-17       ail-training     new: \[Art of        [#15](https://github.com/ail-project/ail-training/commit/73376fb)
-                                    Pivoting\] New     
-                                    version added for  
-                                    VSS 2025 training  
-
-  2025-07-17       ail-training     chg: \[short         [#16](https://github.com/ail-project/ail-training/commit/74350f9)
-                                    intro\] add onion  
-                                    lookup + images    
-                                    descriptions       
-
-  2025-07-17       ail-training     chg: \[short         [#17](https://github.com/ail-project/ail-training/commit/f919281)
-                                    intro\] Ongoing    
-                                    Developments       
-
-  2026-02-24       ail-training     chg: \[short         [#18](https://github.com/ail-project/ail-training/commit/53b24b1)
-                                    intro\] update     
-
-  2026-04-21       ail-training     chg: \[intro\]       [#19](https://github.com/ail-project/ail-training/commit/a2be145)
-                                    update AIL intro   
-
-  2026-04-21       ail-training     chg: \[intro\]       [#20](https://github.com/ail-project/ail-training/commit/9b406db)
-                                    rename short intro 
-                                    to                 
-                                    ail-introduction   
-  ------------------------------------------------------------------------------------------------------------------------
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.9}
+\setlength{\tabcolsep}{3pt}
+\begin{center}
+\begin{tabular}{p{2.0cm}p{2.5cm}p{8.3cm}p{1.1cm}}
+\hline
+Date & Repository & Title & Commit \\
+\hline
+2024-12-10 & ail-training & chg: [ail-intro] features updated & \href{https://github.com/ail-project/ail-training/commit/956e7e2}{\#1} \\
+2024-12-10 & ail-training & chg: [quick intro] updated & \href{https://github.com/ail-project/ail-training/commit/1aa32b7}{\#2} \\
+2025-02-03 & ail-training & chg: [update] small update & \href{https://github.com/ail-project/ail-training/commit/e5a1244}{\#3} \\
+2026-02-03 & ail-training & chg: [introduction] update ail-internal & \href{https://github.com/ail-project/ail-training/commit/65c8972}{\#5} \\
+2025-05-22 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/8feffa9}{\#6} \\
+2025-05-22 & ail-training & chg: [short intro] add search screenshot & \href{https://github.com/ail-project/ail-training/commit/196cbaf}{\#7} \\
+2025-05-22 & ail-training & chg: [short] image missing & \href{https://github.com/ail-project/ail-training/commit/61a81a5}{\#8} \\
+2025-05-22 & ail-training & chg: [training] ail-training updated & \href{https://github.com/ail-project/ail-training/commit/6899f8b}{\#9} \\
+2025-07-16 & ail-training & chg: [short intro] migate latex & \href{https://github.com/ail-project/ail-training/commit/90df6d9}{\#10} \\
+2025-07-16 & ail-training & chg: [ail short intro] add ail internal & \href{https://github.com/ail-project/ail-training/commit/754d9f5}{\#11} \\
+2025-07-16 & ail-training & chg: [ail short intro] remove old slide & \href{https://github.com/ail-project/ail-training/commit/560fae8}{\#12} \\
+2025-07-16 & ail-training & chg: [intro] migrate latex & \href{https://github.com/ail-project/ail-training/commit/5bcad57}{\#13} \\
+2025-07-16 & ail-training & chg: [intro] improve feeders section & \href{https://github.com/ail-project/ail-training/commit/4fac428}{\#14} \\
+2025-07-17 & ail-training & new: [Art of Pivoting] New version added for VSS 2025 training & \href{https://github.com/ail-project/ail-training/commit/73376fb}{\#15} \\
+2025-07-17 & ail-training & chg: [short intro] add onion lookup + images descriptions & \href{https://github.com/ail-project/ail-training/commit/74350f9}{\#16} \\
+2025-07-17 & ail-training & chg: [short intro] Ongoing Developments & \href{https://github.com/ail-project/ail-training/commit/f919281}{\#17} \\
+2026-02-24 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/53b24b1}{\#18} \\
+2026-04-21 & ail-training & chg: [intro] update AIL intro & \href{https://github.com/ail-project/ail-training/commit/a2be145}{\#19} \\
+2026-04-21 & ail-training & chg: [intro] rename short intro to ail-introduction & \href{https://github.com/ail-project/ail-training/commit/9b406db}{\#20} \\
+\hline
+\end{tabular}
+\end{center}
+\endgroup
