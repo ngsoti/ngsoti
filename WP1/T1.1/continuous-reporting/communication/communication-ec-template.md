@@ -16,6 +16,11 @@ Template of data that has to be encoded in the portal of EC
 - [ ] Civil authorities
 - [ ] Citizens
 - [ ] Research communities
+- [ ] Specific end user communities
+- [ ] International organisation (UN body, OCED, etc)
+- [ ] Other
+- [ ] Investors
+
 # How? Communication channel
 - [ ] Event (conference, meeting, workshop, internet debate, round table, group discussion, etc)
 - [ ] Exhibition
