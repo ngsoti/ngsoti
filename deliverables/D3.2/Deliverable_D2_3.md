@@ -50,9 +50,8 @@ The document is distributed as TLP:CLEAR.
 ## Deliverable Definition
 
 The identifier of the deliverable is D3.2 and it adheres to the
-definition outlined in the grant agreement **Public report with key
-findings of data collected in NGSOTI such as new discoveries, high level
-statistics to attacked schools to use NGSOTI**. The deliverable name is
+definition outlined in the grant agreement **A list of commits of in
+public training material git repositories**. The deliverable name is
 **References of training material updates #2** and the overall
 objective/alignment is described in the executive summary.
 
@@ -62,9 +61,14 @@ In the NGOSTI project, new training materials are developed, or existing
 ones are updated. Some of these materials are released under an
 open-source license, allowing multiple contributors from various
 projects to enhance and extend them. This report focuses on NGOSTI
-training programs in the following three domains: • Incident Response •
-MISP • Cryptography This report includes references to commits in the
-public training material repositories.
+training programs in the following three domains:
+
+- MISP
+- AIL
+- NEO-LEA
+
+This report includes references to commits in the public training
+material repositories.
 
 # Training Material
 
@@ -72,7 +76,7 @@ public training material repositories.
 
 The MISP open-source training materials have been developed over several
 years with support from multiple funding sources and external
-contributors. To track which parts were co-funded by NGOSTI, the table
+contributors. To track which parts were related to NGOSTI, the table
 below lists the open-source materials, along with their dates, training
 repository names, and commit IDs to retrieve the corresponding content.
 MISP plays a central role in NGSOTI by enabling integration with
@@ -156,6 +160,33 @@ Date & Repository & Title & Commit \\
 2026-04-21 & ail-training & chg: [intro] update AIL intro & \href{https://github.com/ail-project/ail-training/commit/a2be145}{\#19} \\
 2026-04-21 & ail-training & chg: [intro] rename short intro to ail-introduction & \href{https://github.com/ail-project/ail-training/commit/9b406db}{\#20} \\
 \hline
+\end{tabular}
+\end{center}
+\endgroup
+
+## NEO-LEA updates
+
+The NEO-LEA repository contains training material focusing on artefact
+analysis using forensic techniques used by SOC operators as well as law
+enforcement agencies. Analysis techniques for digital signatures have
+been added to strengthen capabilities for verifying and analysing
+digitally signed documents.
+
+\begingroup
+\scriptsize
+\renewcommand{\arraystretch}{0.9}
+\setlength{\tabcolsep}{3pt}
+\begin{center}
+\begin{tabular}{p{2.0cm}p{2.5cm}p{8.3cm}p{1.1cm}}
+\hline
+Date & Repository & Title & Commit \\
+\hline
+2026-05-29 & e.200-dfir-pdf-analysis & added pdfsig tool to handle electronic signatures  & \href{https://github.com/neolea/neolea-training-materials/commit/03484f75d3f413ac12617897ae572df153a0c11c}{\#1} \\
+2026-05-29 & e.200-dfir-pdf-analysis &  added script to extract tool indicators that were used to sign & \href{https://github.com/neolea/neolea-training-materials/commit/9a862738fbfb6cfe0b2771f6c5310e941690af03}{\#2}\\
+2026-05-29 & e.200-dfir-pdf-analysis &  get indications on the tools that were used to sign  & \href{https://github.com/neolea/neolea-training-materials/commit/09f913b39e2eec02c7d13e662a7969097769f4d3}{\#3}\\
+2026-05-29 & e.200-dfir-pdf-analysis &  added example output of pdfsig  & \href{https://github.com/neolea/neolea-training-materials/commit/7e3943f3663d93ce36386e00f138d580c63915b1}{\#4}\\
+2026-05-29 & e.200-dfir-pdf-analysis &  added example of openssl  & \href{https://github.com/neolea/neolea-training-materials/commit/02bc87f50168d7d749f4b6912e42281174b59f7a}{\#5}\\
+ 
 \end{tabular}
 \end{center}
 \endgroup
