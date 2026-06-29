@@ -236,8 +236,8 @@ Date & Repository & Title & Commit \\
 ## Tenzir
 
 Tenzir contributes open-source training material on detection
-engineering, published as documentation at https://docs.tenzir.com
-(source repository: https://github.com/tenzir/docs). Within NGSOTI,
+engineering, published as documentation at <https://docs.tenzir.com>
+(source repository: <https://github.com/tenzir/docs>). Within NGSOTI,
 Tenzir sits upstream of the SIEM to acquire, normalize, and route
 high-volume security telemetry, with a focus on analytical workloads
 such as detection engineering and threat hunting.
@@ -251,15 +251,22 @@ normalized data, the material progresses from simple threshold rules to
 statistical anomaly detection. The relevant guides are:
 
 - Map to OCSF --- normalize events into the Open Cybersecurity Schema
-  Framework: https://docs.tenzir.com/guides/normalization/map-to-ocsf
+  Framework: <https://docs.tenzir.com/guides/normalization/map-to-ocsf>
 - Aggregate event streams --- windowed threshold and statistical
   detections, including brute-force login detection and a traffic-spike
   detector (mean + 2 standard deviations) adapted from the open-source
   Splunk security_content project:
-  https://docs.tenzir.com/guides/analytics/aggregate-event-streams
+  <https://docs.tenzir.com/guides/analytics/aggregate-event-streams>
 - Execute Sigma rules --- running Sigma signatures on normalized
   telemetry:
-  https://docs.tenzir.com/guides/enrichment/execute-sigma-rules
+  <https://docs.tenzir.com/guides/enrichment/execute-sigma-rules>
 - Enrich with threat intelligence --- intel-driven detection using
   lookup tables and indicators of compromise (e.g. from MISP):
-  https://docs.tenzir.com/guides/enrichment/enrich-with-threat-intel
+  <https://docs.tenzir.com/guides/enrichment/enrich-with-threat-intel>
+
+The Tenzir documentation has 1,867 commits in the reporting period,
+which would result in a table with 1,867 rows. For readability, this
+table was omitted from the report. The commits can be audited by
+consulting the following URL: [Tenzir docs commits, 1 April 2025 to 30
+June
+2026](https://github.com/tenzir/docs/commits/main/?since=2025-04-01&until=2026-06-30).
