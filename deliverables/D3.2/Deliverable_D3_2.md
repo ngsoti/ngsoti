@@ -146,21 +146,21 @@ including each commit reference in the GitHub link:
 \hline
 Date & Repository & Title & Commit \\
 \hline
-2025-05-22 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/8feffa9}{\#6} \\
-2025-05-22 & ail-training & chg: [short intro] add search screenshot & \href{https://github.com/ail-project/ail-training/commit/196cbaf}{\#7} \\
-2025-05-22 & ail-training & chg: [short] image missing & \href{https://github.com/ail-project/ail-training/commit/61a81a5}{\#8} \\
-2025-05-22 & ail-training & chg: [training] ail-training updated & \href{https://github.com/ail-project/ail-training/commit/6899f8b}{\#9} \\
-2025-07-16 & ail-training & chg: [short intro] migate latex & \href{https://github.com/ail-project/ail-training/commit/90df6d9}{\#10} \\
-2025-07-16 & ail-training & chg: [ail short intro] add ail internal & \href{https://github.com/ail-project/ail-training/commit/754d9f5}{\#11} \\
-2025-07-16 & ail-training & chg: [ail short intro] remove old slide & \href{https://github.com/ail-project/ail-training/commit/560fae8}{\#12} \\
-2025-07-16 & ail-training & chg: [intro] migrate latex & \href{https://github.com/ail-project/ail-training/commit/5bcad57}{\#13} \\
-2025-07-16 & ail-training & chg: [intro] improve feeders section & \href{https://github.com/ail-project/ail-training/commit/4fac428}{\#14} \\
-2025-07-17 & ail-training & new: [Art of Pivoting] New version added for VSS 2025 training & \href{https://github.com/ail-project/ail-training/commit/73376fb}{\#15} \\
-2025-07-17 & ail-training & chg: [short intro] add onion lookup + images descriptions & \href{https://github.com/ail-project/ail-training/commit/74350f9}{\#16} \\
-2025-07-17 & ail-training & chg: [short intro] Ongoing Developments & \href{https://github.com/ail-project/ail-training/commit/f919281}{\#17} \\
-2026-02-24 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/53b24b1}{\#18} \\
-2026-04-21 & ail-training & chg: [intro] update AIL intro & \href{https://github.com/ail-project/ail-training/commit/a2be145}{\#19} \\
-2026-04-21 & ail-training & chg: [intro] rename short intro to ail-introduction & \href{https://github.com/ail-project/ail-training/commit/9b406db}{\#20} \\
+2025-05-22 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/8feffa9}{\#1} \\
+2025-05-22 & ail-training & chg: [short intro] add search screenshot & \href{https://github.com/ail-project/ail-training/commit/196cbaf}{\#2} \\
+2025-05-22 & ail-training & chg: [short] image missing & \href{https://github.com/ail-project/ail-training/commit/61a81a5}{\#3} \\
+2025-05-22 & ail-training & chg: [training] ail-training updated & \href{https://github.com/ail-project/ail-training/commit/6899f8b}{\#4} \\
+2025-07-16 & ail-training & chg: [short intro] migate latex & \href{https://github.com/ail-project/ail-training/commit/90df6d9}{\#5} \\
+2025-07-16 & ail-training & chg: [ail short intro] add ail internal & \href{https://github.com/ail-project/ail-training/commit/754d9f5}{\#6} \\
+2025-07-16 & ail-training & chg: [ail short intro] remove old slide & \href{https://github.com/ail-project/ail-training/commit/560fae8}{\#7} \\
+2025-07-16 & ail-training & chg: [intro] migrate latex & \href{https://github.com/ail-project/ail-training/commit/5bcad57}{\#8} \\
+2025-07-16 & ail-training & chg: [intro] improve feeders section & \href{https://github.com/ail-project/ail-training/commit/4fac428}{\#9} \\
+2025-07-17 & ail-training & new: [Art of Pivoting] New version added for VSS 2025 training & \href{https://github.com/ail-project/ail-training/commit/73376fb}{\#10} \\
+2025-07-17 & ail-training & chg: [short intro] add onion lookup + images descriptions & \href{https://github.com/ail-project/ail-training/commit/74350f9}{\#11} \\
+2025-07-17 & ail-training & chg: [short intro] Ongoing Developments & \href{https://github.com/ail-project/ail-training/commit/f919281}{\#12} \\
+2026-02-24 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/53b24b1}{\#13} \\
+2026-04-21 & ail-training & chg: [intro] update AIL intro & \href{https://github.com/ail-project/ail-training/commit/a2be145}{\#14} \\
+2026-04-21 & ail-training & chg: [intro] rename short intro to ail-introduction & \href{https://github.com/ail-project/ail-training/commit/9b406db}{\#15} \\
 \hline
 \end{tabular}
 \end{center}
