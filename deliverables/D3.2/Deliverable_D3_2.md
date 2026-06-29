@@ -168,8 +168,9 @@ Date & Repository & Title & Commit \\
 
 ## NEO-LEA updates
 
-The NEO-LEA repository contains training material focusing on artefact
-analysis using forensic techniques used by SOC operators as well as law
+The [NEO-LEA](https://github.com/neolea/neolea-training-materials)
+repository contains training material focusing on artefact analysis
+using forensic techniques used by SOC operators as well as law
 enforcement agencies. Analysis techniques for digital signatures have
 been added to strengthen capabilities for verifying and analysing
 digitally signed documents.
