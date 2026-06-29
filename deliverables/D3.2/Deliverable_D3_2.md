@@ -104,8 +104,6 @@ including each commit reference in the GitHub link:
 \hline
 Date & Repository & Title & Commit \\
 \hline
-2024-12-12 & misp-training & chg: [exercises/spearphishing-exercise] fixed url of samples & \href{https://github.com/MISP/misp-training/commit/f844a18}{\#1} \\
-2024-12-15 & misp-training & chg: [exercises/flubot-exercise] fixed sample url & \href{https://github.com/MISP/misp-training/commit/ccf380c}{\#2} \\
 2025-04-16 & misp-training & chg: [b.6-automation] improvements & \href{https://github.com/MISP/misp-training/commit/04da244}{\#3} \\
 2025-04-25 & misp-training & new: [events:FIRSTCTI25\_MISP\_automation\_workshop] Added slides, custom modules and SkillAegis scenario & \href{https://github.com/MISP/misp-training/commit/469a3f1}{\#4} \\
 2025-05-02 & misp-training & new: [c.0-current-state] Added slide deck & \href{https://github.com/MISP/misp-training/commit/c6b8f97}{\#5} \\
