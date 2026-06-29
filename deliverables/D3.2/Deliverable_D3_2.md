@@ -146,9 +146,6 @@ including each commit reference in the GitHub link:
 \hline
 Date & Repository & Title & Commit \\
 \hline
-2024-12-10 & ail-training & chg: [ail-intro] features updated & \href{https://github.com/ail-project/ail-training/commit/956e7e2}{\#1} \\
-2024-12-10 & ail-training & chg: [quick intro] updated & \href{https://github.com/ail-project/ail-training/commit/1aa32b7}{\#2} \\
-2025-02-03 & ail-training & chg: [update] small update & \href{https://github.com/ail-project/ail-training/commit/e5a1244}{\#3} \\
 2026-02-03 & ail-training & chg: [introduction] update ail-internal & \href{https://github.com/ail-project/ail-training/commit/65c8972}{\#5} \\
 2025-05-22 & ail-training & chg: [short intro] update & \href{https://github.com/ail-project/ail-training/commit/8feffa9}{\#6} \\
 2025-05-22 & ail-training & chg: [short intro] add search screenshot & \href{https://github.com/ail-project/ail-training/commit/196cbaf}{\#7} \\
