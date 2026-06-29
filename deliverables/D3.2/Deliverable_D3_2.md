@@ -196,25 +196,25 @@ Date & Repository & Title & Commit \\
 
 ## NGSOTI: Expert lectures
 
-The NGSOTI repository hosts training materials developed within the
-project and contributed directly by the partners. Three modules were
-added covering complementary aspects of network security and digital
-trust infrastructure, and cybersecurity awareness through game-based
-learning. The first addresses DNS as an attack vector, covering
-look-alike domains, data exfiltration over DNS, and tunneling tools such
-as iodine and dnscat2, with hands-on detection using Wireshark, Snort,
-and Suricata signatures. The second examines long-term digital
-preservation from a cybersecurity perspective, grounding the topic in
-CEN/TS 18170:2025 and eIDAS 2: it covers the OAIS model (SIP/AIP/DIP),
-integrity chains, cryptographic audit trails, storage security
-requirements, and the implications of algorithm lifecycle management for
-archiving trust service providers. The third covers how to design
-educational games by defining a target audience, vulgarisation
-techniques such as analogy, storytelling, and visualisation, building a
-gameplay loop, choosing game elements, and running playtest iterations,
-illustrated with a phishing-detection email exercise and a survey of
-existing cybersecurity games across board, digital, and simulation
-formats.
+The [NGSOTI](https://github.com/ngsoti/ngsoti/c) repository hosts
+training materials developed within the project and contributed directly
+by the partners. Three modules were added covering complementary aspects
+of network security and digital trust infrastructure, and cybersecurity
+awareness through game-based learning. The first addresses DNS as an
+attack vector, covering look-alike domains, data exfiltration over DNS,
+and tunneling tools such as iodine and dnscat2, with hands-on detection
+using Wireshark, Snort, and Suricata signatures. The second examines
+long-term digital preservation from a cybersecurity perspective,
+grounding the topic in CEN/TS 18170:2025 and eIDAS 2: it covers the OAIS
+model (SIP/AIP/DIP), integrity chains, cryptographic audit trails,
+storage security requirements, and the implications of algorithm
+lifecycle management for archiving trust service providers. The third
+covers how to design educational games by defining a target audience,
+vulgarisation techniques such as analogy, storytelling, and
+visualisation, building a gameplay loop, choosing game elements, and
+running playtest iterations, illustrated with a phishing-detection email
+exercise and a survey of existing cybersecurity games across board,
+digital, and simulation formats.
 
 \begingroup
 \scriptsize
@@ -225,9 +225,9 @@ formats.
 \hline
 Date & Repository & Title & Commit \\
 \hline
-2026-06-26 & training/UNILU-NC3-Cybersecurity-and-Games & Add [cyber-and-games] NC3 CyberAndGames BenjaminJoly-OmarRamadan & \href{https://github.com/ngsoti/ngsoti/commit/292efed}{\#3} \\
 2026-06-16 & training/UNILU-Network-Security & Add [network-security-dns] Network Security Wireshark & \href{https://github.com/ngsoti/ngsoti/commit/81ab6fb}{\#1} \\
 2026-06-16 & training/UNILU-Electronic-Archiving & Add [electronic-archiving] National Archives cybersecurity perspective & \href{https://github.com/ngsoti/ngsoti/commit/49db9b6}{\#2} \\
+2026-06-26 & training/UNILU-NC3-Cybersecurity-and-Games & Add [cyber-and-games] NC3 CyberAndGames BenjaminJoly-OmarRamadan & \href{https://github.com/ngsoti/ngsoti/commit/292efed}{\#3} \\
 \hline
 \end{tabular}
 \end{center}
