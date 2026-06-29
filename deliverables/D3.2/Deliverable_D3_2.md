@@ -104,15 +104,15 @@ including each commit reference in the GitHub link:
 \hline
 Date & Repository & Title & Commit \\
 \hline
-2025-04-16 & misp-training & chg: [b.6-automation] improvements & \href{https://github.com/MISP/misp-training/commit/04da244}{\#3} \\
-2025-04-25 & misp-training & new: [events:FIRSTCTI25\_MISP\_automation\_workshop] Added slides, custom modules and SkillAegis scenario & \href{https://github.com/MISP/misp-training/commit/469a3f1}{\#4} \\
-2025-05-02 & misp-training & new: [c.0-current-state] Added slide deck & \href{https://github.com/MISP/misp-training/commit/c6b8f97}{\#5} \\
-2025-05-05 & misp-training & add: [complementary] Updated Data model overview in light color mode & \href{https://github.com/MISP/misp-training/commit/3da0404}{\#6} \\
-2025-05-26 & misp-training & - chg [NATO MUG] presentation added & \href{https://github.com/MISP/misp-training/commit/9f00da0}{\#7} \\
-2025-12-16 & misp-training & Human Operated Ransomware pivot exercise & \href{https://github.com/MISP/misp-training/commit/637028b}{\#8} \\
-2026-03-30 & misp-training & new: [election-guidelines] First draft & \href{https://github.com/MISP/misp-training/commit/e428233}{\#9} \\
-2026-03-30 & misp-training & chg: [election-guidelines] Added AIL & \href{https://github.com/MISP/misp-training/commit/ce0a6ed}{\#10} \\
-2026-03-30 & misp-training & chg: [election-guideline] Added pdf & \href{https://github.com/MISP/misp-training/commit/c7ddcbd}{\#11} \\
+2025-04-16 & misp-training & chg: [b.6-automation] improvements & \href{https://github.com/MISP/misp-training/commit/04da244}{\#1} \\
+2025-04-25 & misp-training & new: [events:FIRSTCTI25\_MISP\_automation\_workshop] Added slides, custom modules and SkillAegis scenario & \href{https://github.com/MISP/misp-training/commit/469a3f1}{\#2} \\
+2025-05-02 & misp-training & new: [c.0-current-state] Added slide deck & \href{https://github.com/MISP/misp-training/commit/c6b8f97}{\#3} \\
+2025-05-05 & misp-training & add: [complementary] Updated Data model overview in light color mode & \href{https://github.com/MISP/misp-training/commit/3da0404}{\#4} \\
+2025-05-26 & misp-training & - chg [NATO MUG] presentation added & \href{https://github.com/MISP/misp-training/commit/9f00da0}{\#5} \\
+2025-12-16 & misp-training & Human Operated Ransomware pivot exercise & \href{https://github.com/MISP/misp-training/commit/637028b}{\#6} \\
+2026-03-30 & misp-training & new: [election-guidelines] First draft & \href{https://github.com/MISP/misp-training/commit/e428233}{\#7} \\
+2026-03-30 & misp-training & chg: [election-guidelines] Added AIL & \href{https://github.com/MISP/misp-training/commit/ce0a6ed}{\#8} \\
+2026-03-30 & misp-training & chg: [election-guideline] Added pdf & \href{https://github.com/MISP/misp-training/commit/c7ddcbd}{\#9} \\
 \hline
 \end{tabular}
 \end{center}
