@@ -127,12 +127,12 @@ For D3.2, the table below identifies the relevant updates supported by
 NGSOTI, with dates, repository references, short change descriptions,
 and commit links that allow the corresponding material to be retrieved.
 AIL supports NGSOTI activities by helping analysts collect, process, and
-pivot across information leaks and related datasets. Between the end of
-2024 and early 2026, the training content was updated with revised
+pivot across information leaks and related datasets. Between 1st April
+2025 and 30th June 2026, the training content was updated with revised
 introductions, new pivoting material, refreshed screenshots, migration
-work, and updated links. The commit references listed for the
-`ail-training` repository come from the public AIL-training GitHub
-repository.
+work, and updated links. The commit references listed for the repository
+come from the public AIL-training GitHub repository
+[ail-training](https://github.com/ail-project/ail-training/)
 
 The list of commits related to trainings is shown in the table below,
 including each commit reference in the GitHub link:
