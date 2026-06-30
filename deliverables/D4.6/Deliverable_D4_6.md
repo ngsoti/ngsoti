@@ -219,14 +219,14 @@ instances.
 
 **Useful links:**
 
-- https://www.misp-project.org/2025/09/19/misp-synchronisation.html/
-- Thesis: https://www.misp-project.org/Internship-report_Lacroix.pdf
+- <https://www.misp-project.org/2025/09/19/misp-synchronisation.html/>
+- Thesis: <https://www.misp-project.org/Internship-report_Lacroix.pdf>
 
 ### Léa Ulusan: Vulnerability intelligence tooling (vulnerability-lookup and VulnTrain)
 
-**Host institution:** CIRCL c/o Luxembourg House of Cybersecurity
-**Academic affiliation:** ECE Engineering School **Period:** Internship,
-May 2025 to September 2025
+**Host institution:** CIRCL c/o Luxembourg House of Cybersecurity\
+**Academic affiliation:** ECE Engineering School\
+**Period:** May 2025 to September 2025\
 
 **Context and Methodology**
 
@@ -283,16 +283,17 @@ improvements to ensure better usability and maintainability.
 
 ### Adrian Maraj: Lookyloo -- Phishing Detection
 
-**Host institution:** CIRCL co Luxembourg House of Cybersecurity
-**Academic affiliation:** ISFATES **Period:** Internship, March 2024 to
-August 2024
+**Host institution:** CIRCL co Luxembourg House of Cybersecurity\
+**Academic affiliation:** ISFATES\
+**Period:** Internship, March 2024 to August 2024
 
-**Context and Methodology** CIRCL maintains
-[Lookyloo](https://github.com/lookyloo), is a web interface for
-capturing a website page and mapping its browsing journey as a tree of
-domains, redirects, and external resources, which makes it useful for
-phishing and suspicious-website analysis. In the context of phishing
-detection, the work aimed to improve how suspicious URLs can be
+**Context and Methodology**
+
+CIRCL maintains [Lookyloo](https://github.com/lookyloo), is a web
+interface for capturing a website page and mapping its browsing journey
+as a tree of domains, redirects, and external resources, which makes it
+useful for phishing and suspicious-website analysis. In the context of
+phishing detection, the work aimed to improve how suspicious URLs can be
 submitted, captured, categorised and reviewed by analysts. The
 methodology followed an incremental software development approach,
 starting from practical improvements to the capture and reporting
@@ -303,61 +304,71 @@ usability improvements such as downloadable capture trees. These
 contributions helped make the phishing-analysis workflow more
 accessible, structured and suitable for repeated operational use.
 
-**Key Outcomes** **Workflow improvement** Improved the suspicious URL
-submission workflow by contributing to a simplified capture interface
-for phishing analysis. **Automatic reporting** Added support for
-automatic reporting of captured URLs, helping streamline the handling of
-suspicious websites. **Operational control** Enhanced operational
-control by supporting private captures and requiring authentication for
-selected capture workflows. \*\* Analyst usability\*\* Improved analyst
-usability by adding features such as downloadable capture trees and API
-access to captures by category.
+**Key Outcomes**
+
+- **Workflow improvement:** Improved the suspicious URL submission
+  workflow by contributing to a simplified capture interface for
+  phishing analysis.
+- **Automatic reporting:** Added support for automatic reporting of
+  captured URLs, helping streamline the handling of suspicious websites.
+- **Operational control:** Enhanced operational control by supporting
+  private captures and requiring authentication for selected capture
+  workflows.
+- **Analyst usability:** Improved analyst usability by adding features
+  such as downloadable capture trees and API access to captures by
+  category.
 
 ### Antonia Koch: Lookyloo -- Phishing Detection
 
-**Host institution:** CIRCL co Luxembourg House of Cybersecurity
-**Academic affiliation:** ISFATES **Period:** Internship, March 2024 to
-August 2024
+**Host institution:** CIRCL co Luxembourg House of Cybersecurity\
+**Academic affiliation:** ISFATES\
+**Period:** March 2024 to August 2024
 
-**Context and Methodology** The internship focused on contributing to
-Lookyloo. Antonia's work supported the improvement of analyst-facing
-reporting and classification features, making it easier to process
-suspicious captures and prepare them for operational review. The
-methodology followed an incremental software development approach,
-combining frontend improvements, reporting workflow enhancements and
-API-related functionality. Contributions included improvements to the
-capture page, report form, administrative menus, auto-reporting options,
-capture upload via API, quick categorisation features, and WHOIS lookup
-handling. These developments helped strengthen the usability and
-operational efficiency of Lookyloo for phishing investigation and
-suspicious website analysis.
+**Context and Methodology**
 
-**Key Outcomes** - **Reporting workflow:** Improved the phishing
-reporting workflow by enhancing the capture page and making the report
-form easier to use. - **Operational features:** Added operational
-features for analysts and administrators, including auto-reporting
-options and improved admin-only controls. - **Efficiency on Capture
-related data:** Contributed to API-based functionality, including
-support for uploading captures and handling capture-related data more
-efficiently. - **Streamlining enrichment:** Improved classification and
-enrichment capabilities through quick categorisation features and better
-handling of WHOIS lookup information.
+The internship focused on contributing to Lookyloo. Antonia's work
+supported the improvement of analyst-facing reporting and classification
+features, making it easier to process suspicious captures and prepare
+them for operational review. The methodology followed an incremental
+software development approach, combining frontend improvements,
+reporting workflow enhancements and API-related functionality.
+Contributions included improvements to the capture page, report form,
+administrative menus, auto-reporting options, capture upload via API,
+quick categorisation features, and WHOIS lookup handling. These
+developments helped strengthen the usability and operational efficiency
+of Lookyloo for phishing investigation and suspicious website analysis.
+
+**Key Outcomes**
+
+- **Reporting workflow:** Improved the phishing reporting workflow by
+  enhancing the capture page and making the report form easier to use.
+- **Operational features:** Added operational features for analysts and
+  administrators, including auto-reporting options and improved
+  admin-only controls.
+- **Efficiency on Capture related data:** Contributed to API-based
+  functionality, including support for uploading captures and handling
+  capture-related data more efficiently.
+- **Streamlining enrichment:** Improved classification and enrichment
+  capabilities through quick categorisation features and better handling
+  of WHOIS lookup information.
 
 ### Théo Geffe: Rulezet
 
-**Host institution:** CIRCL co Luxembourg House of Cybersecurity
-**Academic affiliation:** UFR MIM Metz, Université de Lorraine
-**Period:** Internship, April 2025 to July 2025
+**Host institution:** CIRCL co Luxembourg House of Cybersecurity\
+**Academic affiliation:** UFR MIM Metz, Université de Lorraine\
+**Period:** April 2025 to July 2025
 
-**Context and Methodology** The internship focused on the development of
-[Rulezet Core](https://github.com/rulezet/rulezet-core/), an open-source
-platform for managing, validating and sharing cybersecurity detection
-rules across formats such as YARA, Sigma, Suricata, Zeek, Wazuh and
-Elastic. In the context of detection engineering, the work aimed to
-strengthen the platform as a collaborative environment where analysts
-can import rules, organise them, validate their syntax, search them, and
-use them in operational or training contexts. The methodology followed
-an incremental software engineering approach, with contributions
+**Context and Methodology**
+
+The internship focused on the development of [Rulezet
+Core](https://github.com/rulezet/rulezet-core/), an open-source platform
+for managing, validating and sharing cybersecurity detection rules
+across formats such as YARA, Sigma, Suricata, Zeek, Wazuh and Elastic.
+In the context of detection engineering, the work aimed to strengthen
+the platform as a collaborative environment where analysts can import
+rules, organise them, validate their syntax, search them, and use them
+in operational or training contexts. The methodology followed an
+incremental software engineering approach, with contributions
 implemented directly in the main codebase through iterative commits. The
 work covered backend and frontend development, rule management features,
 validation workflows, API-related functionality, documentation,
@@ -444,9 +455,7 @@ instead.
   (NGSOTI project)*, presentation, OpenSource Conference 2025.
 - Thomas Lacroix, *Reinforcement and modernization of the MISP open
   source application*, Master's thesis, TELECOM Nancy, 2025,
-  https://www.misp-project.org/Internship-report_Lacroix.pdf.
-- CIRCL, internship records for the vulnerability-lookup/VulnTrain
-  activity.
+  <https://www.misp-project.org/Internship-report_Lacroix.pdf>.
 - Njomza Rexhepi, *Understanding Network Telescope Traffic Through
   Exploratory Data Analysis and Transformer-Based Representation
   Learning*, Master's thesis (in progress), University of Prishtina,
@@ -454,16 +463,16 @@ instead.
   expected September 2026.
 - Léa Ulusan. *Vulnerability Management and Threat Intelligence*, ECE
   Engineering School, Git commits during internship, 2025,
-  https://github.com/vulnerability-lookup/vulnerability-lookup/commits?author=hamartia.eu%40gmail.com
-- Adrian Maraj, \*\* Lookyloo Phishing Detection. ISFATES, Git commits
+  <https://github.com/vulnerability-lookup/vulnerability-lookup/commits?author=hamartia.eu%40gmail.com>
+- Adrian Maraj, *Lookyloo Phishing Detection*. ISFATES, Git commits
   during internship, 2024,
-  https://github.com/Lookyloo/lookyloo/commits?author=adrima01
-- Antonia Koch, \*\* Lookyloo Phishing Detection. ISFATES, Git commits
+  <https://github.com/Lookyloo/lookyloo/commits?author=adrima01>
+- Antonia Koch, *Lookyloo Phishing Detection*. ISFATES, Git commits
   during internship, 2024,
-  https://github.com/Lookyloo/lookyloo/commits?author=AntoniaBK
+  <https://github.com/Lookyloo/lookyloo/commits?author=AntoniaBK>
 - Théo Geffe, **Rulezet**,UFR MIM Metz, Université de Lorraine, Git
   commits during internship,
-  2025,https://github.com/rulezet/rulezet-core/commits/main/?since=2025-04-07&until=2025-07-25&author=ecrou-exact
+  2025,<https://github.com/rulezet/rulezet-core/commits/main/?since=2025-04-07&until=2025-07-25&author=ecrou-exact>
 - Presentation at BSides Luxembourg from Léa Ulusan, 2025-06-19, "[When
   Data Talks, We Let AI
   Listen](https://pretalx.com/bsidesluxembourg-2025/talk/EHAWQX)"
