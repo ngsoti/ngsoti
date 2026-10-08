@@ -1,0 +1,15 @@
+---
+name: Report trainee detections to SkillAegis
+description: |
+  SkillAegis scores exercises against webhook targets. Every trainee pipeline
+  that publishes a matching finding completes an inject.
+---
+
+// Docs:
+//   https://github.com/MISP/SkillAegis
+//   https://misp.github.io/cexf/ (Common Exercise Format)
+//   https://tenzir.com/docs/reference/operators/to_http
+subscribe "detections"
+to_http "https://skillaegis.example.org/webhook/ngsoti-detections" {
+  write_ndjson
+}

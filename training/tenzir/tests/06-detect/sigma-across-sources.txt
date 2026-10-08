@@ -1,0 +1,12 @@
+{
+  rule: "Connection To Mining Pool Port",
+  sensor: "Kunai",
+  event: "Network Activity",
+  time: 2026-09-14T08:12:04.300Z,
+}
+{
+  rule: "Connection To Mining Pool Port",
+  sensor: "Zeek",
+  event: "Network Activity",
+  time: 2026-09-14T08:12:04.300Z,
+}

@@ -1,0 +1,19 @@
+---
+name: Forward detections to Wazuh
+description: |
+  Sends Tenzir findings to the Wazuh manager over Syslog, so Wazuh's rules and
+  dashboards act on them next to its own agents' alerts.
+---
+
+// Docs:
+//   https://tenzir.com/integrations/wazuh
+//   https://tenzir.com/docs/reference/operators/to_tcp
+//   https://tenzir.com/docs/reference/operators/write_syslog
+subscribe "detections"
+payload = this.print_json(strip_null_fields=true)
+hostname = "tenzir-node"
+app_name = "tenzir"
+message = payload
+to_tcp "wazuh-manager.example.org:514" {
+  write_syslog
+}

@@ -1,0 +1,25 @@
+title: Linux Download Written To Temporary Directory
+id: 6b8a1d2e-5c3f-4a77-9b1e-0a1f2e3d4c5b
+status: experimental
+description: Detects curl or wget that save a download into a world-writable directory.
+author: NGSOTI training
+date: 2026-10-08
+tags:
+  - attack.command_and_control
+  - attack.t1105
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection_img:
+    Image|endswith:
+      - '/curl'
+      - '/wget'
+  selection_cli:
+    CommandLine|contains:
+      - ' /tmp/'
+      - ' /dev/shm/'
+  condition: all of selection_*
+falsepositives:
+  - Administrators that stage installers in /tmp
+level: medium

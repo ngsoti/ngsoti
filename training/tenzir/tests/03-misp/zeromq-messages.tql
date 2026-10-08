@@ -1,0 +1,18 @@
+// Parses MISP ZeroMQ notifications. MISP publishes `<topic> <json>` messages.
+// This pipeline replays recorded messages from a file. The live variant in
+// `live/misp-zeromq.tql` replaces `from_file` with `from_zmq`.
+//
+// Docs:
+//   https://www.circl.lu/doc/misp/misp-zmq/ (MISP ZeroMQ)
+//   https://tenzir.com/docs/reference/operators/from_zmq
+//   https://tenzir.com/docs/reference/operators/read_lines
+//   https://tenzir.com/docs/reference/functions/parse_json
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/misp/zmq-messages.txt" {
+  read_lines
+}
+topic = line.split(" ", max=1)[0]
+payload = line.split(" ", max=1)[1]
+where topic == "misp_json_attribute"
+this = payload.parse_json()
+select type=Attribute.type, value=Attribute.value, to_ids=Attribute.to_ids, comment=Attribute.comment

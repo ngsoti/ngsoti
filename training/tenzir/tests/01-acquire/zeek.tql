@@ -1,0 +1,20 @@
+// Reads a Zeek `conn.log` in the native TSV format and normalizes it to OCSF
+// with the `zeek` package of the Tenzir Library.
+//
+// Docs:
+//   https://tenzir.com/integrations/zeek
+//   https://tenzir.com/docs/reference/operators/read_zeek_tsv
+//   https://tenzir.com/docs/guides/normalize/map-to-ocsf
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/zeek/conn.log" {
+  read_zeek_tsv
+}
+// Zeek's TSV `interval` columns parse as durations, but the current `zeek`
+// package expects seconds.
+duration = duration?.count_seconds()
+zeek::ocsf::normalize
+ocsf_derive
+ocsf_cast
+select time, class_name, activity_name, src_endpoint.ip, dst_endpoint.ip,
+       dst_endpoint.port, community_uid=connection_info.community_uid
+sort time

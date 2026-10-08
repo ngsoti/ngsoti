@@ -1,0 +1,26 @@
+---
+name: Fetch detection rules for a CVE from Rulezet
+description: |
+  Vulnerability-Lookup links CVEs to community detection rules in Rulezet. This
+  pipeline fetches the Suricata rules for a CVE and writes them where Suricata
+  loads rules from.
+---
+
+// Docs:
+//   https://vulnerability.circl.lu/api/ (GET /rulezet/search_rules_by_vulnerabilities/{id})
+//   https://rulezet.org/
+//   https://tenzir.com/docs/reference/operators/from_http
+//   https://tenzir.com/docs/reference/operators/to_file
+let $cve = "CVE-2023-28771"
+from_http f"https://vulnerability.circl.lu/api/rulezet/search_rules_by_vulnerabilities/{$cve}", headers={
+  "User-Agent": "ngsoti-training/1.0 (mailto:soc@example.org)",
+} {
+  read_json
+}
+unroll data
+this = data
+where format == "suricata"
+select line=raw
+to_file f"/etc/suricata/rules/rulezet-{$cve}.rules", append=false {
+  write_lines
+}

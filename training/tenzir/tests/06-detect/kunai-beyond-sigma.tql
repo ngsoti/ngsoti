@@ -1,0 +1,29 @@
+// Sigma's Linux catalog covers process creation, network connections, and file
+// creation. Kunai also reports kernel module loads, executable memory, and
+// debugger attachment, which the catalog does not model yet. Plain TQL fills
+// that gap, and the OCSF class tells us what each event means.
+//
+// Docs:
+//   https://tenzir.com/docs/guides/detect/match-events-with-tql
+//   https://tenzir.com/docs/guides/detect/model-detections-in-ocsf
+//   https://tenzir.com/docs/reference/functions/ocsf_class_uid
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+ocsf_derive
+ocsf_cast
+let $kernel = ocsf_class_uid("Kernel Extension Activity")
+let $memory = ocsf_class_uid("Memory Activity")
+let $process = ocsf_class_uid("Process Activity")
+let $audit_daemons = ["auditd", "rsyslogd", "systemd-journald"]
+where (
+  class_uid == $kernel or
+  class_uid == $memory or
+  (class_uid == $process and activity_name == "Open") or
+  (class_uid == $process and activity_name == "Terminate" and process?.name? in $audit_daemons)
+)
+select time, class_name, activity_name, actor=actor.process.name,
+       target=process?.name?, module=driver?.file?.name?, address=base_address?
+sort time

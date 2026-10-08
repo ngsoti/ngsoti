@@ -1,0 +1,22 @@
+// Detects command injection in IKE packets, the pattern behind the exploitation
+// of Zyxel CVE-2023-28771. The exploit puts shell
+// metacharacters followed by a command into a UDP/500 packet.
+//
+// Payloads are binary, so we search their hexadecimal form:
+//   3b = ';'   24 = '$'   60 = '`'   7c = '|'
+//   77676574 = 'wget'   6375726c = 'curl'   7368 = 'sh'
+// `encode_hex` emits upper-case digits, so we lower-case before matching.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/functions/encode_hex
+//   https://tenzir.com/docs/reference/functions/match_regex
+//   https://vulnerability.circl.lu/vuln/CVE-2023-28771
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/d4/blackhole.pcap" {
+  read_pcap
+}
+this = {...this, ...decapsulate(this)}
+where udp?.dst_port? == 500
+where data.encode_hex().to_lower().match_regex("(3b|24|60|7c)(77676574|6375726c|7368)")
+select time=timestamp, src=ip.src, dst=ip.dst, dst_port=udp.dst_port, community_id,
+       cve="CVE-2023-28771", technique="T1190"

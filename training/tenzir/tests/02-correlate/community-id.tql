@@ -1,0 +1,43 @@
+// Joins Kunai, Suricata, and Zeek on the Community ID. Endpoint telemetry
+// tells you which process opened a connection, and network telemetry tells you
+// what crossed the wire. The Community ID connects both views.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/functions/community_id
+//   https://tenzir.com/docs/reference/operators/merge
+//   https://tenzir.com/docs/reference/operators/summarize
+//   https://tenzir.com/docs/guides/route/split-and-merge-streams
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+merge {
+  from_file f"{$data}/suricata/eve.json" {
+    read_ndjson
+  }
+  suricata::ocsf::normalize
+}
+merge {
+  from_file f"{$data}/zeek/conn.log" {
+    read_zeek_tsv
+  }
+  // The `zeek` package expects seconds not a duration.
+  duration = duration?.count_seconds()
+  zeek::ocsf::normalize
+}
+ocsf_derive
+ocsf_cast
+// Suricata alerts keep the connection under `evidences`.
+community_uid = connection_info?.community_uid?.otherwise(evidences?[0]?.connection_info?.community_uid?)
+where community_uid != null
+event = f"{class_name}: {activity_name}"
+summarize community_uid,
+          sources=distinct(metadata.product.name),
+          events=distinct(event),
+          first_seen=min(time)
+// Distinct values arrive in arbitrary order. Sort them for stable output.
+sources = sources.sort()
+events = events.sort()
+where sources.length() > 1
+sort first_seen

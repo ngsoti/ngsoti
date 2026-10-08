@@ -1,0 +1,20 @@
+{
+  ioc: "dl.evil-cdn.example",
+  type: "domain",
+}
+{
+  ioc: 198.51.100.7,
+  type: "ip-dst",
+}
+{
+  ioc: 203.0.113.50,
+  type: "ip-dst",
+}
+{
+  ioc: "b6f3c8a5d1e94f7a2c0b8d6e4f1a3c5e7b9d0f2a4c6e8b0d1f3a5c7e9b1d3f5a",
+  type: "sha256",
+}
+{
+  ioc: "http://dl.evil-cdn.example/x.sh",
+  type: "url",
+}

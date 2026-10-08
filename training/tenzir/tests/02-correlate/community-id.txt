@@ -1,0 +1,38 @@
+{
+  community_uid: "1:GEC8jLPyeg9NvjqP+xlsJmgiu3k=",
+  sources: [
+    "Kunai",
+    "Suricata",
+    "Zeek",
+  ],
+  events: [
+    "DNS Activity: Response",
+    "Network Activity: Close",
+  ],
+  first_seen: 2026-09-14T08:12:01.430Z,
+}
+{
+  community_uid: "1:x/+HV0TSji4e6MFS4ZvKqbJYrvU=",
+  sources: [
+    "Kunai",
+    "Suricata",
+  ],
+  events: [
+    "HTTP Activity: Get",
+    "Network Activity: Open",
+  ],
+  first_seen: 2026-09-14T08:12:01.450Z,
+}
+{
+  community_uid: "1:cxnPTmOCSBbmMbJwFnzHHUqx8Mo=",
+  sources: [
+    "Kunai",
+    "Suricata",
+    "Zeek",
+  ],
+  events: [
+    "Detection Finding: Create",
+    "Network Activity: Open",
+  ],
+  first_seen: 2026-09-14T08:12:04.300Z,
+}

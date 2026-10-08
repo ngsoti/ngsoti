@@ -1,0 +1,6 @@
+// Creates the lookup table that holds IOCs from MISP.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/operators/context_create_lookup_table
+//   https://tenzir.com/docs/guides/enrich/use-lookup-tables
+context_create_lookup_table "misp_iocs"

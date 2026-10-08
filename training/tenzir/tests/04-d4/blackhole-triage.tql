@@ -1,0 +1,19 @@
+// Triages blackhole traffic that a D4 sensor captured. D4 delivers full packet
+// captures. Tenzir reads the PCAP and decodes link, network, and transport
+// layers, so a first look needs no Zeek or Suricata.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/operators/read_pcap
+//   https://tenzir.com/docs/reference/functions/decapsulate
+//   https://tenzir.com/docs/reference/operators/summarize
+//   https://www.d4-project.org/ (D4 project)
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/d4/blackhole.pcap" {
+  read_pcap
+}
+this = {...this, ...decapsulate(this)}
+transport = "tcp" if tcp != null else "udp"
+dst_port = tcp?.dst_port?.otherwise(udp?.dst_port?)
+summarize transport, dst_port, packets=count(), sources=distinct(ip.src), first_seen=min(timestamp)
+sources = sources.sort()
+sort dst_port

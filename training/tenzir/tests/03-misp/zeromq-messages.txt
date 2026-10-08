@@ -1,0 +1,18 @@
+{
+  type: "domain",
+  value: "dl.evil-cdn.example",
+  to_ids: "1",
+  comment: "payload host",
+}
+{
+  type: "ip-dst",
+  value: 203.0.113.50,
+  to_ids: "1",
+  comment: "payload server",
+}
+{
+  type: "ip-dst",
+  value: 198.51.100.7,
+  to_ids: "1",
+  comment: "mining pool / C2",
+}

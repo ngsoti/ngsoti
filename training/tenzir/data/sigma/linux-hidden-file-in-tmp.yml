@@ -1,0 +1,21 @@
+title: Linux Hidden File Created In Temporary Directory
+id: 3f7a8b9c-0d1e-4f2a-9b3c-4d5e6f708192
+status: experimental
+description: Detects creation of dot-files in world-writable directories.
+author: NGSOTI training
+date: 2026-10-08
+tags:
+  - attack.defense_evasion
+  - attack.t1564.001
+logsource:
+  category: file_event
+  product: linux
+detection:
+  selection:
+    TargetFilename|contains:
+      - '/tmp/.'
+      - '/dev/shm/.'
+  condition: selection
+falsepositives:
+  - Editors that write swap files into /tmp
+level: low

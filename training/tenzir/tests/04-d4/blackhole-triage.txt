@@ -1,0 +1,47 @@
+{
+  transport: "tcp",
+  dst_port: 23,
+  packets: 3,
+  sources: [
+    203.0.113.80,
+    203.0.113.81,
+    203.0.113.82,
+  ],
+  first_seen: 2026-09-14T06:00:00Z,
+}
+{
+  transport: "udp",
+  dst_port: 53,
+  packets: 1,
+  sources: [
+    10.99.0.9,
+  ],
+  first_seen: 2026-09-14T06:00:31Z,
+}
+{
+  transport: "udp",
+  dst_port: 161,
+  packets: 1,
+  sources: [
+    203.0.113.99,
+  ],
+  first_seen: 2026-09-14T06:00:42Z,
+}
+{
+  transport: "udp",
+  dst_port: 500,
+  packets: 1,
+  sources: [
+    198.51.100.77,
+  ],
+  first_seen: 2026-09-14T06:00:55Z,
+}
+{
+  transport: "udp",
+  dst_port: 514,
+  packets: 1,
+  sources: [
+    10.99.0.7,
+  ],
+  first_seen: 2026-09-14T06:00:20Z,
+}

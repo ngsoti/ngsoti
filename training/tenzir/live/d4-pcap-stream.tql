@@ -1,0 +1,21 @@
+---
+name: Analyze a D4 packet stream
+description: |
+  Reads PCAP data that a D4 analyzer writes to a named pipe. D4 sensors
+  stream captures to a D4 server, and the server dispatches them to analyzers.
+  Point an analyzer at the pipe, and Tenzir decodes packets as they arrive.
+---
+
+// Docs:
+//   https://github.com/D4-project/d4-core (server and analyzer queues)
+//   https://tenzir.com/docs/reference/operators/from_file
+//   https://tenzir.com/docs/reference/operators/read_pcap
+//   https://tenzir.com/docs/reference/functions/decapsulate
+//
+// Create the pipe with `mkfifo /var/run/d4/pcap.fifo`. NGSOTI's sensors
+// capture full packets, so the stream contains `pcap` type 1 data.
+from_file "/var/run/d4/pcap.fifo" {
+  read_pcap
+}
+this = {...this, ...decapsulate(this)}
+publish "blackhole"

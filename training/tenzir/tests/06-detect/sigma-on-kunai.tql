@@ -1,0 +1,23 @@
+// Runs the Sigma rules in `data/sigma` on Kunai telemetry that the `kunai`
+// package normalized to OCSF.
+//
+// Docs:
+//   https://tenzir.com/docs/guides/detect/execute-sigma-rules
+//   https://tenzir.com/docs/reference/operators/sigma
+//   https://tenzir.com/docs/guides/detect/check-sigma-rule-compatibility-with-ocsf
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+ocsf_derive
+ocsf_cast
+sigma path=f"{$data}/sigma"
+select rule=finding_info.title,
+       severity_id,
+       host=evidences[0].data.device.hostname,
+       time=evidences[0].data.time,
+       cmd=evidences[0].data.process?.cmd_line?,
+       file=evidences[0].data.file?.path?,
+       dst=evidences[0].data.dst_endpoint?.ip?
+sort time, rule

@@ -1,0 +1,7 @@
+// Creates a Bloom filter for membership tests at scale. A Bloom filter answers
+// "have we seen this IOC?" in constant memory but cannot return context.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/operators/context_create_bloom_filter
+//   https://tenzir.com/docs/explanations/enrichment
+context_create_bloom_filter "misp_ioc_filter", capacity=1000000, fp_probability=0.001

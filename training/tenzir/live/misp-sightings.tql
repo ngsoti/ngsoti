@@ -1,0 +1,21 @@
+---
+name: Report sightings back to MISP
+description: |
+  Closes the intelligence loop. Every detection that matched a MISP indicator
+  becomes a sighting, which tells the community that the IOC is still active.
+---
+
+// Docs:
+//   https://tenzir.com/docs/reference/operators/from_http
+//   https://tenzir.com/docs/reference/operators/each
+//   https://www.circl.lu/doc/misp/sightings/
+//   https://github.com/tenzir/library/blob/main/misp/examples/send-events-with-osint-as-sightings.tql
+let $misp = "https://misp.example.org"
+subscribe "ioc-matches"
+select value=string(ioc_value), timestamp=time.since_epoch().count_seconds()
+each parallel=4 {
+  from_http f"{$misp}/sightings/add", method="post", headers={
+    Authorization: secret("MISP_API_KEY"),
+    Accept: "application/json",
+  }, body=this
+}

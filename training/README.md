@@ -2,7 +2,7 @@
 
 ![](http://hdoc.csirt-tooling.org/uploads/upload_13235b6957b475dc731b2a392b2fd021.png)
 
-The course **Cybersecurity Tools for Threat Intelligence and Forensics** is composed of 7 modules that cover the main open-source tools (MISP, AIL Project, FlowIntel, and Kunai) developed by CIRCL. It aims to provide a comprehensive toolbox for security analysts, SOC operators, and security professionals.
+The course **Cybersecurity Tools for Threat Intelligence and Forensics** is composed of 8 modules that cover the main open-source tools (MISP, AIL Project, FlowIntel, Kunai, and Tenzir) of the NGSOTI training SOC. It aims to provide a comprehensive toolbox for security analysts, SOC operators, and security professionals.
 
 |Module Number| Description|
 |:---|:---|
@@ -13,6 +13,7 @@ The course **Cybersecurity Tools for Threat Intelligence and Forensics** is comp
 |5|Forensic|
 |6|Forensic|
 |7|Kunai|
+|8|Tenzir - security data pipelines and detection engineering|
 
 ![](http://hdoc.csirt-tooling.org/uploads/upload_b1ded684907729d19396c6f79e8d90cb.png)
 
@@ -34,10 +35,10 @@ Password: uni_lu_training
 
 |Time|Description|Slides| 
 |:---|:---|:---|
-|14:00-15:00|An Introduction to Information Sharing and MISP the Threat Intelligence Platform|[Slide - MISP Introduction](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/0-misp-introduction-to-information-sharing.pdf)|
-|15:00-15:30|MISP Data sharing and models|[Slide - Data Models](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/MISP%20Data%20model%20overview-with-analyst-data.pdf)|
-|16:00-16:30|Best Practices in Threat Intelligence Gather, document, analyse and contextualise intelligence using MISP|[Slide - Best Practices](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/b.1-best-practices-in-threat-intelligence.pdf)|
-|16:30-17:00|MISP 10 Pillars|[Slide - 10 Pillars](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/MISP%2010%20Pillars.pdf) [Slide - MISP Collaboration and Sharing](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence-mod1/slides/MISP%20Collaboration%20%26%20Sharing%20-%20Rapid%20Fire%20of%20Features.pdf)|
+|14:00-15:00|An Introduction to Information Sharing and MISP the Threat Intelligence Platform|[Slide - MISP Introduction](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence/mod1-MISP-CTI/slides/0-misp-introduction-to-information-sharing.pdf)|
+|15:00-15:30|MISP Data sharing and models|[Slide - Data Models](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence/mod1-MISP-CTI/slides/MISP%20Data%20model%20overview-with-analyst-data.pdf)|
+|16:00-16:30|Best Practices in Threat Intelligence Gather, document, analyse and contextualise intelligence using MISP|[Slide - Best Practices](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence/mod1-MISP-CTI/slides/b.1-best-practices-in-threat-intelligence.pdf)|
+|16:30-17:00|MISP 10 Pillars|[Slide - 10 Pillars](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence/mod1-MISP-CTI/slides/MISP%2010%20Pillars.pdf) [Slide - MISP Collaboration and Sharing](https://raw.githubusercontent.com/ngsoti/ngsoti/main/training/threat-intelligence/mod1-MISP-CTI/slides/MISP%20Collaboration%20%26%20Sharing%20-%20Rapid%20Fire%20of%20Features.pdf)|
 |17:00-18:00|Encoding session|[GRU Example](https://www.foo.be/cours/dess-20192020/pub/gru)|
 
 ### Documentation
@@ -111,3 +112,27 @@ Password: uni_lu_training
 ## Module 7 - Kunai - EDR
 - [Kunai training materials](https://github.com/ngsoti/ngsoti/tree/main/training/kunai/teaching-master)
 
+## Module 8 - Tenzir
+
+Security data pipelines and detection engineering. The module connects the
+sensors of the training SOC (Kunai, Zeek, Suricata, D4) to its analyst tools
+(MISP, Vulnerability-Lookup, OpenSearch, Wazuh, FlowIntel, SkillAegis). All
+material lives in [`training/tenzir`](tenzir).
+
+### Agenda
+
+|Time|Description|Material|
+|:---|:---|:---|
+|14:00-14:30|Tenzir in the NGSOTI architecture, the data lifecycle, TQL|[Module README](tenzir/README.md)|
+|14:30-15:15|Acquire and normalize network telemetry (Suricata, Zeek, OCSF)|[Exercise 1](tenzir/exercises/01-network-telemetry.md)|
+|15:15-16:00|Onboard Kunai and correlate endpoint with network telemetry|[Exercise 2](tenzir/exercises/02-kunai-and-community-id.md)|
+|16:15-17:00|MISP intelligence in your pipelines|[Exercise 3](tenzir/exercises/03-misp-intelligence.md)|
+|17:00-17:30|D4 blackhole traffic and vulnerability context|[Exercise 4](tenzir/exercises/04-d4-and-vulnerabilities.md)|
+|17:30-18:00|Detect and respond (Sigma, TQL, SIEM, case management)|[Exercise 5](tenzir/exercises/05-detect-and-respond.md)|
+|Homework|Validate the Kunai mapping, or onboard a new source|[Capstone](tenzir/exercises/06-capstone-package.md)|
+
+### Documentation
+
+- [Tenzir documentation](https://tenzir.com/docs)
+- [Tenzir Library](https://github.com/tenzir/library), the source of the `suricata`, `zeek`, `misp`, and `geo_open` packages
+- [Kunai integration](https://tenzir.com/integrations/kunai) and the `kunai` package of the Tenzir Library, for Kunai events to OCSF

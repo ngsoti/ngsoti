@@ -1,0 +1,24 @@
+title: Linux Outbound Connection To Common Mining Pool Port
+id: a4e9b2c1-6d38-4f5e-b7a0-1c2d3e4f5a6b
+status: experimental
+description: Detects outbound connections to ports that stratum mining pools commonly use.
+author: NGSOTI training
+date: 2026-10-08
+tags:
+  - attack.impact
+  - attack.t1496
+logsource:
+  category: network_connection
+  product: linux
+detection:
+  selection:
+    Initiated: 'true'
+    DestinationPort:
+      - 3333
+      - 4444
+      - 5555
+      - 14444
+  condition: selection
+falsepositives:
+  - Services that legitimately listen on these ports
+level: medium

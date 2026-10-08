@@ -1,0 +1,18 @@
+// Normalizes the output of the MISP `/events/restSearch` endpoint to OCSF with
+// the `misp` package of the Tenzir Library. MISP events become OSINT Inventory
+// Info events.
+//
+// Docs:
+//   https://tenzir.com/docs/guides/normalize/map-to-ocsf
+//   https://tenzir.com/docs/reference/operators/unroll
+//   https://www.misp-project.org/openapi/ (MISP REST API)
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/misp/restsearch-events.json" {
+  read_json
+}
+unroll response
+this = response.Event
+misp::event::ocsf::normalize
+ocsf_derive
+ocsf_cast
+select message, class_name, severity_id, tlp=metadata.tlp?, indicators=osint.map(o => o.value)

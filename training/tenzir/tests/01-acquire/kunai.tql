@@ -1,0 +1,20 @@
+// Reads Kunai events from a log file and normalizes them to OCSF with the
+// `kunai` package of the Tenzir Library.
+//
+// Docs:
+//   https://tenzir.com/integrations/kunai
+//   https://why.kunai.rocks/docs/events/ (Kunai event reference)
+//   https://tenzir.com/docs/tutorials/onboard-a-data-source
+//   https://tenzir.com/docs/reference/operators/read_ndjson
+//   https://tenzir.com/docs/reference/operators/ocsf_cast
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+ocsf_derive
+ocsf_cast
+select time, class_name, activity_name,
+       process=process?.name?.otherwise(actor.process?.name?),
+       cmd=process?.cmd_line?.otherwise(actor.process?.cmd_line?)
+sort time

@@ -1,0 +1,34 @@
+// Loads the detection-relevant attributes from a MISP `/attributes/restSearch`
+// response into both contexts. Attributes with `to_ids: false` are not meant
+// for detection, so we skip them.
+//
+// Docs:
+//   https://tenzir.com/docs/reference/operators/context_update
+//   https://tenzir.com/docs/guides/enrich/enrich-with-threat-intel
+//   https://www.circl.lu/doc/misp/automation/ (the `to_ids` flag)
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/misp/attributes.json" {
+  read_json
+}
+this = response
+unroll Attribute
+this = Attribute
+where to_ids
+// MISP stores every value as a string. Lookup keys are typed, so convert IP
+// addresses to make them match the `ip` fields of normalized events.
+ioc = ip(value) if type in ["ip-src", "ip-dst"] else value
+// `fork` attaches a second sink, which lets one stream feed both contexts.
+fork {
+  context_update "misp_ioc_filter", key=ioc
+}
+fork {
+  context_update "misp_iocs", key=ioc, value={
+    type: type,
+    category: category,
+    comment: comment,
+    event_uuid: Event.uuid,
+    event_info: Event.info,
+  }
+}
+select ioc, type
+sort type, ioc

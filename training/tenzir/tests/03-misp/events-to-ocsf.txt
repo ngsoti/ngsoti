@@ -1,0 +1,15 @@
+{
+  message: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
+  class_name: "OSINT Inventory Info",
+  severity_id: 3,
+  tlp: null,
+  indicators: [
+    "dl.evil-cdn.example",
+    "203.0.113.50",
+    "198.51.100.7",
+    "http://dl.evil-cdn.example/x.sh",
+    "b6f3c8a5d1e94f7a2c0b8d6e4f1a3c5e7b9d0f2a4c6e8b0d1f3a5c7e9b1d3f5a",
+    ".kworker-ng",
+    "8.8.8.8",
+  ],
+}

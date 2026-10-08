@@ -1,0 +1,18 @@
+{
+  time: 2026-09-14T08:12:01.431Z,
+  class_name: "DNS Activity",
+  activity_name: "Response",
+  severity_id: 1,
+}
+{
+  time: 2026-09-14T08:12:01.452Z,
+  class_name: "HTTP Activity",
+  activity_name: "Get",
+  severity_id: 1,
+}
+{
+  time: 2026-09-14T08:12:04.302Z,
+  class_name: "Detection Finding",
+  activity_name: "Create",
+  severity_id: 3,
+}

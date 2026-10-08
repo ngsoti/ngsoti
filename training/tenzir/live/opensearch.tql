@@ -1,0 +1,15 @@
+---
+name: Send normalized events to OpenSearch
+description: |
+  Forwards OCSF events to the OpenSearch cluster that serves as the NGSOTI SIEM.
+  One index per OCSF class keeps mappings stable.
+---
+
+// Docs:
+//   https://tenzir.com/integrations/opensearch
+//   https://tenzir.com/docs/reference/operators/to_opensearch
+//   https://tenzir.com/docs/guides/route/send-to-destinations
+subscribe "ocsf"
+index = f"ocsf-{class_name.to_lower().replace(" ", "-")}"
+to_opensearch "https://opensearch.example.org:9200", action="create", index=index,
+              user=secret("OPENSEARCH_USER"), passwd=secret("OPENSEARCH_PASSWORD")

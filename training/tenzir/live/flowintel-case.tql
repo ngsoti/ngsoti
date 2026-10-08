@@ -1,0 +1,24 @@
+---
+name: Open a FlowIntel case for every high-severity detection
+description: |
+  Turns an alert into a case that trainees investigate.
+---
+
+// Docs:
+//   https://github.com/flowintel/flowintel (API documentation under /doc)
+//   https://tenzir.com/docs/reference/operators/from_http
+//   https://tenzir.com/docs/reference/operators/each
+//
+// The request body follows FlowIntel's case-creation API. Check your
+// instance's Swagger UI for the exact field names of your version.
+let $flowintel = "https://flowintel.example.org"
+subscribe "detections"
+where severity_id >= 4
+select title=finding_info.title,
+       description=f"Detected by Tenzir at {time}",
+       tags=["tlp:clear", "ngsoti:training"]
+each parallel=1 {
+  from_http f"{$flowintel}/api/case/create", method="post", headers={
+    "X-API-KEY": secret("FLOWINTEL_API_KEY"),
+  }, body=this
+}

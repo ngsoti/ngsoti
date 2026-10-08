@@ -1,0 +1,25 @@
+---
+name: Subscribe to the MISP ZeroMQ stream
+description: |
+  Receives IOC changes from MISP in real time. Enable the ZeroMQ plugin in MISP
+  under Administration > Server Settings > Plugin settings.
+---
+
+// Docs:
+//   https://www.circl.lu/doc/misp/misp-zmq/
+//   https://tenzir.com/docs/reference/operators/from_zmq
+//   https://tenzir.com/integrations/zeromq
+//
+// MISP publishes `misp_json_attribute <json>` for every attribute change. We
+// subscribe to that topic prefix and let `read_json` parse what follows.
+from_zmq "tcp://misp.example.org:50000", prefix="misp_json_attribute " {
+  read_json
+}
+where Attribute.to_ids == "1" and not Attribute.deleted?
+ioc = ip(Attribute.value) if Attribute.type in ["ip-src", "ip-dst"] else Attribute.value
+context_update "misp_iocs", key=ioc, value={
+  type: Attribute.type,
+  category: Attribute.category,
+  comment: Attribute.comment,
+  event_id: Attribute.event_id,
+}

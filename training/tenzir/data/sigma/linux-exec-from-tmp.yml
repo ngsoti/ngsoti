@@ -1,0 +1,22 @@
+title: Linux Process Started From Temporary Directory
+id: 0d3c5e77-2b9a-4c1f-8a64-7e1b9f2a3c40
+status: experimental
+description: Detects programs that execute from world-writable directories.
+author: NGSOTI training
+date: 2026-10-08
+tags:
+  - attack.execution
+  - attack.t1204
+logsource:
+  category: process_creation
+  product: linux
+detection:
+  selection:
+    Image|startswith:
+      - '/tmp/'
+      - '/dev/shm/'
+      - '/var/tmp/'
+  condition: selection
+falsepositives:
+  - Installers and self-extracting archives
+level: high

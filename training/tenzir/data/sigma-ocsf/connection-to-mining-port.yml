@@ -1,0 +1,23 @@
+title: Connection To Mining Pool Port
+id: 8c4d2e61-7a3f-4b95-9e08-1d5a6b7c8e93
+status: experimental
+description: |
+  Detects connections to a port that mining pools commonly use. The rule names
+  OCSF fields, so it applies to Network Activity from every sensor.
+author: NGSOTI training
+date: 2026-10-08
+tags:
+  - attack.impact
+  - attack.t1496
+logsource:
+  category: network
+detection:
+  selection:
+    dst_endpoint.port:
+      - 3333
+      - 4444
+      - 5555
+  condition: selection
+falsepositives:
+  - Services that legitimately listen on these ports
+level: medium

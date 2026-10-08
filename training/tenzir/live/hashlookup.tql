@@ -1,0 +1,26 @@
+---
+name: Suppress known-good executables with CIRCL hashlookup
+description: |
+  Looks up the SHA-256 of every executable that Kunai reports against CIRCL's
+  hashlookup service (NSRL and other known-file sets). Known files are not
+  worth an analyst's time.
+---
+
+// Docs:
+//   https://www.circl.lu/services/hashlookup/
+//   https://hashlookup.circl.lu/
+//   https://tenzir.com/docs/reference/operators/from_http
+//   https://tenzir.com/docs/reference/operators/deduplicate
+subscribe "kunai-ocsf"
+where class_uid == 1007 and activity_id == 1
+sha256 = process.file.hashes.where(h => h.algorithm_id == 3)[0]?.value?
+where sha256 != null
+// A host launches the same binary thousands of times. Ask once per hash and day.
+deduplicate sha256, create_timeout=1d
+each parallel=4 {
+  from_http f"https://hashlookup.circl.lu/lookup/sha256/{sha256}", error_field=lookup_error {
+    read_json
+  }
+}
+known = lookup_error == null and message? == null
+publish "hashlookup-results"

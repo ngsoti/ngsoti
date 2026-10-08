@@ -1,0 +1,45 @@
+{
+  time: 2026-09-14T08:12:01.450Z,
+  class_name: "Network Activity",
+  process: "curl",
+  dst_ip: 203.0.113.50,
+  dst_host: "dl.evil-cdn.example",
+  sha256: null,
+  ioc: {
+    type: "ip-dst",
+    category: "Network activity",
+    comment: "payload server",
+    event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
+    event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
+  },
+}
+{
+  time: 2026-09-14T08:12:04.100Z,
+  class_name: "Process Activity",
+  process: "kworker-ng",
+  dst_ip: null,
+  dst_host: null,
+  sha256: "b6f3c8a5d1e94f7a2c0b8d6e4f1a3c5e7b9d0f2a4c6e8b0d1f3a5c7e9b1d3f5a",
+  ioc: {
+    type: "sha256",
+    category: "Payload delivery",
+    comment: "kworker-ng miner",
+    event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
+    event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
+  },
+}
+{
+  time: 2026-09-14T08:12:04.300Z,
+  class_name: "Network Activity",
+  process: "kworker-ng",
+  dst_ip: 198.51.100.7,
+  dst_host: null,
+  sha256: null,
+  ioc: {
+    type: "ip-dst",
+    category: "Network activity",
+    comment: "mining pool / C2",
+    event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
+    event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
+  },
+}

@@ -1,0 +1,26 @@
+{
+  time: 2026-09-14T08:12:01.430000128Z,
+  class_name: "Network Activity",
+  activity_name: "Close",
+  src_endpoint: {
+    ip: 10.0.0.15,
+  },
+  dst_endpoint: {
+    ip: 10.0.0.2,
+    port: 53,
+  },
+  community_uid: "1:GEC8jLPyeg9NvjqP+xlsJmgiu3k=",
+}
+{
+  time: 2026-09-14T08:12:04.300Z,
+  class_name: "Network Activity",
+  activity_name: "Open",
+  src_endpoint: {
+    ip: 10.0.0.15,
+  },
+  dst_endpoint: {
+    ip: 198.51.100.7,
+    port: 4444,
+  },
+  community_uid: "1:cxnPTmOCSBbmMbJwFnzHHUqx8Mo=",
+}

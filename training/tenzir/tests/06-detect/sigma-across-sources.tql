@@ -1,0 +1,39 @@
+// Runs a Sigma rule on three sensors at once. The rule in `data/sigma-ocsf`
+// names an OCSF field (`dst_endpoint.port`) instead of a sensor-specific one,
+// so it applies to any source that maps network events to OCSF. The result
+// shows which sensors saw the attacker.
+//
+// Docs:
+//   https://tenzir.com/docs/guides/detect/execute-sigma-rules
+//   https://tenzir.com/docs/explanations/normalization
+//   https://tenzir.com/docs/guides/detect/check-sigma-rule-compatibility-with-ocsf
+let $data = env("TENZIR_INPUTS").otherwise("data")
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+merge {
+  from_file f"{$data}/suricata/eve.json" {
+    read_ndjson
+  }
+  suricata::ocsf::normalize
+}
+merge {
+  from_file f"{$data}/zeek/conn.log" {
+    read_zeek_tsv
+  }
+  // The `zeek` package expects seconds, not a duration.
+  duration = duration?.count_seconds()
+  zeek::ocsf::normalize
+}
+ocsf_derive
+ocsf_cast
+// The rule concerns network connections. Select that class first, so the rule
+// only sees events that carry its fields.
+where class_uid == ocsf_class_uid("Network Activity")
+sigma path=f"{$data}/sigma-ocsf"
+select rule=finding_info.title,
+       sensor=evidences[0].data.metadata.product.name,
+       event=evidences[0].data.class_name,
+       time=evidences[0].data.time
+sort rule, time, sensor

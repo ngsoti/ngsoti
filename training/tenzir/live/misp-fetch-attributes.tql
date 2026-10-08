@@ -1,0 +1,45 @@
+---
+name: Sync detection-relevant MISP attributes into contexts
+description: |
+  Periodically pulls attributes with `to_ids=true` from MISP and keeps the
+  `misp_iocs` lookup table and the `misp_ioc_filter` Bloom filter up to date.
+  Create both contexts once, as in `tests/03-misp/ioc-contexts`.
+---
+
+// Docs:
+//   https://tenzir.com/docs/reference/operators/from_http
+//   https://tenzir.com/docs/reference/operators/context_update
+//   https://tenzir.com/docs/reference/operators/every
+//   https://www.circl.lu/doc/misp/automation/ (the attributes restSearch API)
+let $misp = "https://misp.example.org"
+let $interval = 1h
+every $interval {
+  from_http f"{$misp}/attributes/restSearch", method="post", headers={
+    Authorization: secret("MISP_API_KEY"),
+    Accept: "application/json",
+  }, body={
+    returnFormat: "json",
+    to_ids: 1,
+    // Only fetch what changed since the last run, and leave out deleted and
+    // warninglist-matching attributes to keep false positives low.
+    last: "1h",
+    enforceWarninglist: 1,
+    includeEventTags: 1,
+  } {
+    read_json
+  }
+}
+this = response
+unroll Attribute
+this = Attribute
+ioc = ip(value) if type in ["ip-src", "ip-dst"] else value
+fork {
+  context_update "misp_ioc_filter", key=ioc
+}
+context_update "misp_iocs", key=ioc, value={
+  type: type,
+  category: category,
+  comment: comment,
+  event_uuid: Event.uuid,
+  event_info: Event.info,
+}
