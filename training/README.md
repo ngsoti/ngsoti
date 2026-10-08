@@ -1,6 +1,8 @@
 # Cybersecurity Tool for Threat Intelligence and Forensics
 
-![](http://hdoc.csirt-tooling.org/uploads/upload_13235b6957b475dc731b2a392b2fd021.png)
+![NGSOTI SOC stack: analyst tools on top, Tenzir as the transport layer in the middle, sensors at the bottom](diagrams/ngsoti-soc-stack.png)
+
+*Editable source: [`ngsoti-soc-stack.excalidraw`](diagrams/ngsoti-soc-stack.excalidraw). Open it at [excalidraw.com](https://excalidraw.com).*
 
 The course **Cybersecurity Tools for Threat Intelligence and Forensics** is composed of 8 modules that cover the main open-source tools (MISP, AIL Project, FlowIntel, Kunai, and Tenzir) of the NGSOTI training SOC. It aims to provide a comprehensive toolbox for security analysts, SOC operators, and security professionals.
 
