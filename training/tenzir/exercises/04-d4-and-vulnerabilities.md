@@ -3,6 +3,14 @@
 **Time:** 30 minutes. **Solutions:** [`tests/04-d4`](../tests/04-d4),
 [`tests/05-vulnerability`](../tests/05-vulnerability).
 
+## The question
+
+A separate case on the same day. While you investigate `web-01`, the NGSOTI
+blackhole team calls: their sensors on unused address space caught an exploit
+attempt. Nobody should send packets there, so every packet is a scan, an
+attack, or a mistake. Who is knocking, what are they trying, and which
+vulnerability should your organization patch first?
+
 ## Goal
 
 Triage packet captures from a D4 sensor, detect an exploit attempt, and add

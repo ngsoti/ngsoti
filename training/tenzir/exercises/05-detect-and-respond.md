@@ -3,6 +3,13 @@
 **Time:** 30 minutes. **Solutions:** [`tests/06-detect`](../tests/06-detect),
 [`live/`](../live).
 
+## The question
+
+Your pipelines now flag the miner, and most teams would stop here: kill the
+process, reimage `web-01`, close the ticket. Before you do, ask what else the
+miner did, and what the attacker actually came for. Then turn a dozen alerts
+into one case that an analyst can act on.
+
 ## Goal
 
 Detect the incident with Sigma rules and TQL, and route the findings to the
@@ -82,17 +89,24 @@ changes, and debugger attachment. For those, you write TQL.
    `sshd`, and the attack on `auditd`. It uses
    [`ocsf_class_uid`](https://tenzir.com/docs/reference/functions/ocsf_class_uid)
    instead of magic numbers. Why is that more readable?
-6. Write a detection that fires when one process performs three of these
+6. **Find the purpose.** Look at the four findings in order. Why would a
+   cryptocurrency miner attach to `sshd` with `ptrace`? Why does it hide with a
+   rootkit and silence `auditd`, when mining only needs CPU? What does that
+   change about the response to this incident? (Hint: think about what passes
+   through `sshd`, and what reimaging does not undo.)
+7. Write a detection that fires when one process performs three of these
    actions within 10 seconds. Use
    [`summarize`](https://tenzir.com/docs/reference/operators/summarize) with the
    process's unique ID (`actor.process.uid`). Sigma correlation rules are not
-   part of the `sigma` operator, so you express them in TQL. See
+   part of the `sigma` operator, so you express them in TQL. How many alerts
+   did Sigma and TQL raise for this incident so far, and how many does your
+   detection raise? See
    [Detect over time windows](https://tenzir.com/docs/guides/detect/detect-over-time-windows)
    and [Create multi-stage detectors](https://tenzir.com/docs/guides/detect/create-multi-stage-detectors).
 
 ### Part C: Route and respond
 
-7. Read the pipelines in [`live/`](../live). Each sends findings to one
+8. Read the pipelines in [`live/`](../live). Each sends findings to one
    destination:
 
    | Destination    | Pipeline                                                |
@@ -108,13 +122,15 @@ changes, and debugger attachment. For those, you write TQL.
    others [`subscribe`](https://tenzir.com/docs/reference/operators/subscribe).
    Draw the full flow from `kunai.log` to a FlowIntel case. Which pipelines
    run continuously?
-8. Suppose OpenSearch is down for ten minutes. What happens to the events in
+9. Suppose OpenSearch is down for ten minutes. What happens to the events in
    the pipelines that publish to it? What would you change so that no
    detection is lost? (Read
    [Send to destinations](https://tenzir.com/docs/guides/route/send-to-destinations).)
 
 ## Questions
 
+- The Suricata alert caught the miner. What would you have missed if you had
+  stopped there?
 - Which of the rules is most likely to fire on a developer's laptop? How do
   you tune it without losing the attack?
 - Why does NGSOTI put detection upstream of the SIEM? What does the SIEM do

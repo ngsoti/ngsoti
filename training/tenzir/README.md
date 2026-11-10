@@ -52,10 +52,25 @@ After this module, you can:
 
 ## The scenario
 
-All exercises follow one incident on the host `web-01` on 14 September 2026. An
-attacker uses a web shell to run `curl`, downloads a dropper, starts a
-cryptocurrency miner from `/tmp`, loads a kernel module, and tampers with the
-audit daemon. Each sensor sees part of the story:
+All exercises follow one incident on the host `web-01` on 14 September 2026.
+It starts with a single Suricata alert at 08:12:04 UTC: `web-01` (10.0.0.15)
+connects to 198.51.100.7 on port 4444, a port that cryptocurrency mining pools
+use. A miner on a web server looks like a routine case: kill the process,
+reimage the host, and close the ticket.
+
+Don't close it yet. Each exercise answers the question that an analyst would
+ask next, and together they show that the miner is the loudest part of the
+attack, not its purpose:
+
+| Exercise | The question |
+| :------- | :----------- |
+| 1 | What else did `web-01` do on the network around the alert? |
+| 2 | Which process opened the connection, how did it get there, and as which user? |
+| 3 | Did the community already know this campaign, and how fast would its indicators have caught it? |
+| 4 | A separate case: what does traffic to unused address space reveal, and which vulnerability matters most? |
+| 5 | What did the attacker actually want, and how do a dozen alerts become one case? |
+
+Each sensor sees part of the story:
 
 | Sensor        | What it sees                                            | Data |
 | :------------ | :------------------------------------------------------ | :--- |
@@ -99,6 +114,16 @@ The reference solutions are executable tests. Compare your output with the
 
 ## Teaching notes
 
+- The full story, for instructors only: a web shell in `apache2`, running as
+  `www-data`, downloads `x.sh`, which drops `.kworker-ng` into `/tmp`. The
+  binary mines loudly, which trips the Suricata alert. Then, without any
+  `sudo` or `su` in the telemetry, the attacker is `root` and loads the
+  Diamorphine rootkit. The miner attaches to `sshd` with `ptrace`, a known way
+  to harvest SSH credentials, deletes the dropper, and kills `auditd`. The
+  miner is the decoy. A response that reimages `web-01` without rotating the
+  credentials that passed through `sshd`, and without finding the privilege
+  escalation path on hosts of the same build, misses what the attacker came
+  for. Save this reveal for Exercise 5.
 - Exercises 1 and 2 teach the vocabulary (events, operators, schemas). Do not
   skip them in a mixed audience.
 - Exercise 3 needs a node. Start one on the instructor machine and share it, or

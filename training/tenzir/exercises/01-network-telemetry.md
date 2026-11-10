@@ -2,6 +2,13 @@
 
 **Time:** 45 minutes. **Solutions:** [`tests/01-acquire`](../tests/01-acquire).
 
+## The question
+
+At 08:12:04, Suricata raises an alert: `web-01` (10.0.0.15) connected to
+198.51.100.7 on port 4444, a port that mining pools use. Before anyone touches
+the host, you want the network's view. What else did `web-01` do in the
+seconds around the alert? Suricata and Zeek both saw it, in different words.
+
 ## Goal
 
 Read Suricata and Zeek logs, normalize both to OCSF, and see what a common
@@ -72,6 +79,11 @@ why Tenzir maps everything to OCSF first.
    ```
 
    You wrote one `select` for two sensors. That is the point of normalization.
+
+6. Answer the opening question from your two outputs. What did `web-01` look
+   up, download, and connect to between 08:12:00 and 08:12:10? Which sensor
+   saw which part? What can neither sensor tell you about the connection to
+   port 4444?
 
 ## Questions
 

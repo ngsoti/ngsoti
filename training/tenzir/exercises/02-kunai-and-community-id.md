@@ -3,6 +3,13 @@
 **Time:** 45 minutes. **Solutions:** [`tests/01-acquire/kunai.tql`](../tests/01-acquire/kunai.tql),
 [`tests/02-correlate`](../tests/02-correlate).
 
+## The question
+
+The network says *that* `web-01` talked to a mining pool, not *who*. On the
+host, the culprit has a name that sounds harmless: `kworker-ng`, like the
+kernel's own worker threads. Is it one? Where did it come from, and with
+which privileges does it run?
+
 ## Goal
 
 Normalize endpoint telemetry from [Kunai](https://github.com/kunai-project/kunai)
@@ -65,13 +72,20 @@ consume stays in `unmapped`. Two operators matter for you:
    Kunai's `task` and `parent_task`. After an `execve`, the task already runs
    the new program.
 
-4. Read the mapper in the
+4. **Follow the chain.** Where does the `kworker-ng` executable live? Walk
+   back through `process.parent_process` to the first `sh`: which service
+   started it, and as which user? Now list the user of every event: launches
+   carry it in `process.user`, all other events in `actor.user`. The chain runs
+   as `www-data` until 08:12:04, but `insmod` runs as `root` a second later.
+   Kunai records no `sudo` or `su` in between. What does that gap tell you?
+
+5. Read the mapper in the
    [`kunai` package](https://github.com/tenzir/library/tree/main/kunai)
    (`operators/ocsf/map.tql` and `operators/ocsf/events/execve.tql`).
    The mapper consumes the source event, so what it cannot map becomes
    `unmapped`. Find an event with a non-empty `unmapped`.
 
-5. **Correlate.** Kunai reports the Community ID for every connection, and
+6. **Correlate.** Kunai reports the Community ID for every connection, and
    Zeek and Suricata do too. Read all three sources, normalize them, and group
    by Community ID:
 
@@ -96,6 +110,8 @@ consume stays in `unmapped`. Two operators matter for you:
 
 ## Questions
 
+- A real kernel worker thread has no executable file and no parent shell. Which
+  two fields expose `kworker-ng` as an impostor?
 - What would break if Kunai and Zeek computed the Community ID with different
   seeds?
 - Kunai reports a connection when the process calls `connect`. Zeek reports it

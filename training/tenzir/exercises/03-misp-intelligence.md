@@ -3,6 +3,14 @@
 **Time:** 45 minutes. **Solutions:** [`tests/03-misp`](../tests/03-misp),
 [`live/misp-*.tql`](../live).
 
+## The question
+
+Someone saw this campaign before you did. Its indicators are in a MISP event:
+the payload server, the mining pool, and the hash of the miner. If your
+pipelines had matched them in real time, how many seconds into the attack would
+the first alert have fired? And once you know you were hit, what do you owe the
+community that shared the indicators?
+
 ## Goal
 
 Use indicators from [MISP](https://www.misp-project.org) to flag events in real
@@ -104,6 +112,9 @@ stays small with millions of indicators. Read
 
 ## Questions
 
+- Compare the time of the first match with the first `execve` of the web shell.
+  How much of the attack would a live indicator match have prevented, and how
+  much only reported?
 - A Bloom filter has false positives. How would you combine it with the lookup
   table so that you get both speed and exact answers?
 - MISP's warninglists mark benign values such as public DNS resolvers. Where in
