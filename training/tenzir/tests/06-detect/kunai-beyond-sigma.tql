@@ -1,26 +1,36 @@
 // Sigma's Linux catalog covers process creation, network connections, and file
 // creation. Kunai also reports kernel module loads, executable memory, and
 // debugger attachment, which the catalog does not model yet. Plain TQL fills
-// that gap, and the OCSF class tells us what each event means.
+// that gap: a `match` statement routes each event by its OCSF class, and every
+// arm names the behavior it finds.
 //
 // Docs:
 //   https://tenzir.com/docs/guides/detect/match-events-with-tql
 //   https://tenzir.com/docs/guides/detect/model-detections-in-ocsf
-//   https://tenzir.com/docs/reference/functions/ocsf_class_uid
+//   https://tenzir.com/docs/reference/statements#match
 let $data = env("TENZIR_INPUTS").otherwise("data")
 from_file f"{$data}/kunai/dropper.jsonl" {
   read_ndjson
 }
 kunai::ocsf::normalize
 ocsf_derive
-let $kernel = ocsf_class_uid("Kernel Extension Activity")
-let $memory = ocsf_class_uid("Memory Activity")
-let $process = ocsf_class_uid("Process Activity")
-let $audit_daemons = ["auditd", "rsyslogd", "systemd-journald"]
-where (
-  class_uid == $kernel or
-  class_uid == $memory or
-  (class_uid == $process and activity_name == "Open") or
-  (class_uid == $process and activity_name == "Terminate" and process?.name? in $audit_daemons)
-)
+let $audit = ["auditd", "rsyslogd", "systemd-journald"]
+match class_name {
+  "Kernel Extension Activity" => {
+    finding = "A kernel module loads"
+  }
+  "Memory Activity" => {
+    finding = "A process makes its memory executable"
+  }
+  "Process Activity" if activity_name == "Open" => {
+    finding = "A process attaches to another process"
+  }
+  "Process Activity" if activity_name == "Terminate" and process.name in $audit => {
+    finding = "A process kills a logging daemon"
+  }
+  // Everything else is not a finding.
+  _ => {
+    where false
+  }
+}
 sort time

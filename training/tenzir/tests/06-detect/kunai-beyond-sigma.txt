@@ -149,6 +149,7 @@
   class_name: "Memory Activity",
   severity: "Informational",
   type_name: "Memory Activity: Modify Page",
+  finding: "A process makes its memory executable",
 }
 {
   metadata: {
@@ -285,6 +286,7 @@
   severity: "Informational",
   status: "Success",
   type_name: "Kernel Extension Activity: Load",
+  finding: "A kernel module loads",
 }
 {
   metadata: {
@@ -447,6 +449,7 @@
   class_name: "Process Activity",
   severity: "Informational",
   type_name: "Process Activity: Open",
+  finding: "A process attaches to another process",
 }
 {
   metadata: {
@@ -609,4 +612,5 @@
   class_name: "Process Activity",
   severity: "Informational",
   type_name: "Process Activity: Terminate",
+  finding: "A process kills a logging daemon",
 }

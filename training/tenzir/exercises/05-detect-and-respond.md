@@ -86,9 +86,10 @@ changes, and debugger attachment. For those, you write TQL.
 
 5. Open [`kunai-beyond-sigma.tql`](../tests/06-detect/kunai-beyond-sigma.tql).
    It finds the rootkit load, the executable memory, the `ptrace` attach to
-   `sshd`, and the attack on `auditd`. It uses
-   [`ocsf_class_uid`](https://tenzir.com/docs/reference/functions/ocsf_class_uid)
-   instead of magic numbers. Why is that more readable?
+   `sshd`, and the attack on `auditd`. A
+   [`match`](https://tenzir.com/docs/reference/statements#match) statement
+   routes each event by its OCSF class, and each arm names its finding. Why is
+   that easier to extend than one long `where` clause?
 6. **Find the purpose.** Look at the four findings in order. Why would a
    cryptocurrency miner attach to `sshd` with `ptrace`? Why does it hide with a
    rootkit and silence `auditd`, when mining only needs CPU? What does that
