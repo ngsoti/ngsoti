@@ -28,9 +28,9 @@ match class_name {
   "Process Activity" if activity_name == "Terminate" and process.name in $audit => {
     finding = "A process kills a logging daemon"
   }
-  // Everything else is not a finding.
+  // A match needs an arm for every event. Everything else is no finding.
   _ => {
-    where false
+    discard
   }
 }
 sort time

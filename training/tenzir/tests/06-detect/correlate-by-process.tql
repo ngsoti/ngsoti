@@ -1,0 +1,63 @@
+// Correlates the findings of Sigma and of the TQL detections by the process
+// that caused them. One alert at a time, the miner looks like a miner. Grouped
+// by process, it also attaches to sshd and kills the audit daemon, and the
+// analyst gets one finding instead of a dozen alerts.
+//
+// Docs:
+//   https://tenzir.com/docs/guides/detect/detect-over-time-windows
+//   https://tenzir.com/docs/guides/detect/create-multi-stage-detectors
+//   https://tenzir.com/docs/reference/operators/summarize
+let $data = env("TENZIR_INPUTS").otherwise("data")
+let $audit = ["auditd", "rsyslogd", "systemd-journald"]
+// The Sigma findings, as in `sigma-on-kunai.tql`. A finding keeps the matched
+// event in its evidence, and with it the process that caused the event.
+from_file f"{$data}/kunai/dropper.jsonl" {
+  read_ndjson
+}
+kunai::ocsf::normalize
+sigma path=f"{$data}/sigma"
+this = {
+  time: evidences[0].data.time,
+  process: evidences[0].data.actor.process,
+  behavior: finding_info.title,
+}
+// The TQL findings, as in `kunai-beyond-sigma.tql`.
+merge {
+  from_file f"{$data}/kunai/dropper.jsonl" {
+    read_ndjson
+  }
+  kunai::ocsf::normalize
+  ocsf_derive
+  match class_name {
+    "Kernel Extension Activity" => {
+      finding = "A kernel module loads"
+    }
+    "Memory Activity" => {
+      finding = "A process makes its memory executable"
+    }
+    "Process Activity" if activity_name == "Open" => {
+      finding = "A process attaches to another process"
+    }
+    "Process Activity" if activity_name == "Terminate" and process.name in $audit => {
+      finding = "A process kills a logging daemon"
+    }
+    // A match needs an arm for every event. Everything else is no finding.
+    _ => {
+      discard
+    }
+  }
+  this = {time: time, process: actor.process, behavior: finding}
+}
+// One row per process, with everything it did. Not every event names the
+// process, so take the first name we see.
+summarize process=process.uid,
+          name=first(process.name?),
+          behaviors=distinct(behavior),
+          first_seen=min(time),
+          last_seen=max(time)
+// Three different behaviors within 10 seconds make one finding. On a live
+// stream, the guide on time windows shows how to bound the grouping.
+where behaviors.length() >= 3 and last_seen - first_seen < 10s
+// Distinct values arrive in arbitrary order. Sort them for stable output.
+behaviors = behaviors.sort()
+sort first_seen

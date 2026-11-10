@@ -27,7 +27,9 @@ merge {
   zeek::ocsf::normalize
 }
 ocsf_derive
-// Suricata alerts keep the connection in their evidence.
+// Activity events carry their connection at the top. Findings, such as
+// Suricata's alerts, carry it in their evidence, because OCSF findings
+// describe events rather than being one.
 connection = connection_info? else evidences?[0]?.connection_info?
 where connection != null
 event = f"{class_name}: {activity_name}"

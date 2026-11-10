@@ -1,0 +1,13 @@
+{
+  process: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+  name: "kworker-ng",
+  behaviors: [
+    "A process attaches to another process",
+    "A process kills a logging daemon",
+    "A process makes its memory executable",
+    "Linux Outbound Connection To Common Mining Pool Port",
+    "Linux Process Started From Temporary Directory",
+  ],
+  first_seen: 2026-09-14T08:12:04.100Z,
+  last_seen: 2026-09-14T08:12:09.100Z,
+}

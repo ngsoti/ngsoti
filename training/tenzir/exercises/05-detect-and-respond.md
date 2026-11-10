@@ -95,13 +95,15 @@ changes, and debugger attachment. For those, you write TQL.
    rootkit and silence `auditd`, when mining only needs CPU? What does that
    change about the response to this incident? (Hint: think about what passes
    through `sshd`, and what reimaging does not undo.)
-7. Write a detection that fires when one process performs three of these
-   actions within 10 seconds. Use
-   [`summarize`](https://tenzir.com/docs/reference/operators/summarize) with the
-   process's unique ID (`actor.process.uid`). Sigma correlation rules are not
-   part of the `sigma` operator, so you express them in TQL. How many alerts
-   did Sigma and TQL raise for this incident so far, and how many does your
-   detection raise? See
+7. **Correlate.** Sigma and TQL raised 11 alerts for this incident, one
+   behavior at a time. Group them by the process that caused them, with
+   [`summarize`](https://tenzir.com/docs/reference/operators/summarize) over
+   the process's unique ID (`actor.process.uid`), and keep processes with three
+   different behaviors within 10 seconds. Sigma correlation rules are not part
+   of the `sigma` operator, so you express them in TQL. Which process remains,
+   and what does its one finding say that none of the 11 alerts said alone?
+   Compare with
+   [`correlate-by-process.tql`](../tests/06-detect/correlate-by-process.tql). See
    [Detect over time windows](https://tenzir.com/docs/guides/detect/detect-over-time-windows)
    and [Create multi-stage detectors](https://tenzir.com/docs/guides/detect/create-multi-stage-detectors).
 
