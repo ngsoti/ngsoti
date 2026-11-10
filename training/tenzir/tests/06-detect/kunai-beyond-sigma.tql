@@ -13,7 +13,6 @@ from_file f"{$data}/kunai/dropper.jsonl" {
 }
 kunai::ocsf::normalize
 ocsf_derive
-ocsf_cast
 let $kernel = ocsf_class_uid("Kernel Extension Activity")
 let $memory = ocsf_class_uid("Memory Activity")
 let $process = ocsf_class_uid("Process Activity")
@@ -24,6 +23,4 @@ where (
   (class_uid == $process and activity_name == "Open") or
   (class_uid == $process and activity_name == "Terminate" and process?.name? in $audit_daemons)
 )
-select time, class_name, activity_name, actor=actor.process.name,
-       target=process?.name?, module=driver?.file?.name?, address=base_address?
 sort time

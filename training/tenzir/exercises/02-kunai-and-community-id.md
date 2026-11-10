@@ -59,10 +59,7 @@ consume stays in `unmapped`. Two operators matter for you:
    }
    kunai::ocsf::normalize
    ocsf_derive
-   ocsf_cast
-   select time, class_name, activity_name,
-          process=process?.name?.otherwise(actor.process?.name?),
-          cmd=process?.cmd_line?.otherwise(actor.process?.cmd_line?)
+   sort time
    ```
 
    Read the incident from top to bottom. What did the web shell do?
@@ -103,7 +100,7 @@ consume stays in `unmapped`. Two operators matter for you:
    }
    ```
 
-   Continue with `ocsf_derive`, `ocsf_cast`, and a `summarize` by the Community
+   Continue with `ocsf_derive` and a `summarize` by the Community
    ID. [`tests/02-correlate/community-id.tql`](../tests/02-correlate/community-id.tql)
    has the full pipeline. Which process opened the connection that Suricata
    flagged? What did Zeek see about the same flow?

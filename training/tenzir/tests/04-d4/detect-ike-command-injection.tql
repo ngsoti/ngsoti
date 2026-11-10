@@ -18,5 +18,5 @@ from_file f"{$data}/d4/blackhole.pcap" {
 this = {...this, ...decapsulate(this)}
 where udp?.dst_port? == 500
 where data.encode_hex().to_lower().match_regex("(3b|24|60|7c)(77676574|6375726c|7368)")
-select time=timestamp, src=ip.src, dst=ip.dst, dst_port=udp.dst_port, community_id,
-       cve="CVE-2023-28771", technique="T1190"
+cve = "CVE-2023-28771"
+technique = "T1190"

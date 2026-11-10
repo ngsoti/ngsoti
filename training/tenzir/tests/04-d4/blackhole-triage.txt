@@ -1,3 +1,10 @@
+warning: event does not have field
+  --> 04-d4/blackhole-triage.tql:15:22
+   |
+15 | transport = "tcp" if tcp != null else "udp"
+   |                      ~~~
+   |
+   = hint: append `?` to suppress this warning
 {
   transport: "tcp",
   dst_port: 23,

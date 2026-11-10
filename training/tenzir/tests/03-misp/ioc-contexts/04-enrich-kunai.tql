@@ -10,8 +10,6 @@ from_file f"{$data}/kunai/dropper.jsonl" {
   read_ndjson
 }
 kunai::ocsf::normalize
-ocsf_derive
-ocsf_cast
 // Pull out the fields that can match: the destination, and the SHA-256 of
 // the executable.
 dst_ip = dst_endpoint?.ip?
@@ -22,6 +20,4 @@ context_enrich "misp_iocs", key=dst_host, into=hit_host
 context_enrich "misp_iocs", key=sha256, into=hit_hash
 context_enrich "misp_ioc_filter", key=dst_ip, into=seen_ip
 where hit_ip != null or hit_host != null or hit_hash != null
-select time, class_name, process=process?.name?.otherwise(actor.process?.name?), dst_ip, dst_host, sha256,
-       ioc=hit_ip.otherwise(hit_host).otherwise(hit_hash)
 sort time

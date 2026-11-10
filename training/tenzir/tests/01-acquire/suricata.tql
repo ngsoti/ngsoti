@@ -6,13 +6,10 @@
 //   https://tenzir.com/docs/reference/operators/from_file
 //   https://tenzir.com/docs/reference/operators/read_ndjson
 //   https://tenzir.com/docs/reference/operators/ocsf_derive
-//   https://tenzir.com/docs/reference/operators/ocsf_cast
 let $data = env("TENZIR_INPUTS").otherwise("data")
 from_file f"{$data}/suricata/eve.json" {
   read_ndjson
 }
 suricata::ocsf::normalize
 ocsf_derive
-ocsf_cast
-select time, class_name, activity_name, severity_id
 sort time

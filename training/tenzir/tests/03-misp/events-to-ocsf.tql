@@ -14,5 +14,3 @@ unroll response
 this = response.Event
 misp::event::ocsf::normalize
 ocsf_derive
-ocsf_cast
-select message, class_name, severity_id, tlp=metadata.tlp?, indicators=osint.map(o => o.value)

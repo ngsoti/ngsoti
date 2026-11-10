@@ -1,36 +1,612 @@
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "mprotect_exec",
+    uid: "51f8cde8-9aad-592a-9f09-218f31bc3b64",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:04.200Z,
-  class_name: "Memory Activity",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 1,
+  class_uid: 1004,
+  activity_id: 2,
+  process: {
+    name: "kworker-ng",
+    pid: 4433,
+    ptid: 4433,
+    uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+      type: null,
+    },
+    parent_process: {
+      name: "x.sh",
+      pid: 4420,
+      ptid: 4420,
+      uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+        type: null,
+      },
+    },
+    cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+    file: {
+      name: ".kworker-ng",
+      path: "/tmp/.kworker-ng",
+      type_id: 8,
+      desc: null,
+      size: null,
+      type: "Executable File",
+    },
+    ancestry: [
+      {
+        path: "/usr/bin/dash",
+        name: "dash",
+      },
+      {
+        path: "/usr/sbin/apache2",
+        name: "apache2",
+      },
+      {
+        path: "/usr/lib/systemd/systemd",
+        name: "systemd",
+      },
+    ],
+  },
+  actor: {
+    process: {
+      name: "kworker-ng",
+      pid: 4433,
+      ptid: 4433,
+      uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+        type: null,
+      },
+      cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+      file: {
+        name: ".kworker-ng",
+        path: "/tmp/.kworker-ng",
+        type_id: 8,
+        desc: null,
+        size: null,
+        type: "Executable File",
+      },
+    },
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+      type: null,
+    },
+  },
+  base_address: "0x776a2f572000",
+  requested_permissions: 5,
+  type_uid: 100402,
+  unmapped: {
+    info: {
+      event: {
+        batch: 112,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   activity_name: "Modify Page",
-  actor: "kworker-ng",
-  target: "kworker-ng",
-  module: null,
-  address: "0x776a2f572000",
+  category_name: "System Activity",
+  class_name: "Memory Activity",
+  severity: "Informational",
+  type_name: "Memory Activity: Modify Page",
 }
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "init_module",
+    uid: "65e66343-5e64-5fb0-b7cd-406369682c56",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:05.200Z,
-  class_name: "Kernel Extension Activity",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 1,
+  class_uid: 1002,
+  activity_id: 1,
+  actor: {
+    process: {
+      name: "insmod",
+      pid: 4440,
+      ptid: 4440,
+      uid: "f6f7d266-5438-525d-babe-1176328aa35e",
+      user: {
+        uid: "0",
+        name: "root",
+        type_id: 2,
+        groups: [
+          {
+            uid: "0",
+            name: "root",
+          },
+        ],
+        type: "Admin",
+      },
+      parent_process: {
+        name: "x.sh",
+        pid: 4420,
+        ptid: 4420,
+        uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+        user: {
+          uid: "33",
+          name: "www-data",
+          type_id: null,
+          groups: [
+            {
+              uid: "33",
+              name: "www-data",
+            },
+          ],
+          type: null,
+        },
+      },
+      cmd_line: "insmod /tmp/.diamorphine.ko",
+      file: {
+        name: "kmod",
+        path: "/usr/bin/kmod",
+        type_id: 8,
+        desc: null,
+        size: null,
+        type: "Executable File",
+      },
+      ancestry: [
+        {
+          path: "/usr/bin/dash",
+          name: "dash",
+        },
+        {
+          path: "/usr/sbin/apache2",
+          name: "apache2",
+        },
+        {
+          path: "/usr/lib/systemd/systemd",
+          name: "systemd",
+        },
+      ],
+    },
+    user: {
+      uid: "0",
+      name: "root",
+      type_id: 2,
+      groups: [
+        {
+          uid: "0",
+          name: "root",
+        },
+      ],
+      type: "Admin",
+    },
+  },
+  driver: {
+    file: {
+      name: "diamorphine",
+      type_id: 99,
+      type: "Kernel Module",
+    },
+  },
+  status_id: 1,
+  type_uid: 100201,
+  unmapped: {
+    data: {
+      syscall: "finit_module",
+      args: null,
+    },
+    info: {
+      event: {
+        batch: 115,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   activity_name: "Load",
-  actor: "insmod",
-  target: null,
-  module: "diamorphine",
-  address: null,
+  category_name: "System Activity",
+  class_name: "Kernel Extension Activity",
+  severity: "Informational",
+  status: "Success",
+  type_name: "Kernel Extension Activity: Load",
 }
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "ptrace",
+    uid: "06ac9398-3b6c-54b3-a6de-48bfc1bae327",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:06.100Z,
-  class_name: "Process Activity",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 1,
+  class_uid: 1007,
+  activity_id: 3,
+  actor: {
+    process: {
+      name: "kworker-ng",
+      pid: 4433,
+      ptid: 4433,
+      uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+        type: null,
+      },
+      parent_process: {
+        name: "x.sh",
+        pid: 4420,
+        ptid: 4420,
+        uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+        user: {
+          uid: "33",
+          name: "www-data",
+          type_id: null,
+          groups: [
+            {
+              uid: "33",
+              name: "www-data",
+            },
+          ],
+          type: null,
+        },
+      },
+      cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+      file: {
+        name: ".kworker-ng",
+        path: "/tmp/.kworker-ng",
+        type_id: 8,
+        desc: null,
+        size: null,
+        type: "Executable File",
+      },
+      ancestry: [
+        {
+          path: "/usr/bin/dash",
+          name: "dash",
+        },
+        {
+          path: "/usr/sbin/apache2",
+          name: "apache2",
+        },
+        {
+          path: "/usr/lib/systemd/systemd",
+          name: "systemd",
+        },
+      ],
+    },
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+      type: null,
+    },
+  },
+  process: {
+    name: "sshd",
+    pid: 812,
+    ptid: 812,
+    uid: "6172d1f4-d8c6-5f4c-a661-edc6ab4ce50d",
+    user: {
+      uid: "0",
+      name: "root",
+      type_id: 2,
+      groups: [
+        {
+          uid: "0",
+          name: "root",
+        },
+      ],
+      type: "Admin",
+    },
+    cmd_line: "/usr/sbin/sshd -D",
+    file: {
+      name: "sshd",
+      path: "/usr/sbin/sshd",
+      type_id: 8,
+      desc: null,
+      size: null,
+      type: "Executable File",
+    },
+  },
+  type_uid: 100703,
+  unmapped: {
+    data: {
+      mode: "0xa",
+      target: {
+        task: {
+          namespaces: {
+            mnt: 4026531841,
+          },
+          flags: "0x400000",
+          zombie: false,
+        },
+      },
+    },
+    info: {
+      event: {
+        batch: 116,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   activity_name: "Open",
-  actor: "kworker-ng",
-  target: "sshd",
-  module: null,
-  address: null,
+  category_name: "System Activity",
+  class_name: "Process Activity",
+  severity: "Informational",
+  type_name: "Process Activity: Open",
 }
 {
+  metadata: {
+    version: "1.9.0",
+    product: {
+      name: "Kunai",
+      vendor_name: "Kunai Project",
+    },
+    profiles: [
+      "host",
+    ],
+    event_code: "kill",
+    uid: "8f5f8fbc-ca2f-5dff-8a9a-2d5e60858329",
+  },
+  severity_id: 1,
   time: 2026-09-14T08:12:09.100Z,
-  class_name: "Process Activity",
+  device: {
+    hostname: "web-01",
+    uid: "6b1f1c0e-7c1d-4a52-9f5a-2d0c4c0f9a11",
+  },
+  category_uid: 1,
+  class_uid: 1007,
+  activity_id: 2,
+  actor: {
+    process: {
+      name: "kworker-ng",
+      pid: 4433,
+      ptid: 4433,
+      uid: "cca9befe-9e37-5ca6-8e18-5ddd41e0a880",
+      user: {
+        uid: "33",
+        name: "www-data",
+        type_id: null,
+        groups: [
+          {
+            uid: "33",
+            name: "www-data",
+          },
+        ],
+        type: null,
+      },
+      parent_process: {
+        name: "x.sh",
+        pid: 4420,
+        ptid: 4420,
+        uid: "9ee38358-13f1-57b2-b709-ec65afc642fc",
+        user: {
+          uid: "33",
+          name: "www-data",
+          type_id: null,
+          groups: [
+            {
+              uid: "33",
+              name: "www-data",
+            },
+          ],
+          type: null,
+        },
+      },
+      cmd_line: "/tmp/.kworker-ng --pool 198.51.100.7:4444",
+      file: {
+        name: ".kworker-ng",
+        path: "/tmp/.kworker-ng",
+        type_id: 8,
+        desc: null,
+        size: null,
+        type: "Executable File",
+      },
+      ancestry: [
+        {
+          path: "/usr/bin/dash",
+          name: "dash",
+        },
+        {
+          path: "/usr/sbin/apache2",
+          name: "apache2",
+        },
+        {
+          path: "/usr/lib/systemd/systemd",
+          name: "systemd",
+        },
+      ],
+    },
+    user: {
+      uid: "33",
+      name: "www-data",
+      type_id: null,
+      groups: [
+        {
+          uid: "33",
+          name: "www-data",
+        },
+      ],
+      type: null,
+    },
+  },
+  process: {
+    name: "auditd",
+    pid: 640,
+    ptid: 640,
+    uid: "a5146ce7-adb0-52f1-bb99-422776847bcd",
+    user: {
+      uid: "0",
+      name: "root",
+      type_id: 2,
+      groups: [
+        {
+          uid: "0",
+          name: "root",
+        },
+      ],
+      type: "Admin",
+    },
+    cmd_line: "/usr/sbin/auditd",
+    file: {
+      name: "auditd",
+      path: "/usr/sbin/auditd",
+      type_id: 8,
+      desc: null,
+      size: null,
+      type: "Executable File",
+    },
+  },
+  type_uid: 100702,
+  unmapped: {
+    data: {
+      signal: "SIGKILL",
+      target: {
+        task: {
+          namespaces: {
+            mnt: 4026531841,
+          },
+          flags: "0x400000",
+          zombie: false,
+        },
+      },
+    },
+    info: {
+      event: {
+        batch: 119,
+      },
+      task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+      parent_task: {
+        namespaces: {
+          mnt: 4026531841,
+        },
+        flags: "0x400000",
+        zombie: false,
+      },
+    },
+  },
   activity_name: "Terminate",
-  actor: "kworker-ng",
-  target: "auditd",
-  module: null,
-  address: null,
+  category_name: "System Activity",
+  class_name: "Process Activity",
+  severity: "Informational",
+  type_name: "Process Activity: Terminate",
 }

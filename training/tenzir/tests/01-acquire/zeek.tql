@@ -14,7 +14,4 @@ from_file f"{$data}/zeek/conn.log" {
 duration = duration?.count_seconds()
 zeek::ocsf::normalize
 ocsf_derive
-ocsf_cast
-select time, class_name, activity_name, src_endpoint.ip, dst_endpoint.ip,
-       dst_endpoint.port, community_uid=connection_info.community_uid
 sort time

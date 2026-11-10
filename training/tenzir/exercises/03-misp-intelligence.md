@@ -48,7 +48,6 @@ stays small with millions of indicators. Read
    this = response.Event
    misp::event::ocsf::normalize
    ocsf_derive
-   ocsf_cast
    ```
 
    The event becomes an OCSF *OSINT Inventory Info* event. Where do the

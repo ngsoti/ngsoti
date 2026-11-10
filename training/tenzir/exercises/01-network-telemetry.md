@@ -56,13 +56,11 @@ why Tenzir maps everything to OCSF first.
    ```tql
    suricata::ocsf::normalize
    ocsf_derive
-   ocsf_cast
    ```
 
    Compare `src_ip` with `src_endpoint.ip`, and notice the new fields
    `class_name` and `activity_name`. Which OCSF class does the `alert` become?
-   ([`ocsf_derive`](https://tenzir.com/docs/reference/operators/ocsf_derive),
-   [`ocsf_cast`](https://tenzir.com/docs/reference/operators/ocsf_cast))
+   ([`ocsf_derive`](https://tenzir.com/docs/reference/operators/ocsf_derive))
 
 4. Do the same for Zeek. Read the TSV log with
    [`read_zeek_tsv`](https://tenzir.com/docs/reference/operators/read_zeek_tsv)
@@ -87,8 +85,8 @@ why Tenzir maps everything to OCSF first.
 
 ## Questions
 
-- Why does `ocsf_cast` warn when a field does not belong to the class? What
-  would you do with such fields? (Hint: `unmapped`)
+- Which Suricata fields have no place in OCSF, and where do they end up?
+  (Hint: `unmapped`)
 - A new sensor arrives next month. What do you need to write so that all your
   existing detections work on it?
 

@@ -15,4 +15,3 @@ topic = line.split(" ", max=1)[0]
 payload = line.split(" ", max=1)[1]
 where topic == "misp_json_attribute"
 this = payload.parse_json()
-select type=Attribute.type, value=Attribute.value, to_ids=Attribute.to_ids, comment=Attribute.comment

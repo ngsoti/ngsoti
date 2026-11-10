@@ -27,12 +27,11 @@ merge {
   zeek::ocsf::normalize
 }
 ocsf_derive
-ocsf_cast
-// Suricata alerts keep the connection under `evidences`.
-community_uid = connection_info?.community_uid?.otherwise(evidences?[0]?.connection_info?.community_uid?)
-where community_uid != null
+// Suricata alerts keep the connection in their evidence.
+connection = connection_info? else evidences?[0]?.connection_info?
+where connection != null
 event = f"{class_name}: {activity_name}"
-summarize community_uid,
+summarize community_uid=connection.community_uid,
           sources=distinct(metadata.product.name),
           events=distinct(event),
           first_seen=min(time)

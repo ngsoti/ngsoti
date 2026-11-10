@@ -10,14 +10,8 @@ from_file f"{$data}/kunai/dropper.jsonl" {
   read_ndjson
 }
 kunai::ocsf::normalize
-ocsf_derive
-ocsf_cast
 sigma path=f"{$data}/sigma"
-select rule=finding_info.title,
-       severity_id,
-       host=evidences[0].data.device.hostname,
-       time=evidences[0].data.time,
-       cmd=evidences[0].data.process?.cmd_line?,
-       file=evidences[0].data.file?.path?,
-       dst=evidences[0].data.dst_endpoint?.ip?
-sort time, rule
+// Findings carry the time of detection and a random ID, which change on every
+// run. Order by the matched event instead, and drop both for a stable test.
+sort evidences[0].data.time
+drop time, finding_info.uid
