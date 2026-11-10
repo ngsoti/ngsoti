@@ -14,8 +14,10 @@ description: |
 let $flowintel = "https://flowintel.example.org"
 subscribe "detections"
 where severity_id >= 4
+// OCSF names the detector in `metadata.product`; the `sigma` operator sets it
+// to Tenzir. FlowIntel wants a title and a description.
 select title=finding_info.title,
-       description=f"Detected by Tenzir at {time}",
+       description=f"Detected by {metadata.product.name} at {time}",
        tags=["tlp:clear", "ngsoti:training"]
 each parallel=1 {
   from_http f"{$flowintel}/api/case/create", method="post", headers={
